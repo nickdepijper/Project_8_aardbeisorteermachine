@@ -55,6 +55,7 @@ namespace AardbeiController {
 					pauserequested = false;
 				}
 				worker = std::thread(ThreadFunc, this);
+				state = RThreadState::RUNNING;
 				break;
 		}
 	}
@@ -70,15 +71,22 @@ namespace AardbeiController {
 				Logger::LogError("[RThread] Cannot stop thread: No thread was started yet due to INIT state");
 				break;
 			case RThreadState::PAUSED:
-				Logger::LogInfo("[RThread] Pausing thread from PAUSED state");
+				Logger::LogInfo("[RThread] Stopping thread from PAUSED state");
 				stoprequested = true;
 				pauserequested = false;
+				break;
+			case RThreadState::RUNNING:
+				Logger::LogInfo("[RThread] Stopping thread");
+				stoprequested = true;
+				worker.join();
+				Logger::LogInfo("[RThread] Thread stopped and joined");
 				break;
 			case RThreadState::READY:
 				Logger::LogInfo("[RThread] Stopping and Joining thread from READY conditions");
 				if (finished) {
 					worker.join();
 					Logger::LogInfo("[RThread] Thread stopped and joined");
+					state = RThreadState::READY;
 				}
 				else {
 					Logger::LogInfo("[RThread] No threads to stop");
@@ -134,7 +142,7 @@ namespace AardbeiController {
 		return stoprequested;
 	}
 
-	void RThread::SetThreadFunc(Delegate<RThreadFunc>& _func)
+	void RThread::SetThreadFunc(Delegate<RThreadFunc>_func)
 	{
 		this->delegate_func = _func;
 	}
