@@ -44,7 +44,7 @@ namespace AardbeiController {
 		bool finished;
 		std::string error;
 		void PauseFunc();
-		void SetThreadFunc(Delegate<RThreadFunc>& func);
+		void SetThreadFunc(Delegate<RThreadFunc> func);
 	};
 }
 
