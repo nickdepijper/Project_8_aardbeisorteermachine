@@ -1,7 +1,7 @@
-#include "Threading/RThread.h"
+#include "Util/RThread.h"
 #include <iostream>
-#include "Logging/Logger.h"
-namespace AardbeiController {
+#include "Util/Logger.h"
+namespace AardbeiController::Util {
 	void EmptyFunc();
 
 	RThread::RThread()
@@ -14,7 +14,7 @@ namespace AardbeiController {
 		state = RThreadState::READY;
 	}
 
-	RThread::RThread(Delegate<RThreadFunc>& _func)
+	RThread::RThread(Util::Delegate<RThreadFunc>& _func)
 	{
 		state = RThreadState::INIT;
 		stoprequested = false;

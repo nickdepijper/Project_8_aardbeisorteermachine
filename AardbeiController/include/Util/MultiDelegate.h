@@ -4,7 +4,7 @@
 
 #include <unordered_set>
 
-namespace AardbeiController
+namespace AardbeiController::Util
 {
 
 	// usage: w->keyboard->OnKeyPressedCallback += util::Delegate<KeyPressFunc>(r, &Random::OnKeyPressed);

@@ -3,8 +3,9 @@
 #include <mutex>
 #include <exception>
 #include <string>
-#include "Delegate/Delegate.h"
-namespace AardbeiController {
+#include "Util/Delegate.h"
+
+namespace AardbeiController::Util {
 	enum class RThreadState {
 		INIT,
 		ERR,

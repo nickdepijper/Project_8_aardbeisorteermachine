@@ -26,25 +26,31 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Threading\RThread.h">
+    <ClInclude Include="include\Util\RThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Delegate\MultiDelegate.h">
+    <ClInclude Include="include\Util\MultiDelegate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Delegate\Delegate.h">
+    <ClInclude Include="include\Util\Delegate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Logging\Logger.h">
+    <ClInclude Include="include\Util\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\StrawberryMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\IDisposable.h">
+    <ClInclude Include="include\Util\IDisposable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\MachineContext.h">
+    <ClInclude Include="include\Control\MachineContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Control\CobotData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Control\UR5PollThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

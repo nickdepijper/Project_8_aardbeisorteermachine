@@ -8,7 +8,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace AardbeiController
+namespace AardbeiController::Util
 {
 
 	template <typename T> class Delegate;
@@ -345,13 +345,13 @@ namespace AardbeiController
 namespace std
 {
 	template <typename Ret, typename ...Args>
-	struct hash<AardbeiController::Delegate<Ret(Args...)> >
+	struct hash<AardbeiController::Util::Delegate<Ret(Args...)> >
 	{
-		size_t operator()(AardbeiController::Delegate<Ret(Args...)> const& d) const noexcept
+		size_t operator()(AardbeiController::Util::Delegate<Ret(Args...)> const& d) const noexcept
 		{
 			auto const seed(hash<void*>()(d.obj));
 
-			return hash<typename AardbeiController::Delegate<Ret(Args...)>::FuncPtr>()(
+			return hash<typename AardbeiController::Util::Delegate<Ret(Args...)>::FuncPtr>()(
 				d.func) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
 		}
 	};

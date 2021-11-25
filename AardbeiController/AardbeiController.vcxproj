@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);LOG_LEVEL_ALL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;..\..\..\libs\ur_rtde\include\ext\;..\..\..\libs\ur_rtde\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;..\..\..\libs\ur_rtde\include\ext\;..\..\..\libs\ur_rtde\include\;..\..\..\libs\glm\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -140,7 +140,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);LOG_LEVEL_ALL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include;..\..\..\libs\ur_rtde\include\ext\;..\..\..\libs\ur_rtde\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;..\..\..\libs\ur_rtde\include\ext\;..\..\..\libs\ur_rtde\include\;..\..\..\libs\glm\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -158,13 +158,15 @@
     <ClCompile Include="src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Delegate\Delegate.h" />
-    <ClInclude Include="include\Delegate\MultiDelegate.h" />
-    <ClInclude Include="include\IDisposable.h" />
-    <ClInclude Include="include\Logging\Logger.h" />
-    <ClInclude Include="include\MachineContext.h" />
+    <ClInclude Include="include\Control\CobotData.h" />
+    <ClInclude Include="include\Control\UR5PollThread.h" />
+    <ClInclude Include="include\Util\Delegate.h" />
+    <ClInclude Include="include\Util\MultiDelegate.h" />
+    <ClInclude Include="include\Util\IDisposable.h" />
+    <ClInclude Include="include\Util\Logger.h" />
+    <ClInclude Include="include\Control\MachineContext.h" />
     <ClInclude Include="include\StrawberryMachine.h" />
-    <ClInclude Include="include\Threading\RThread.h" />
+    <ClInclude Include="include\Util\RThread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
