@@ -27,22 +27,7 @@ void MovePlace(int row, int col, double speed);
 
 int main(int argc, char* argv[])
 {
-	std::stringstream ss;
 	AardbeiController::StrawberryMachine machine(RPATH);
-
-	while (true) {
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		{
-			std::shared_ptr<UR5Info> ptr = machine.GetInfo().lock();
-			std::lock_guard<std::mutex> lock(ptr->info_mutex);
-			ss << "Machine pose: " << ptr->tool.actual_data.position.x << " " << ptr->tool.actual_data.position.y << " " << ptr->tool.actual_data.position.z;
-			Logger::LogInfo(ss.str());
-			ss.clear();
-		};
-
-	}
-
-
 	RTDEControlInterface rtde_control("127.0.0.1");
 	double speed = 3;
 	bool Continue = true;

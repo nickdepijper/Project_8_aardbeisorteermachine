@@ -5,7 +5,8 @@ AardbeiController::StrawberryMachine::StrawberryMachine(std::string cobot_ip)
 	this->machine_info = std::make_shared<UR5Info>();
 	this->machine_context = std::make_shared<AardbeiController::Control::MachineContext>();
 	machine_context->Init(cobot_ip);
-	this->polling_thread = std::make_unique<AardbeiController::Control::UR5PollThread>();
+	this->polling_thread = std::make_unique<AardbeiController::Control::UR5PollThread>(machine_context, this->machine_info);
+	this->polling_thread->Start();
 }
 
 AardbeiController::StrawberryMachine::~StrawberryMachine()

@@ -180,7 +180,7 @@ namespace AardbeiController::Util {
 				if (exec_time < caller->min_exec_time_ms) {
 					delta = caller->min_exec_time_ms - exec_time;
 					std::this_thread::sleep_for(std::chrono::milliseconds(delta));
-					Logger::LogDebug("thread is waiting");
+					//Logger::LogDebug("thread is waiting");
 				}
 			}
 		}
