@@ -28,6 +28,20 @@ void MovePlace(int row, int col, double speed);
 int main(int argc, char* argv[])
 {
 	AardbeiController::StrawberryMachine machine(RPATH);
+
+	while (true) {
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		{
+			std::shared_ptr<UR5Info> ptr = machine.GetInfo().lock();
+			std::lock_guard<std::mutex> lock(ptr->info_mutex);
+			ss << "Machine pose: " << ptr->tool.actual_data.position.x << " " << ptr->tool.actual_data.position.y << " " << ptr->tool.actual_data.position.z;
+			Logger::LogInfo(ss.str());
+			ss.clear();
+		};
+
+	}
+
+
 	RTDEControlInterface rtde_control("127.0.0.1");
 	double speed = 3;
 	bool Continue = true;
@@ -45,13 +59,13 @@ int main(int argc, char* argv[])
 			srand(static_cast <unsigned int> (time(0)));
 			int x_mm = rand() % 60 - 30;
 			int y_mm = rand() % 15 + 25;
-			int yaw_hund = rand() % 628 - 314;
+			int yaw_hund = rand() % 6283 - 3142;
 			
 			float x = float(x_mm) / 100.0f;
 			float y = -(float(y_mm) / 100.0f);
-			float yaw = float(yaw_hund) / 100.0f;
+			float yaw = float(yaw_hund) / 1000.0f;
 
-			std::vector<double> pose{ x, y, 0.1, 0, PI, 0 };
+			std::vector<double> pose{ x, y, 0.25, 0, (PI/2), 0};
 	
 			MovePick(pose, speed);
 			MovePlace(row, col, speed);
@@ -125,6 +139,8 @@ void MovePick(std::vector<double> pose, double speed) {
 	
 	RTDEControlInterface rtde_move(RPATH);
 
+	std::vector<double> wrist{ (PI / 2), 0, 0, 0, 0, 0};
+
 	std::cout << "Pick at: " << std::endl;
 	for (int i = 0; i < pose.size(); i++) {
 		std::cout << pose[i];
@@ -132,17 +148,18 @@ void MovePick(std::vector<double> pose, double speed) {
 	}
 	std::cout << std::endl;
 
-	rtde_move.moveL(pose, speed, 8);
-	pose[2] = 0.05;
-	rtde_move.moveL(pose, speed, 8);
-	pose[2] = 0.1;
-	rtde_move.moveL(pose, speed, 8);
+	rtde_move.moveL(pose, speed, 0.5);
+	//rtde_move.moveJ(wrist);
+	pose[2] = 0.3;
+	rtde_move.moveL(pose, speed, 0.5);
+	pose[2] = 0.25;
+	rtde_move.moveL(pose, speed, 0.5);
 }
 
 void MovePlace(int row, int col, double speed) {
 	float dist = 0.039f;
 	RTDEControlInterface rtde_move(RPATH);
-	std::vector<double> pose{(0.3-(col*dist)), (-0.85+(row*dist)), 0.1, 0, PI, 0};
+	std::vector<double> pose{(0.3-(col*dist)), (-0.85+(row*dist)), 0.3, 0, (PI/2), 0};
 	std::cout << "Place at: " << std::endl;
 	for (int i = 0; i < pose.size(); i++) {
 		std::cout << pose[i];
@@ -150,9 +167,9 @@ void MovePlace(int row, int col, double speed) {
 	}
 	std::cout << " (row: " << row << " col: " << col << ")" << std::endl;
 
-	rtde_move.moveL(pose, speed, 8);
-	pose[2] = 0.07;
-	rtde_move.moveL(pose, speed, 8);
-	pose[2] = 0.1;
-	rtde_move.moveL(pose, speed, 8);
+	rtde_move.moveL(pose, speed, 0.5);
+	pose[2] = 0.3;
+	rtde_move.moveL(pose, speed, 0.5);
+	pose[2] = 0.25;
+	rtde_move.moveL(pose, speed, 0.5);
 }
