@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <string>
+#include <sstream>
 
 #define LOG_INFO(msg) {}
 
@@ -19,11 +20,19 @@ class Logger {
 			LogMessage(msg);
 			ChangeColor(CONSOLE_WHITE);
 		}
+
+		static inline void LogInfo(std::stringstream& ss) {
+			LogInfo(ss.str());
+		}
 	
 		static inline void LogDebug(std::string msg) {
 			ChangeColor(CONSOLE_GREEN);
 			LogMessage(msg);
 			ChangeColor(CONSOLE_WHITE);
+		}
+
+		static inline void LogDebug(std::stringstream& ss) {
+			LogDebug(ss.str());
 		}
 	
 		static inline void LogWarning(std::string msg) {
@@ -33,6 +42,10 @@ class Logger {
 			ChangeColor(CONSOLE_WHITE);
 	#endif
 		}
+
+		static inline void LogWarning(std::stringstream& ss) {
+			LogWarning(ss.str());
+		}
 	
 		static inline void LogError(std::string msg) {
 	#ifdef LOG_LEVEL_ALL
@@ -41,6 +54,10 @@ class Logger {
 			ChangeColor(CONSOLE_WHITE);
 	#endif
 			throw new std::exception(msg.c_str());
+		}
+
+		static inline void LogError(std::stringstream& ss) {
+			LogError(ss.str());
 		}
 	
 	private:
