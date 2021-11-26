@@ -8,13 +8,14 @@
 #include <thread>
 #include <ctime>
 #include <cstdlib>
-#include "StrawberryMachine.h"
-#include "Control/CobotData.h"
 #include <sstream>
+#include "Util/Logger.h"
+#include "string.h"
 
 
 using namespace ur_rtde;
 using namespace std::chrono;
+using namespace AardbeiController::Util;
 
 //#define RPATH "169.254.208.100"
 #define RPATH "192.168.1.100"
@@ -27,23 +28,7 @@ void MovePlace(int row, int col, double speed);
 
 int main(int argc, char* argv[])
 {
-	AardbeiController::StrawberryMachine machine(RPATH);
-
-	while (true) {
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		{
-			std::shared_ptr<UR5Info> ptr = machine.GetInfo().lock();
-			std::lock_guard<std::mutex> lock(ptr->info_mutex);
-			ss << "Machine pose: " << ptr->tool.actual_data.position.x << " " << ptr->tool.actual_data.position.y << " " << ptr->tool.actual_data.position.z;
-			Logger::LogInfo(ss.str());
-			ss.clear();
-		};
-
-	}
-
-
-	RTDEControlInterface rtde_control("127.0.0.1");
-	double speed = 3;
+	double speed = 0.2;
 	bool Continue = true;
 	int rows = 9;
 	int cols = 14;
@@ -65,7 +50,7 @@ int main(int argc, char* argv[])
 			float y = -(float(y_mm) / 100.0f);
 			float yaw = float(yaw_hund) / 1000.0f;
 
-			std::vector<double> pose{ x, y, 0.25, 0, (PI/2), 0};
+			std::vector<double> pose{ x, y, 0.2, 0, (PI), 0};
 	
 			MovePick(pose, speed);
 			MovePlace(row, col, speed);
@@ -111,14 +96,15 @@ void IOBus() {
 			rtde_io.setStandardDigitalOut(0, false);
 			rtde_io.setStandardDigitalOut(1, true);
 		}
-		else std::cout << "Weh doede gij nou wir" << std::endl;
-
+		else
+			Logger::LogDebug("Weh doede gij nou wir");
 	}
 }
 
 void Receive() {
 	RTDEReceiveInterface rtde_receive(RPATH);
-	std::cout << "Connected to UR-5" << std::endl;
+	
+	Logger::LogDebug("Connected to UR-5");
 	std::vector<double> joint_positions;
 	while (rtde_receive.isConnected()) {
 		joint_positions = rtde_receive.getActualQ();
@@ -141,7 +127,7 @@ void MovePick(std::vector<double> pose, double speed) {
 
 	std::vector<double> wrist{ (PI / 2), 0, 0, 0, 0, 0};
 
-	std::cout << "Pick at: " << std::endl;
+	Logger::LogDebug("Pick at: ");
 	for (int i = 0; i < pose.size(); i++) {
 		std::cout << pose[i];
 		std::cout << " ";
@@ -150,26 +136,29 @@ void MovePick(std::vector<double> pose, double speed) {
 
 	rtde_move.moveL(pose, speed, 0.5);
 	//rtde_move.moveJ(wrist);
-	pose[2] = 0.3;
+	pose[2] = 0.1;
 	rtde_move.moveL(pose, speed, 0.5);
-	pose[2] = 0.25;
+	pose[2] = 0.2;
 	rtde_move.moveL(pose, speed, 0.5);
 }
 
 void MovePlace(int row, int col, double speed) {
 	float dist = 0.039f;
 	RTDEControlInterface rtde_move(RPATH);
-	std::vector<double> pose{(0.3-(col*dist)), (-0.85+(row*dist)), 0.3, 0, (PI/2), 0};
-	std::cout << "Place at: " << std::endl;
+	std::vector<double> pose{(0.3-(col*dist)), (-0.85+(row*dist)), 0.2, 0, (PI), 0};
+	Logger::LogDebug("Place at: ");
 	for (int i = 0; i < pose.size(); i++) {
 		std::cout << pose[i];
 		std::cout << " ";
 	}
-	std::cout << " (row: " << row << " col: " << col << ")" << std::endl;
+	//std::cout << " (row: " << row << " col: " << col << ")" << std::endl;
+	std::stringstream TrayLocation;
+	TrayLocation << " (row: " << row << " col: " << col << ")";
+	Logger::LogDebug(TrayLocation);
 
 	rtde_move.moveL(pose, speed, 0.5);
-	pose[2] = 0.3;
+	pose[2] = 0.1;
 	rtde_move.moveL(pose, speed, 0.5);
-	pose[2] = 0.25;
+	pose[2] = 0.2;
 	rtde_move.moveL(pose, speed, 0.5);
 }
