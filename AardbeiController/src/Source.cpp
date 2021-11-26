@@ -8,8 +8,10 @@
 #include <thread>
 #include <ctime>
 #include <cstdlib>
-#include "Control/UR5PollThread.h"
-#include "Util/RThread.h"
+#include "StrawberryMachine.h"
+#include "Control/CobotData.h"
+#include <sstream>
+
 
 using namespace ur_rtde;
 using namespace std::chrono;
@@ -25,15 +27,23 @@ void MovePlace(int row, int col, double speed);
 
 int main(int argc, char* argv[])
 {
-	AardbeiController::Control::UR5PollThread urthread;
-	urthread.Start();
+	std::stringstream ss;
+	AardbeiController::StrawberryMachine machine(RPATH);
 
 	while (true) {
-		std::this_thread::sleep_for(std::chrono::seconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		{
+			std::shared_ptr<UR5Info> ptr = machine.GetInfo().lock();
+			std::lock_guard<std::mutex> lock(ptr->info_mutex);
+			ss << "Machine pose: " << ptr->tool.actual_data.position.x << " " << ptr->tool.actual_data.position.y << " " << ptr->tool.actual_data.position.z;
+			Logger::LogInfo(ss.str());
+			ss.clear();
+		};
+
 	}
 
 
-	//RTDEControlInterface rtde_control("127.0.0.1");
+	RTDEControlInterface rtde_control("127.0.0.1");
 	double speed = 3;
 	bool Continue = true;
 	int rows = 9;
@@ -145,7 +155,7 @@ void MovePick(std::vector<double> pose, double speed) {
 }
 
 void MovePlace(int row, int col, double speed) {
-	float dist = 0.039;
+	float dist = 0.039f;
 	RTDEControlInterface rtde_move(RPATH);
 	std::vector<double> pose{(0.3-(col*dist)), (-0.85+(row*dist)), 0.1, 0, PI, 0};
 	std::cout << "Place at: " << std::endl;

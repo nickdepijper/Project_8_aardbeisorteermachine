@@ -1,6 +1,8 @@
 #include "Util/RThread.h"
 #include <iostream>
 #include "Util/Logger.h"
+
+#include <chrono>
 namespace AardbeiController::Util {
 	void EmptyFunc();
 
@@ -12,14 +14,25 @@ namespace AardbeiController::Util {
 		finished = false;
 		delegate_func = Delegate<RThreadFunc>(&EmptyFunc);
 		state = RThreadState::READY;
+		min_exec_time_ms = 0;
 	}
 
-	RThread::RThread(Util::Delegate<RThreadFunc>& _func)
+	RThread::RThread(Util::Delegate<RThreadFunc>& _func, int frequency = 60)
 	{
 		state = RThreadState::INIT;
 		stoprequested = false;
 		delegate_func = _func;
 		state = RThreadState::READY;
+		min_exec_time_ms = (long long) round((1.0 / ((double)frequency)) * 1000.0);
+	}
+
+	RThread::RThread(int frequency)
+	{
+		state = RThreadState::INIT;
+		stoprequested = false;
+		delegate_func = Delegate<RThreadFunc>(&EmptyFunc);
+		state = RThreadState::READY;
+		min_exec_time_ms = (long long)round((1.0 / ((double)frequency)) * 1000.0);
 	}
 
 	RThread::~RThread()
@@ -149,7 +162,28 @@ namespace AardbeiController::Util {
 
 	void RThread::ThreadFunc(RThread* caller)
 	{
-		caller->delegate_func();
+		std::chrono::steady_clock::time_point start, end;
+		long long exec_time;
+		long long delta;
+		bool must_wait = !(caller->min_exec_time_ms == 0);
+		while (!caller->stoprequested) {
+			start = std::chrono::high_resolution_clock::now();
+			if (caller->pauserequested) {
+				caller->PauseFunc();
+			}
+			caller->delegate_func();
+
+			end = std::chrono::high_resolution_clock::now();
+			exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(start - end).count();
+
+			if (must_wait) {
+				if (exec_time < caller->min_exec_time_ms) {
+					delta = caller->min_exec_time_ms - exec_time;
+					std::this_thread::sleep_for(std::chrono::milliseconds(delta));
+					Logger::LogDebug("thread is waiting");
+				}
+			}
+		}
 		caller->finished = true;
 		caller->state = RThreadState::READY;
 	}

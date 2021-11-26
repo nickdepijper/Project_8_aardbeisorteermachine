@@ -18,10 +18,19 @@
     <ClCompile Include="src\Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RThread.cpp">
+    <ClCompile Include="src\Util\RThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MachineContext.cpp">
+    <ClCompile Include="src\Control\MachineContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Control\UR5PollThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\StrawberryMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StrawberryMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

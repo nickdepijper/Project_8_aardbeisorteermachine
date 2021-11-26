@@ -21,7 +21,8 @@ namespace AardbeiController::Util {
 	class RThread {
 	public:
 		RThread();
-		RThread(Delegate<RThreadFunc>& _func);
+		RThread(Delegate<RThreadFunc>& _func, int frequency);
+		RThread(int frequency);
 		~RThread();
 
 		void Start();
@@ -35,6 +36,7 @@ namespace AardbeiController::Util {
 
 	private:
 		std::thread worker;
+		long long min_exec_time_ms;
 		Delegate<RThreadFunc> delegate_func;
 		static void ThreadFunc(RThread* caller);
 

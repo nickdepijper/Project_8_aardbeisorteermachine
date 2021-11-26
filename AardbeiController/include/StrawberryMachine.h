@@ -2,15 +2,28 @@
 #include <memory>
 #include "Util/IDisposable.h"
 #include "Control/CobotData.h"
-#include "Threading/RThread.h"
+#include "Control/MachineContext.h"
+#include "Control/UR5PollThread.h"
 
 namespace AardbeiController {
 	class StrawberryMachine : public Util::IDisposable {
-	public:
+	private:
 		std::shared_ptr<UR5Info> machine_info;
-		StrawberryMachine();
+		std::shared_ptr<Control::MachineContext> machine_context;
+		std::unique_ptr<AardbeiController::Control::UR5PollThread> polling_thread;
+	public:
+		StrawberryMachine(std::string cobot_ip);
 
 		~StrawberryMachine();
+
+
+		inline std::weak_ptr<UR5Info> GetInfo() {
+			return this->machine_info;
+		}
+
+		inline std::weak_ptr<Control::MachineContext> GetMachineContext() {
+			return this->machine_context;
+		}
 
 		void Dispose();
 	};
