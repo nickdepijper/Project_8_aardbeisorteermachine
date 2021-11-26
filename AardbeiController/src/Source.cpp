@@ -8,6 +8,8 @@
 #include <thread>
 #include <ctime>
 #include <cstdlib>
+#include "Control/UR5PollThread.h"
+#include "Util/RThread.h"
 
 using namespace ur_rtde;
 using namespace std::chrono;
@@ -23,6 +25,14 @@ void MovePlace(int row, int col, double speed);
 
 int main(int argc, char* argv[])
 {
+	AardbeiController::Control::UR5PollThread urthread;
+	urthread.Start();
+
+	while (true) {
+		std::this_thread::sleep_for(std::chrono::seconds(100));
+	}
+
+
 	//RTDEControlInterface rtde_control("127.0.0.1");
 	double speed = 3;
 	bool Continue = true;
