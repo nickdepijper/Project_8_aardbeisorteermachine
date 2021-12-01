@@ -158,6 +158,7 @@
     <ClCompile Include="src\Control\CobotData.cpp" />
     <ClCompile Include="src\Control\UR5PollThread.cpp" />
     <ClCompile Include="src\Control\MachineContext.cpp" />
+    <ClCompile Include="src\State\SystemState.cpp" />
     <ClCompile Include="src\StrawberryMachine.cpp" />
     <ClCompile Include="src\StrawberryMachineConfig.cpp" />
     <ClCompile Include="src\Util\FileManager.cpp" />

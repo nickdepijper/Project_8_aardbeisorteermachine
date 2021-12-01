@@ -20,5 +20,5 @@ struct StrawberryMachineConfig {
 	~StrawberryMachineConfig();
 
 
-	static StrawberryMachineConfig Import(std::string config_path);
+	static void Import(std::string config_path, StrawberryMachineConfig* result);
 };

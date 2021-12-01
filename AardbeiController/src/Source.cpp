@@ -15,14 +15,11 @@
 #include <thread>
 #include "Util/FileManager.h"
 
+#define PI 3.1415
 
 using namespace ur_rtde;
 using namespace std::chrono;
 using namespace AardbeiController::Util;
-
-//#define RPATH "169.254.208.100"
-#define RPATH "192.168.1.100"
-#define PI 3.141592653589f
 
 AardbeiController::StrawberryMachine* machine;
 
@@ -31,8 +28,8 @@ void MovePlace(int row, int col, double speed);
 
 int main(int argc, char* argv[])
 {
-	StrawberryMachineConfig config = StrawberryMachineConfig::Import("./config/config.json");
-	machine = new AardbeiController::StrawberryMachine(config);
+	
+	machine = new AardbeiController::StrawberryMachine("./config/config.json");
 
 	double speed = 0.2;
 	bool Continue = true;

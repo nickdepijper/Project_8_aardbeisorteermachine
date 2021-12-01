@@ -1,19 +1,52 @@
 #pragma once
+#include "StrawberryMachineConfig.h"
+#include "Control/MachineContext.h"
+#include "Control/CobotData.h"
+#include "StrawberryMachineConfig.h"
+#include <memory>
 
-enum class StateEnum {
-	INITIALIZING,
-	SHUTDOWN,
-	EMERGENCY_STOP,
-	HOMING,
-	DETECT,
-	MOVE_TO_STBY,
-	GRAB_CLOSE,
-	TRAVELING_TO_TRAY,
-	INDEXING_TRAY,
-	GRAB_OPEN
-};
+namespace AardbeiController::State {
+	enum class StateEnum {
+		INITIALIZING,
+		SHUTDOWN,
+		EMERGENCY_STOP,
+		HOMING,
+		DETECT,
+		MOVE_TO_STBY,
+		GRAB_CLOSE,
+		TRAVELING_TO_TRAY,
+		INDEXING_TRAY,
+		GRAB_OPEN
+	};
+	
+	class SystemState {
+	public:
+		StateEnum state_id;
+		StateEnum next_state;
+	
+	private:
+		std::shared_ptr<StrawberryMachineConfig> config;
+		std::shared_ptr<Control::MachineContext> mcontext;
+		std::shared_ptr<UR5Info> minfo;
+	
+	public:
+		SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<Control::MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state);
+	};
 
-class SystemState {
-public:
+	class InitialState : public SystemState {
+	private:
+		std::string config_path;
+		StrawberryMachineConfig output;
+	public:
+		InitialState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<Control::MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state)
+			: SystemState(_cfg, _context, _info, next_state) {
 
-};
+		}
+		void Init(std::string _cfg_path);
+
+		void Start();
+
+		StrawberryMachineConfig CollectResult();
+	};
+
+}

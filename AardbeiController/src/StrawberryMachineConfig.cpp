@@ -28,13 +28,12 @@ StrawberryMachineConfig::~StrawberryMachineConfig()
 {
 }
 
-StrawberryMachineConfig StrawberryMachineConfig::Import(std::string config_path)
+void StrawberryMachineConfig::Import(std::string config_path, StrawberryMachineConfig* result)
 {
 	std::string file_contents = FileManager::ReadTextFile(config_path);
 	if (file_contents == "") {
 		throw new std::exception("Could find config or config was empty");
 	}
-	StrawberryMachineConfig result;
 
 	Document doc;
 	doc.Parse(file_contents.c_str());
@@ -42,12 +41,12 @@ StrawberryMachineConfig StrawberryMachineConfig::Import(std::string config_path)
 		throw new std::exception("Json import failed");
 	}
 
-	ParseDoubleArr6(doc, "home_pose", &result.home_pos, &result.home_orient);
-	ParseDoubleArr6(doc, "tray_pose", &result.tray_pos, &result.tray_orient);
-	ParseDoubleArr6(doc, "tray_first_slot_pose", &result.tray_first_slot_pos, &result.tray_first_slot_orient);
-	ParseDoubleArr3(doc, "tray_index_offset", &result.tray_index_offsets);
-	result.cobot_ip = std::string(doc["cobot_ip"].GetString());
-	return StrawberryMachineConfig();
+	ParseDoubleArr6(doc, "home_pose", &result->home_pos, &result->home_orient);
+	ParseDoubleArr6(doc, "tray_pose", &result->tray_pos, &result->tray_orient);
+	ParseDoubleArr6(doc, "tray_first_slot_pose", &result->tray_first_slot_pos, &result->tray_first_slot_orient);
+	ParseDoubleArr3(doc, "tray_index_offset", &result->tray_index_offsets);
+	result->cobot_ip = std::string(doc["cobot_ip"].GetString());
+	return;
 }
 
 void ParseDoubleArr3(rapidjson::Document& doc, std::string key, glm::dvec3* val) {
