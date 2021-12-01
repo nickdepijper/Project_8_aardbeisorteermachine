@@ -11,6 +11,7 @@
 #include <sstream>
 #include "Util/Logger.h"
 #include "string.h"
+#include "StrawberryMachine.h"
 
 
 using namespace ur_rtde;
@@ -21,13 +22,16 @@ using namespace AardbeiController::Util;
 #define RPATH "192.168.1.100"
 #define PI 3.141592653589f
 
-void Receive();
-void IOBus();
 void MovePick(std::vector<double> pose, double speed);
 void MovePlace(int row, int col, double speed);
 
 int main(int argc, char* argv[])
 {
+	//AardbeiController::StrawberryMachine machine(RPATH);
+	std::stringstream ss;
+	ss << "Helloworld";
+	Logger::LogInfo(ss);
+
 	double speed = 0.2;
 	bool Continue = true;
 	int rows = 9;
@@ -50,8 +54,8 @@ int main(int argc, char* argv[])
 			float y = -(float(y_mm) / 100.0f);
 			float yaw = float(yaw_hund) / 1000.0f;
 
-			std::vector<double> pose{ x, y, 0.2, 0, (PI), 0};
-	
+			std::vector<double> pose{ x, y, 0.25, 0, (PI/2), 0};
+			
 			MovePick(pose, speed);
 			MovePlace(row, col, speed);
 
@@ -79,46 +83,6 @@ int main(int argc, char* argv[])
 	// Parameters
 
 	return 1;
-}
-
-void IOBus() {
-	RTDEIOInterface rtde_io(RPATH);
-
-	while (true) {
-		char value;
-		std::cin >> value;
-
-		if (value == '1') {
-			rtde_io.setStandardDigitalOut(0, true);
-			rtde_io.setStandardDigitalOut(1, false);
-		}
-		else if (value == '0') {
-			rtde_io.setStandardDigitalOut(0, false);
-			rtde_io.setStandardDigitalOut(1, true);
-		}
-		else
-			Logger::LogDebug("Weh doede gij nou wir");
-	}
-}
-
-void Receive() {
-	RTDEReceiveInterface rtde_receive(RPATH);
-	
-	Logger::LogDebug("Connected to UR-5");
-	std::vector<double> joint_positions;
-	while (rtde_receive.isConnected()) {
-		joint_positions = rtde_receive.getActualQ();
-	
-		system("cls");
-		
-		for (int i = 0; i < joint_positions.size(); i++) {
-
-			std::cout << joint_positions[i];// *57.29577;
-			std::cout << " ";
-		}
-		std::cout << std::endl;
-		Sleep(100);
-	}
 }
 
 void MovePick(std::vector<double> pose, double speed) {

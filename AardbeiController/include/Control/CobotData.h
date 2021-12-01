@@ -4,11 +4,13 @@
 #include <array>
 #include <mutex>
 #include "glm/glm.hpp"
+#include "Util/Object.h"
+#include <sstream>
 
 /// <summary>
 /// Structure that contains data for a single UR-X Cobot Joint
 /// </summary>
-struct JointData {
+struct JointData : public Object {
 	/// <summary>
 	/// The current position of the joint in radians
 	/// </summary>
@@ -34,19 +36,18 @@ struct JointData {
 	/// </summary>
 	double moment;
 
-	void Init() {
-		position = 0.0;
-		velocity = 0.0;
-		acceleration = 0.0;
-		current = 0.0;
-		moment = 0.0;
-	}
+	/// <summary>
+	/// Initialises the JointData struct
+	/// </summary>
+	void Init();
+
+	std::string ToString();
 };
 
 /// <summary>
 /// Structure that contains data for the tool that is mounted on an UR-X cobot
 /// </summary>
-struct ToolData {
+struct ToolData : public Object {
 	/// <summary>
 	/// The position of the tool in a cartesian model
 	/// </summary>
@@ -62,53 +63,69 @@ struct ToolData {
 	/// </summary>
 	glm::dvec3 speed;
 
-	void Init() {
-		position = glm::dvec3(0.0, 0.0, 0.0);
-		rotation = glm::dvec3(0.0, 0.0, 0.0);
-		speed = glm::dvec3(0.0, 0.0, 0.0);
-	}
+	/// <summary>
+	/// Initialises the ToolData struct
+	/// </summary>
+	void Init();
+	std::string ToString();
 };
 
 /// <summary>
 /// Structure that contains all data for a single UR-X Cobot Joint
 /// </summary>
-struct Joint {
+struct Joint : public Object {
+	/// <summary>
+	/// The joint temperature
+	/// </summary>
 	double temp;
+
+	/// <summary>
+	/// The voltage of the joint motor
+	/// </summary>
 	double voltage;
+
+	/// <summary>
+	/// The current draw of the joint motor
+	/// </summary>
 	double current;
+
+	/// <summary>
+	/// The joint current mode
+	/// </summary>
 	int32_t mode;
 
+	/// <summary>
+	/// The Tool actual data
+	/// </summary>
 	JointData actual_data;
+
+	/// <summary>
+	/// The Tool target data
+	/// </summary>
 	JointData target_data;
 
-	void Init() {
-		temp = 0.0;
-		voltage = 0.0;
-		current = 0.0;
-		mode = 0;
+	/// <summary>
+	/// Initialises the Tool struct
+	/// </summary>
+	void Init();
 
-		actual_data.Init();
-		target_data.Init();
-	}
+	std::string ToString();
 };
 
 /// <summary>
 /// Structure that contains all data for the tool that is mounted on an UR-X cobot
 /// </summary>
-struct Tool {
+struct Tool : public Object {
 	ToolData actual_data;
 	ToolData target_data;
 
-	void Init() {
-		actual_data.Init();
-		target_data.Init();
-	}
+	void Init();
+	std::string ToString();
 };
 
-template<size_t num_joints>
-class MachineInfo {
+class MachineInfo : public Object {
 public:
-	std::array<Joint, num_joints> joints;
+	std::array<Joint, 6> joints;
 	Tool tool;
 private:
 
@@ -118,7 +135,7 @@ public:
 	MachineInfo() {
 		tool = {};
 		tool.Init();
-		for (size_t i = 0; i < num_joints; i++) {
+		for (size_t i = 0; i < 6; i++) {
 			joints[i].Init();
 		}
 	}
@@ -136,6 +153,8 @@ public:
 	MachineInfo(MachineInfo&&) = delete;
 
 	~MachineInfo() = default;
+
+	std::string ToString();
 };
 
-typedef MachineInfo<6> UR5Info;
+typedef MachineInfo UR5Info;
