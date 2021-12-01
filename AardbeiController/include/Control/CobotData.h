@@ -32,11 +32,6 @@ struct JointData : public Object {
 	double current;
 
 	/// <summary>
-	/// The moment of the joint in Nm
-	/// </summary>
-	double moment;
-
-	/// <summary>
 	/// Initialises the JointData struct
 	/// </summary>
 	void Init();
@@ -85,11 +80,6 @@ struct Joint : public Object {
 	double voltage;
 
 	/// <summary>
-	/// The current draw of the joint motor
-	/// </summary>
-	double current;
-
-	/// <summary>
 	/// The joint current mode
 	/// </summary>
 	int32_t mode;
@@ -125,6 +115,10 @@ struct Tool : public Object {
 
 class MachineInfo : public Object {
 public:
+	double voltage;
+	double current;
+	int32_t mode;
+	int32_t status;
 	std::array<Joint, 6> joints;
 	Tool tool;
 private:
@@ -133,6 +127,11 @@ private:
 public:
 	std::mutex info_mutex;
 	MachineInfo() {
+		voltage = 0.0;
+		current = 0.0;
+		mode = 0;
+		status = 0;
+
 		tool = {};
 		tool.Init();
 		for (size_t i = 0; i < 6; i++) {

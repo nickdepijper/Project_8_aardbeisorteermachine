@@ -4,6 +4,7 @@
 #include "Control/CobotData.h"
 #include "Control/MachineContext.h"
 #include "Control/UR5PollThread.h"
+#include "StrawberryMachineConfig.h"
 
 namespace AardbeiController {
 	class StrawberryMachine : public Util::IDisposable {
@@ -11,8 +12,9 @@ namespace AardbeiController {
 		std::shared_ptr<UR5Info> machine_info;
 		std::shared_ptr<Control::MachineContext> machine_context;
 		std::unique_ptr<AardbeiController::Control::UR5PollThread> polling_thread;
+		StrawberryMachineConfig config;
 	public:
-		StrawberryMachine(std::string cobot_ip);
+		StrawberryMachine(StrawberryMachineConfig _config);
 
 		~StrawberryMachine();
 

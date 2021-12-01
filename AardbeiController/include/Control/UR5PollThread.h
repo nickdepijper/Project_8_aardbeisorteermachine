@@ -38,7 +38,10 @@ namespace AardbeiController::Control {
 		~UR5PollThread() {
 			this->Stop();
 		}
-
+	private:
+		void AquireToolData(std::shared_ptr<ur_rtde::RTDEReceiveInterface> rcontext);
+		void AquireJointData(std::shared_ptr<ur_rtde::RTDEReceiveInterface> rcontext);
+		void AquireMachineData(std::shared_ptr<ur_rtde::RTDEReceiveInterface> rcontext);
 
 		void PollFunc();
 	};

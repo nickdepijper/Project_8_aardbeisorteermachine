@@ -7,7 +7,6 @@ void JointData::Init()
 	velocity = 0.0;
 	acceleration = 0.0;
 	current = 0.0;
-	moment = 0.0;
 }
 
 std::string JointData::ToString()
@@ -18,7 +17,6 @@ std::string JointData::ToString()
 	ss << "Velocity:" << this->velocity << std::endl;
 	ss << "Acceleration:" << this->acceleration << std::endl;
 	ss << "Current:" << this->current << std::endl;
-	ss << "Moment:" << this->moment << std::endl;
 	return ss.str();
 }
 
@@ -43,7 +41,6 @@ void Joint::Init()
 {
 	temp = 0.0;
 	voltage = 0.0;
-	current = 0.0;
 	mode = 0;
 
 	actual_data.Init();
@@ -56,7 +53,6 @@ std::string Joint::ToString()
 	ss << "[Joint]" << std::endl;
 	ss << "Temp:" << this->temp << std::endl;
 	ss << "Voltage:" << this->voltage << std::endl;
-	ss << "Current:" << this->current << std::endl;
 	ss << "Mode:" << this->mode << std::endl;
 	ss << actual_data.ToString() << ": Actual" << std::endl;
 	ss << target_data.ToString() << ": Target" << std::endl;
@@ -80,5 +76,18 @@ std::string Tool::ToString()
 
 std::string MachineInfo::ToString()
 {
-	return std::string("Object:MachineInfo");
+	std::stringstream ss;
+	ss << "[Cobot]" << std::endl;
+	ss << "voltage: " << voltage << std::endl;
+	ss << "current: " << current << std::endl;
+	ss << "mode: " << mode << std::endl;
+	ss << "status: " << status << std::endl;
+	for (int i = 0; i < joints.size(); i++) {
+		ss << "[Joint " << i << "]" << std::endl;
+		ss << joints[i].ToString();
+	}
+	ss << "[Tool]" << std::endl;
+	ss << tool.ToString();
+
+	return ss.str();
 }
