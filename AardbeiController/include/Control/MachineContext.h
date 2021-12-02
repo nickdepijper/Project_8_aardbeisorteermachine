@@ -23,6 +23,7 @@ namespace AardbeiController::Control {
 		~MachineContext();
 	
 		bool Init(std::string network_path);
+		bool IsValid();
 	
 		void Dispose();
 	

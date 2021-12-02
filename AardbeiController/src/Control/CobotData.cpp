@@ -80,8 +80,8 @@ std::string MachineInfo::ToString()
 	ss << "[Cobot]" << std::endl;
 	ss << "voltage: " << voltage << std::endl;
 	ss << "current: " << current << std::endl;
-	ss << "mode: " << mode << std::endl;
-	ss << "status: " << status << std::endl;
+	ss << "mode: " << (int32_t)mode << std::endl;
+	ss << "status: " << status.GetStatus() << std::endl;
 	for (int i = 0; i < joints.size(); i++) {
 		ss << "[Joint " << i << "]" << std::endl;
 		ss << joints[i].ToString();

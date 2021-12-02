@@ -30,6 +30,7 @@ int main(int argc, char* argv[])
 {
 	
 	machine = new AardbeiController::StrawberryMachine("./config/config.json");
+	machine->Start();
 
 	double speed = 0.2;
 	bool Continue = true;

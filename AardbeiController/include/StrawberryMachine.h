@@ -14,7 +14,7 @@ namespace AardbeiController {
 		std::shared_ptr<Control::MachineContext> machine_context;
 		std::unique_ptr<AardbeiController::Control::UR5PollThread> polling_thread;
 		State::SystemState* current_state;
-		StrawberryMachineConfig config;
+		std::shared_ptr<StrawberryMachineConfig> config;
 	public:
 		StrawberryMachine(std::string config_path);
 		~StrawberryMachine();

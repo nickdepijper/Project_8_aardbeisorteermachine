@@ -38,6 +38,11 @@ namespace AardbeiController::Control {
 		}
 		return true;
 	}
+
+	bool MachineContext::IsValid()
+	{
+		return control_interface->isConnected() && receive_interface->isConnected();
+	}
 	
 	bool MachineContext::InitControl()
 	{

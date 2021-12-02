@@ -84,10 +84,12 @@ void AardbeiController::Control::UR5PollThread::AquireMachineData(std::shared_pt
 	double current = rcontext->getActualRobotCurrent();
 	int32_t mode = rcontext->getRobotMode();
 	int32_t status = rcontext->getRobotStatus();
+	int32_t safety_status = rcontext->getSafetyStatusBits();
 
 	machineinfo_ptr->current = current;
 	machineinfo_ptr->voltage = voltage;
-	machineinfo_ptr->mode = mode;
-	machineinfo_ptr->status = status;
+	machineinfo_ptr->mode = (RobotMode) mode;
+	machineinfo_ptr->status.SetStatus(status);
+	machineinfo_ptr->safety_status.SetStatus(safety_status);
 	return;
 }
