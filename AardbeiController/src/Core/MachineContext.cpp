@@ -1,8 +1,8 @@
-#include "Control/MachineContext.h"
+#include "Core/MachineContext.h"
 #include <sstream>
 #include <exception>
 
-namespace AardbeiController::Control {
+namespace AardbeiController {
 	MachineContext::MachineContext()
 	{
 		robot_ip = std::string();

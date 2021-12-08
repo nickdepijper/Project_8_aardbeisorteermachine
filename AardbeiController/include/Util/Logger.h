@@ -53,7 +53,9 @@ class Logger {
 			LogMessage(msg);
 			ChangeColor(CONSOLE_WHITE);
 	#endif
+	#ifdef LOG_THROW_EXCEPTIONS
 			throw new std::exception(msg.c_str());
+	#endif
 		}
 
 		static inline void LogError(std::stringstream& ss) {

@@ -21,7 +21,7 @@
     <ClCompile Include="src\Util\RThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Control\MachineContext.cpp">
+    <ClCompile Include="src\Core\MachineContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Control\UR5PollThread.cpp">
@@ -39,7 +39,10 @@
     <ClCompile Include="src\Util\FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\State\SystemState.cpp">
+    <ClCompile Include="src\Core\SystemState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\VisionContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,7 +65,7 @@
     <ClInclude Include="include\Util\IDisposable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Control\MachineContext.h">
+    <ClInclude Include="include\Core\MachineContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Control\CobotData.h">
@@ -74,13 +77,16 @@
     <ClInclude Include="include\Util\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\State\SystemState.h">
+    <ClInclude Include="include\Core\SystemState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\StrawberryMachineConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Util\FileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Core\VisionContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
