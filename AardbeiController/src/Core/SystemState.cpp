@@ -65,7 +65,7 @@ bool AardbeiController::HomeState::Init()
 	this->home_pos = glm::dvec3(config->cobot_config.home_pose[0], config->cobot_config.home_pose[1], config->cobot_config.home_pose[2]);
 	this->home_orient = glm::dvec3(config->cobot_config.home_pose[3], config->cobot_config.home_pose[4], config->cobot_config.home_pose[5]);
 
-	this->speed = 0.1;
+	this->speed = 0.5;
 	this->accel = 0.25;
 	return ready;
 }
@@ -73,13 +73,16 @@ bool AardbeiController::HomeState::Init()
 void AardbeiController::HomeState::Start()
 {
 	std::vector<double> pose = {home_pos[0], home_pos[1], home_pos[2], home_orient[0], home_orient[1], home_orient[2] };
-	this->control->moveL(pose, speed, accel, false);
+	//this->control->moveL(pose, speed, accel, false);
+	this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::DetectState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
 	this->cconfig = config->conveyor_config;
+	speed = 1.0;
+	accel = 0.25;
 	return control != nullptr;
 }
 
@@ -87,25 +90,30 @@ void AardbeiController::DetectState::Start()
 {
 	// do strawberry detection;
 	std::vector<double> pose = { cconfig.conveyor_home_pose[0], cconfig.conveyor_home_pose[1], cconfig.conveyor_home_pose[2], cconfig.conveyor_home_pose[3], cconfig.conveyor_home_pose[4], cconfig.conveyor_home_pose[5] };
-	this->control->moveL(pose, speed, accel, false);
-
+	//this->control->moveL(pose, speed, accel, false);
+	this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::GrabCloseState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
+	io_control = this->mcontext->GetIOInterface().lock();
+	speed = 1.0;
+	accel = 0.25;
 	return control != nullptr;
 }
 
 void AardbeiController::GrabCloseState::Start()
 {
+	io_control->setStandardDigitalOut(1, false);
+	io_control->setStandardDigitalOut(2, true);
 }
 
 bool AardbeiController::TravelToTrayState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
 	this->tconfig = config->tray_config;
-	this->speed = 0.1;
+	this->speed = 1.0;
 	this->accel = 0.25;
 	return true;
 }
@@ -113,27 +121,44 @@ bool AardbeiController::TravelToTrayState::Init()
 void AardbeiController::TravelToTrayState::Start()
 {
 	std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
-	this->control->moveL(pose, speed, accel, false);
+	//this->control->moveL(pose, speed, accel, false);
+	this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::IndexingTrayState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
+	this->tconfig = config->tray_config;
+	this->speed = 1.0;
+	this->accel = 0.25;
 	return false;
 }
 
 void AardbeiController::IndexingTrayState::Start()
 {
+	std::vector<double> pose = { tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2], 
+		tconfig.tray_first_slot_pose[3], tconfig.tray_first_slot_pose[4], tconfig.tray_first_slot_pose[5] };
+	//this->control->moveL(pose, speed, accel, false);
+	this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::GrabOpenState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
+	io_control = this->mcontext->GetIOInterface().lock();
+	tconfig = config->tray_config;
+	speed = 1.0;
+	accel = 0.5;
 	return false;
 }
 
 void AardbeiController::GrabOpenState::Start()
 {
+	io_control->setStandardDigitalOut(1, true);
+	io_control->setStandardDigitalOut(2, false);
+	std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
+	//this->control->moveL(pose, speed, accel, false);
+	this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::MoveToStrawBerryState::Init()

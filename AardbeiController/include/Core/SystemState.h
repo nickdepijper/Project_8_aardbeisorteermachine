@@ -64,8 +64,6 @@ namespace AardbeiController {
 			: SystemState(_cfg, _context, _info, _next_state) {
 			home_pos = glm::dvec3(0.0, 0.0, 0.0);
 			home_orient = glm::dvec3(0.0, 0.0, 0.0);
-			speed = 0.1;
-			accel = 0.05;
 		}
 
 		bool Init() override;
@@ -81,8 +79,7 @@ namespace AardbeiController {
 	public:
 		DetectState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _info, StateEnum::MOVE_TO_STBY) {
-			speed = 0.1;
-			accel = 0.05;
+			
 		}
 		bool Init() override;
 		void Start() override;
@@ -102,6 +99,9 @@ namespace AardbeiController {
 	class GrabCloseState : public SystemState {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		std::shared_ptr<ur_rtde::RTDEIOInterface> io_control;
+		double speed;
+		double accel;
 	public:
 		GrabCloseState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _info, StateEnum::TRAVELING_TO_TRAY) {
@@ -129,6 +129,9 @@ namespace AardbeiController {
 	class IndexingTrayState : public SystemState {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		TrayConfig tconfig;
+		double speed;
+		double accel;
 	public:
 		IndexingTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _info, StateEnum::GRAB_OPEN) {
@@ -140,6 +143,10 @@ namespace AardbeiController {
 	class GrabOpenState : public SystemState {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		std::shared_ptr<ur_rtde::RTDEIOInterface> io_control;
+		TrayConfig tconfig;
+		double speed;
+		double accel;
 	public:
 		GrabOpenState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _info, StateEnum::HOMING) {

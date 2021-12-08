@@ -29,58 +29,74 @@ AardbeiController::StrawberryMachine::~StrawberryMachine()
 void AardbeiController::StrawberryMachine::Start()
 {
 	bool stop_pressed = false;
+	bool logg = false;
 	while (!stop_pressed) {
-		//StateEnum next_state = current_state->next_state;
-		//delete current_state;
-		//switch (next_state) {
-		//	case StateEnum::HOMING:
-		//		this->current_state = new HomeState(
-		//			config,
-		//			machine_context,
-		//			machine_info,
-		//			StateEnum::DETECT);
-		//		HomeState* ptr = (HomeState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//	break;
-		//	case StateEnum::DETECT:
-		//		this->current_state = new DetectState(config, machine_context, machine_info);
-		//		DetectState* ptr = (DetectState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//	break;
-		//	case StateEnum::MOVE_TO_STBY:
-		//		this->current_state = new MoveToStrawBerryState(config, machine_context, machine_info);
-		//		MoveToStrawBerryState* ptr = (MoveToStrawBerryState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//		break;
-		//	case StateEnum::GRAB_CLOSE:
-		//		this->current_state = new GrabCloseState(config, machine_context, machine_info);
-		//		GrabCloseState* ptr = (GrabCloseState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//		break;
-		//	case StateEnum::TRAVELING_TO_TRAY:
-		//		this->current_state = new TravelToTrayState(config, machine_context, machine_info);
-		//		TravelToTrayState* ptr = (TravelToTrayState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//		break;
-		//	case StateEnum::INDEXING_TRAY:
-		//		this->current_state = new IndexingTrayState(config, machine_context, machine_info);
-		//		IndexingTrayState* ptr = (IndexingTrayState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//		break;
-		//	case StateEnum::GRAB_OPEN:
-		//		this->current_state = new GrabOpenState(config, machine_context, machine_info);
-		//		GrabOpenState* ptr = (GrabOpenState*)this->current_state;
-		//		ptr->Init();
-		//		ptr->Start();
-		//		break;
-		//}
-		//
+		if (!logg) {
+			StateEnum next_state = current_state->next_state;
+			delete current_state;
+			switch (next_state) {
+			case StateEnum::HOMING:
+			{
+				this->current_state = new HomeState(
+					config,
+					machine_context,
+					machine_info,
+					StateEnum::DETECT);
+				HomeState* ptr = (HomeState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			case StateEnum::DETECT:
+			{
+				this->current_state = new DetectState(config, machine_context, machine_info);
+				DetectState* ptr = (DetectState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			case StateEnum::MOVE_TO_STBY:
+			{
+				this->current_state = new MoveToStrawBerryState(config, machine_context, machine_info);
+				MoveToStrawBerryState* ptr = (MoveToStrawBerryState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			case StateEnum::GRAB_CLOSE:
+			{
+				this->current_state = new GrabCloseState(config, machine_context, machine_info);
+				GrabCloseState* ptr = (GrabCloseState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			case StateEnum::TRAVELING_TO_TRAY:
+			{
+				this->current_state = new TravelToTrayState(config, machine_context, machine_info);
+				TravelToTrayState* ptr = (TravelToTrayState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			case StateEnum::INDEXING_TRAY:
+			{
+				this->current_state = new IndexingTrayState(config, machine_context, machine_info);
+				IndexingTrayState* ptr = (IndexingTrayState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			case StateEnum::GRAB_OPEN:
+			{
+				this->current_state = new GrabOpenState(config, machine_context, machine_info);
+				GrabOpenState* ptr = (GrabOpenState*)this->current_state;
+				ptr->Init();
+				ptr->Start();
+			}
+			break;
+			}
+		}
 		this->machine_info->info_mutex.lock();
 		stop_pressed = this->machine_info->safety_status.IsGenEmergencyStop();
 		this->machine_info->info_mutex.unlock();

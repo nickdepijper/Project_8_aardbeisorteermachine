@@ -14,7 +14,12 @@ void AardbeiController::Control::UR5PollThread::PollFunc()
 		AquireToolData(rcontext);
 		AquireMachineData(rcontext);
 		AquireJointData(rcontext);
-		Logger::LogDebug(machineinfo_ptr->tool.ToString());
+		//Logger::LogDebug(machineinfo_ptr->tool.ToString());
+		//std::stringstream ss;
+		//for (int i = 0; i < machineinfo_ptr->joints.size(); i++) {
+		//	ss << machineinfo_ptr->joints[i].actual_data.position << ", ";
+		//}
+		//Logger::LogDebug(ss.str());
 	}
 	
 }
