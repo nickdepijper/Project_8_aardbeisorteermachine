@@ -7,6 +7,7 @@ AardbeiController::StrawberryMachine::StrawberryMachine(std::string config_path)
 	InitialState* st = new InitialState(
 		std::weak_ptr<StrawberryMachineConfig>(), 
 		std::weak_ptr<MachineContext>(), 
+		std::weak_ptr<VisionContext>(),
 		std::weak_ptr<UR5Info>(),
 		StateEnum::HOMING,
 		config_path);
@@ -32,13 +33,8 @@ AardbeiController::StrawberryMachine::~StrawberryMachine()
 void AardbeiController::StrawberryMachine::Start()
 {
 	bool stop_pressed = false;
-	bool logg = true;
+	bool logg = false;
 	while (!stop_pressed) {
-		std::shared_ptr<cv::VideoCapture> camera = vision_context->GetCamera().lock();
-		cv::Mat frame;
-		bool succes = camera->read(frame);
-		cv::imshow("view", frame);
-		char c = cv::waitKey(1);
 		if (!logg) {
 
 			StateEnum next_state = current_state->next_state;
@@ -49,6 +45,7 @@ void AardbeiController::StrawberryMachine::Start()
 				this->current_state = new HomeState(
 					config,
 					machine_context,
+					vision_context,
 					machine_info,
 					StateEnum::DETECT);
 				HomeState* ptr = (HomeState*)this->current_state;
@@ -58,7 +55,7 @@ void AardbeiController::StrawberryMachine::Start()
 			break;
 			case StateEnum::DETECT:
 			{
-				this->current_state = new DetectState(config, machine_context, machine_info);
+				this->current_state = new DetectState(config, machine_context, vision_context, machine_info);
 				DetectState* ptr = (DetectState*)this->current_state;
 				ptr->Init();
 				ptr->Start();
@@ -66,7 +63,7 @@ void AardbeiController::StrawberryMachine::Start()
 			break;
 			case StateEnum::MOVE_TO_STBY:
 			{
-				this->current_state = new MoveToStrawBerryState(config, machine_context, machine_info);
+				this->current_state = new MoveToStrawBerryState(config, machine_context, vision_context, machine_info);
 				MoveToStrawBerryState* ptr = (MoveToStrawBerryState*)this->current_state;
 				ptr->Init();
 				ptr->Start();
@@ -74,7 +71,7 @@ void AardbeiController::StrawberryMachine::Start()
 			break;
 			case StateEnum::GRAB_CLOSE:
 			{
-				this->current_state = new GrabCloseState(config, machine_context, machine_info);
+				this->current_state = new GrabCloseState(config, machine_context, vision_context, machine_info);
 				GrabCloseState* ptr = (GrabCloseState*)this->current_state;
 				ptr->Init();
 				ptr->Start();
@@ -82,7 +79,7 @@ void AardbeiController::StrawberryMachine::Start()
 			break;
 			case StateEnum::TRAVELING_TO_TRAY:
 			{
-				this->current_state = new TravelToTrayState(config, machine_context, machine_info);
+				this->current_state = new TravelToTrayState(config, machine_context, vision_context, machine_info);
 				TravelToTrayState* ptr = (TravelToTrayState*)this->current_state;
 				ptr->Init();
 				ptr->Start();
@@ -90,7 +87,7 @@ void AardbeiController::StrawberryMachine::Start()
 			break;
 			case StateEnum::INDEXING_TRAY:
 			{
-				this->current_state = new IndexingTrayState(config, machine_context, machine_info);
+				this->current_state = new IndexingTrayState(config, machine_context, vision_context, machine_info);
 				IndexingTrayState* ptr = (IndexingTrayState*)this->current_state;
 				ptr->Init();
 				ptr->Start();
@@ -98,7 +95,7 @@ void AardbeiController::StrawberryMachine::Start()
 			break;
 			case StateEnum::GRAB_OPEN:
 			{
-				this->current_state = new GrabOpenState(config, machine_context, machine_info);
+				this->current_state = new GrabOpenState(config, machine_context, vision_context, machine_info);
 				GrabOpenState* ptr = (GrabOpenState*)this->current_state;
 				ptr->Init();
 				ptr->Start();

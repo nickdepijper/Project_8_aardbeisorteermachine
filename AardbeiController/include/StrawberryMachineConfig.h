@@ -104,6 +104,9 @@ struct VisionConfig {
 	/// The frame capture height
 	/// </summary>
 	int frame_height;
+
+	std::array<double, 6> conveyor_start;
+	glm::dvec3 frustum_size;
 };
 
 struct StrawberryMachineConfig {

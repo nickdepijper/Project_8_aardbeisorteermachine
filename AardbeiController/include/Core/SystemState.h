@@ -27,11 +27,16 @@ namespace AardbeiController {
 	protected:
 		std::shared_ptr<StrawberryMachineConfig> config;
 		std::shared_ptr<MachineContext> mcontext;
+		std::shared_ptr<VisionContext> vcontext;
 		std::shared_ptr<UR5Info> minfo;
 		bool ready;
 		std::string error;
 	public:
-		SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state);
+		SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, 
+			std::weak_ptr<MachineContext> _context,
+			std::weak_ptr<VisionContext> _vcontext,
+			std::weak_ptr<UR5Info> _info, 
+			StateEnum _next_state);
 		virtual bool Init() = 0;
 		virtual void Start() = 0;
 	};
@@ -41,8 +46,8 @@ namespace AardbeiController {
 		std::string config_path;
 		StrawberryMachineConfig output;
 	public:
-		InitialState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state, std::string _cfg_path)
-			: SystemState(_cfg, _context, _info, _next_state) {
+		InitialState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info, StateEnum _next_state, std::string _cfg_path)
+			: SystemState(_cfg, _context, _vcontext, _info, _next_state) {
 			this->config_path = _cfg_path;
 		}
 		bool Init() override;
@@ -60,8 +65,8 @@ namespace AardbeiController {
 		double speed;
 		double accel;
 	public:
-		HomeState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state)
-			: SystemState(_cfg, _context, _info, _next_state) {
+		HomeState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info, StateEnum _next_state)
+			: SystemState(_cfg, _context, _vcontext, _info, _next_state) {
 			home_pos = glm::dvec3(0.0, 0.0, 0.0);
 			home_orient = glm::dvec3(0.0, 0.0, 0.0);
 		}
@@ -77,8 +82,8 @@ namespace AardbeiController {
 		double speed;
 		double accel;
 	public:
-		DetectState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _info, StateEnum::MOVE_TO_STBY) {
+		DetectState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::MOVE_TO_STBY) {
 			
 		}
 		bool Init() override;
@@ -89,8 +94,8 @@ namespace AardbeiController {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
 	public:
-		MoveToStrawBerryState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _info, StateEnum::GRAB_CLOSE) {
+		MoveToStrawBerryState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::GRAB_CLOSE) {
 		}
 		bool Init() override;
 		void Start() override;
@@ -103,8 +108,8 @@ namespace AardbeiController {
 		double speed;
 		double accel;
 	public:
-		GrabCloseState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _info, StateEnum::TRAVELING_TO_TRAY) {
+		GrabCloseState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::TRAVELING_TO_TRAY) {
 		}
 		bool Init() override;
 		void Start() override;
@@ -117,8 +122,8 @@ namespace AardbeiController {
 		double speed;
 		double accel;
 	public:
-		TravelToTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _info, StateEnum::INDEXING_TRAY) {
+		TravelToTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::INDEXING_TRAY) {
 			speed = 0.1;
 			accel = 0.05;
 		}
@@ -133,8 +138,8 @@ namespace AardbeiController {
 		double speed;
 		double accel;
 	public:
-		IndexingTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _info, StateEnum::GRAB_OPEN) {
+		IndexingTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::GRAB_OPEN) {
 		}
 		bool Init() override;
 		void Start() override;
@@ -148,8 +153,8 @@ namespace AardbeiController {
 		double speed;
 		double accel;
 	public:
-		GrabOpenState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _info, StateEnum::HOMING) {
+		GrabOpenState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::HOMING) {
 		}
 		bool Init() override;
 		void Start() override;

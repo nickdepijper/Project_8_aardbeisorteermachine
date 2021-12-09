@@ -68,7 +68,8 @@ void StrawberryMachineConfig::Import(std::string config_path, StrawberryMachineC
 	result->vision_config.flags = visiondata["flags"].GetInt();
 	result->vision_config.frame_width = visiondata["frame_width"].GetInt();
 	result->vision_config.frame_height = visiondata["frame_height"].GetInt();
-
+	ParseDoubleArr6(visiondata, "conveyor_start", result->vision_config.conveyor_start);
+	ParseDoubleArr3(visiondata, "frustum", &result->vision_config.frustum_size);
 	return;
 }
 

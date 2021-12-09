@@ -1,10 +1,15 @@
 #include "Core/SystemState.h"
+#include "opencv2/opencv.hpp"
 
-
-AardbeiController::SystemState::SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state)
+AardbeiController::SystemState::SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, 
+	std::weak_ptr<MachineContext> _context,
+	std::weak_ptr<VisionContext> _vcontext,
+	std::weak_ptr<UR5Info> _info, 
+	StateEnum _next_state)
 {
 	this->config = _cfg.lock();
 	this->mcontext = _context.lock();
+	this->vcontext = _vcontext.lock();
 	this->minfo = _info.lock();
 	this->next_state = _next_state;
 	
@@ -81,6 +86,27 @@ void AardbeiController::DetectState::Start()
 	std::vector<double> pose = { cconfig.conveyor_home_pose[0], cconfig.conveyor_home_pose[1], cconfig.conveyor_home_pose[2], cconfig.conveyor_home_pose[3], cconfig.conveyor_home_pose[4], cconfig.conveyor_home_pose[5] };
 	//this->control->moveL(pose, speed, accel, false);
 	this->control->moveJ(pose, speed, accel, false);
+
+	cv::Mat frame, result;
+	std::vector<cv::Mat> split_colors;
+	for (int i = 0; i < 2; i++) {
+		vcontext->GetCamera().lock()->read(frame);
+	}
+	if (frame.empty()) {
+		this->next_state = StateEnum::HOMING;
+		Logger::LogWarning("Could not detect strawberry: frame was empty");
+		return;
+	}
+	cv::split(frame, split_colors);
+
+
+	cv::imshow("view", split_colors[2]);
+	cv::waitKey(1);
+
+
+	std::vector<double> pose2 = { config->vision_config.conveyor_start[0], config->vision_config.conveyor_start[1] , config->vision_config.conveyor_start[2],
+	config->vision_config.conveyor_start[3] ,config->vision_config.conveyor_start[4] ,config->vision_config.conveyor_start[5] };
+	this->control->moveL(pose2, speed, accel, false);
 }
 
 bool AardbeiController::GrabCloseState::Init()
@@ -109,9 +135,9 @@ bool AardbeiController::TravelToTrayState::Init()
 
 void AardbeiController::TravelToTrayState::Start()
 {
-	std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
-	//this->control->moveL(pose, speed, accel, false);
-	this->control->moveJ(pose, speed, accel, false);
+	//std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
+	////this->control->moveL(pose, speed, accel, false);
+	//this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::IndexingTrayState::Init()
@@ -125,26 +151,26 @@ bool AardbeiController::IndexingTrayState::Init()
 
 void AardbeiController::IndexingTrayState::Start()
 {
-	glm::dvec3 pose_pos = glm::dvec3(tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2]);
-	pose_pos = pose_pos + (glm::dvec3(config->tray_config.tray_current_index.x, 0.0, 0.0) * tconfig.tray_index_offsets);
-	pose_pos = pose_pos + (glm::dvec3(0.0, config->tray_config.tray_current_index.y, 0.0) * tconfig.tray_index_offsets);
-	//std::vector<double> pose = { tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2], 
+	//glm::dvec3 pose_pos = glm::dvec3(tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2]);
+	//pose_pos = pose_pos + (glm::dvec3(config->tray_config.tray_current_index.x, 0.0, 0.0) * tconfig.tray_index_offsets);
+	//pose_pos = pose_pos + (glm::dvec3(0.0, config->tray_config.tray_current_index.y, 0.0) * tconfig.tray_index_offsets);
+	////std::vector<double> pose = { tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2], 
+	////	tconfig.tray_first_slot_pose[3], tconfig.tray_first_slot_pose[4], tconfig.tray_first_slot_pose[5] };
+	//std::vector<double> pose = { pose_pos.x, pose_pos.y, pose_pos.z, 
 	//	tconfig.tray_first_slot_pose[3], tconfig.tray_first_slot_pose[4], tconfig.tray_first_slot_pose[5] };
-	std::vector<double> pose = { pose_pos.x, pose_pos.y, pose_pos.z, 
-		tconfig.tray_first_slot_pose[3], tconfig.tray_first_slot_pose[4], tconfig.tray_first_slot_pose[5] };
-
-	this->control->moveL(pose, speed, accel, false);
-	config->tray_config.tray_current_index.x += 1;
-
-	if (config->tray_config.tray_current_index.x == tconfig.num_slots_width) {
-		config->tray_config.tray_current_index.x = 0.0;
-		config->tray_config.tray_current_index.y += 1.0;
-	}
-
-	if (config->tray_config.tray_current_index.y == tconfig.num_slots_height) {
-		config->tray_config.tray_current_index.x = 0.0;
-		config->tray_config.tray_current_index.y = 0.0;
-	}
+	//
+	//this->control->moveL(pose, speed, accel, false);
+	//config->tray_config.tray_current_index.x += 1;
+	//
+	//if (config->tray_config.tray_current_index.x == tconfig.num_slots_width) {
+	//	config->tray_config.tray_current_index.x = 0.0;
+	//	config->tray_config.tray_current_index.y += 1.0;
+	//}
+	//
+	//if (config->tray_config.tray_current_index.y == tconfig.num_slots_height) {
+	//	config->tray_config.tray_current_index.x = 0.0;
+	//	config->tray_config.tray_current_index.y = 0.0;
+	//}
 }
 
 bool AardbeiController::GrabOpenState::Init()
@@ -161,9 +187,9 @@ void AardbeiController::GrabOpenState::Start()
 {
 	io_control->setStandardDigitalOut(1, true);
 	io_control->setStandardDigitalOut(2, false);
-	std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
-	//this->control->moveL(pose, speed, accel, false);
-	this->control->moveJ(pose, speed, accel, false);
+	//std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
+	////this->control->moveL(pose, speed, accel, false);
+	//this->control->moveJ(pose, speed, accel, false);
 }
 
 bool AardbeiController::MoveToStrawBerryState::Init()

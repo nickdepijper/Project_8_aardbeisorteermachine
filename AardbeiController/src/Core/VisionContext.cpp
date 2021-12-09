@@ -31,6 +31,7 @@ namespace AardbeiController {
 
 		try {
 			camera = std::make_shared<cv::VideoCapture>(this->cap_id, this->api);
+			camera->setExceptionMode(true);
 			if (!camera->isOpened()) {
 				AardbeiController::Util::Logger::LogError("[VisionContext] Camera opening failed");
 				return false;
