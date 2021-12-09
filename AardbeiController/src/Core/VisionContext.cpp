@@ -18,14 +18,25 @@ namespace AardbeiController {
 		}
 	}
 
-	bool VisionContext::Init(int camera_id, int flags)
+	std::weak_ptr<cv::VideoCapture> VisionContext::GetCamera()
 	{
+		return camera;
+	}
+
+	bool VisionContext::Init(VisionConfig config)
+	{
+		this->api = (cv::VideoCaptureAPIs)config.flags;
+		this->cap_id = config.cap_id;
+		cv::namedWindow("view", cv::WINDOW_FREERATIO);
+
 		try {
-			camera = std::make_shared<cv::VideoCapture>(camera_id, flags);
+			camera = std::make_shared<cv::VideoCapture>(this->cap_id, this->api);
 			if (!camera->isOpened()) {
 				AardbeiController::Util::Logger::LogError("[VisionContext] Camera opening failed");
 				return false;
 			}
+			camera->set(cv::CAP_PROP_FRAME_WIDTH, config.frame_width);
+			camera->set(cv::CAP_PROP_FRAME_HEIGHT, config.frame_height);
 			return true;
 		}
 		catch (std::exception ex) {

@@ -26,6 +26,7 @@ StrawberryMachineConfig::StrawberryMachineConfig()
 	//
 	//tray_index_offsets = glm::dvec3(0.0, 0.0, 0.0);
 	//cobot_ip = "127.0.0.1";
+	tray_config.tray_current_index = glm::dvec2(0.0, 0.0);
 }
 
 StrawberryMachineConfig::~StrawberryMachineConfig()
@@ -59,8 +60,8 @@ void StrawberryMachineConfig::Import(std::string config_path, StrawberryMachineC
 	ParseDoubleArr6(traydata, "home_pose", result->tray_config.tray_pose);
 	ParseDoubleArr6(traydata, "slot_pose", result->tray_config.tray_first_slot_pose);
 	ParseDoubleArr3(traydata, "tray_index_offset", &result->tray_config.tray_index_offsets);
-	result->tray_config.num_slots_width = conveyordata["num_slots_width"].GetDouble();
-	result->tray_config.num_slots_height = conveyordata["num_slots_height"].GetDouble();
+	result->tray_config.num_slots_width = traydata["num_slots_width"].GetDouble();
+	result->tray_config.num_slots_height = traydata["num_slots_height"].GetDouble();
 
 	auto visiondata = doc["vision"].GetObject();
 	result->vision_config.cap_id = visiondata["cap_id"].GetInt();

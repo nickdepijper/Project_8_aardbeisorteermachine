@@ -1,5 +1,5 @@
 #include "StrawberryMachine.h"
-
+#include "opencv2/opencv.hpp"
 AardbeiController::StrawberryMachine::StrawberryMachine(std::string config_path)
 {
 	this->machine_info = std::make_shared<UR5Info>();
@@ -17,6 +17,9 @@ AardbeiController::StrawberryMachine::StrawberryMachine(std::string config_path)
 
 	this->machine_context = std::make_shared<AardbeiController::MachineContext>();
 	machine_context->Init(config->cobot_config.cobot_ip);
+
+	this->vision_context = std::make_shared<VisionContext>();
+	vision_context->Init(config->vision_config);
 	this->polling_thread = std::make_unique<AardbeiController::Control::UR5PollThread>(machine_context, this->machine_info);
 	this->polling_thread->Start();
 }
@@ -29,9 +32,15 @@ AardbeiController::StrawberryMachine::~StrawberryMachine()
 void AardbeiController::StrawberryMachine::Start()
 {
 	bool stop_pressed = false;
-	bool logg = false;
+	bool logg = true;
 	while (!stop_pressed) {
+		std::shared_ptr<cv::VideoCapture> camera = vision_context->GetCamera().lock();
+		cv::Mat frame;
+		bool succes = camera->read(frame);
+		cv::imshow("view", frame);
+		char c = cv::waitKey(1);
 		if (!logg) {
+
 			StateEnum next_state = current_state->next_state;
 			delete current_state;
 			switch (next_state) {

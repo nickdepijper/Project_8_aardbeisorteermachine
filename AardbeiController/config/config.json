@@ -12,10 +12,10 @@
   },
   "tray": {
     "home_pose": [ 1.0145, -1.91636, 2.22764, -0.320637, 0.959059, 0.856189 ],
-    "slot_pose": [ 0.990977, -1.87354, 2.37026, -0.515692, 0.958435, 0.856237 ],
-    "tray_index_offset": [ 1.0, 0.0, 0.0 ],
-    "num_slots_width": 10,
-    "num_slots_height": 15
+    "slot_pose": [ -0.035, -0.375, 0.045, 0.0, 3.13494, 0.0 ],
+    "tray_index_offset": [ 0.040, -0.040, 0.0 ],
+    "num_slots_width": 5,
+    "num_slots_height": 5
   },
   "vision": {
     "cap_id": 1,

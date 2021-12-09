@@ -65,6 +65,11 @@ struct TrayConfig {
 	glm::dvec3 tray_index_offsets;
 
 	/// <summary>
+	/// The current index in the tray
+	/// </summary>
+	glm::dvec2 tray_current_index;
+
+	/// <summary>
 	/// Number of tray slots across the width plane 
 	/// </summary>
 	int num_slots_width;

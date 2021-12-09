@@ -1,5 +1,6 @@
 #include "Core/SystemState.h"
 
+
 AardbeiController::SystemState::SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<UR5Info> _info, StateEnum _next_state)
 {
 	this->config = _cfg.lock();
@@ -8,18 +9,6 @@ AardbeiController::SystemState::SystemState(std::weak_ptr<StrawberryMachineConfi
 	this->next_state = _next_state;
 	
 	ready = false;
-	//if (this->config == nullptr) {
-	//	Logger::LogError("[System state init]: config was invalid");
-	//}
-	//
-	//if (this->mcontext == nullptr) {
-	//	Logger::LogError("[System state init]: context was invalid");
-	//}
-	//
-	//if (this->minfo == nullptr) {
-	//	Logger::LogError("[System state init]: info_block was invalid");
-	//}
-
 }
 
 
@@ -66,7 +55,7 @@ bool AardbeiController::HomeState::Init()
 	this->home_orient = glm::dvec3(config->cobot_config.home_pose[3], config->cobot_config.home_pose[4], config->cobot_config.home_pose[5]);
 
 	this->speed = 0.5;
-	this->accel = 0.25;
+	this->accel = 0.5;
 	return ready;
 }
 
@@ -81,8 +70,8 @@ bool AardbeiController::DetectState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
 	this->cconfig = config->conveyor_config;
-	speed = 1.0;
-	accel = 0.25;
+	speed = 2.0;
+	accel = 0.5;
 	return control != nullptr;
 }
 
@@ -98,8 +87,8 @@ bool AardbeiController::GrabCloseState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
 	io_control = this->mcontext->GetIOInterface().lock();
-	speed = 1.0;
-	accel = 0.25;
+	speed = 2.0;
+	accel = 0.5;
 	return control != nullptr;
 }
 
@@ -113,8 +102,8 @@ bool AardbeiController::TravelToTrayState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
 	this->tconfig = config->tray_config;
-	this->speed = 1.0;
-	this->accel = 0.25;
+	this->speed = 2.0;
+	this->accel = 0.5;
 	return true;
 }
 
@@ -129,17 +118,33 @@ bool AardbeiController::IndexingTrayState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
 	this->tconfig = config->tray_config;
-	this->speed = 1.0;
-	this->accel = 0.25;
+	this->speed = 2.0;
+	this->accel = 0.5;
 	return false;
 }
 
 void AardbeiController::IndexingTrayState::Start()
 {
-	std::vector<double> pose = { tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2], 
+	glm::dvec3 pose_pos = glm::dvec3(tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2]);
+	pose_pos = pose_pos + (glm::dvec3(config->tray_config.tray_current_index.x, 0.0, 0.0) * tconfig.tray_index_offsets);
+	pose_pos = pose_pos + (glm::dvec3(0.0, config->tray_config.tray_current_index.y, 0.0) * tconfig.tray_index_offsets);
+	//std::vector<double> pose = { tconfig.tray_first_slot_pose[0], tconfig.tray_first_slot_pose[1], tconfig.tray_first_slot_pose[2], 
+	//	tconfig.tray_first_slot_pose[3], tconfig.tray_first_slot_pose[4], tconfig.tray_first_slot_pose[5] };
+	std::vector<double> pose = { pose_pos.x, pose_pos.y, pose_pos.z, 
 		tconfig.tray_first_slot_pose[3], tconfig.tray_first_slot_pose[4], tconfig.tray_first_slot_pose[5] };
-	//this->control->moveL(pose, speed, accel, false);
-	this->control->moveJ(pose, speed, accel, false);
+
+	this->control->moveL(pose, speed, accel, false);
+	config->tray_config.tray_current_index.x += 1;
+
+	if (config->tray_config.tray_current_index.x == tconfig.num_slots_width) {
+		config->tray_config.tray_current_index.x = 0.0;
+		config->tray_config.tray_current_index.y += 1.0;
+	}
+
+	if (config->tray_config.tray_current_index.y == tconfig.num_slots_height) {
+		config->tray_config.tray_current_index.x = 0.0;
+		config->tray_config.tray_current_index.y = 0.0;
+	}
 }
 
 bool AardbeiController::GrabOpenState::Init()
@@ -147,7 +152,7 @@ bool AardbeiController::GrabOpenState::Init()
 	control = this->mcontext->GetControlInterface().lock();
 	io_control = this->mcontext->GetIOInterface().lock();
 	tconfig = config->tray_config;
-	speed = 1.0;
+	speed = 2.0;
 	accel = 0.5;
 	return false;
 }
