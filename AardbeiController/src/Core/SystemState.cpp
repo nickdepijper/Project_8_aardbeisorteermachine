@@ -98,15 +98,45 @@ void AardbeiController::DetectState::Start()
 		return;
 	}
 	cv::split(frame, split_colors);
+	cv::threshold(split_colors[2], result, 0, 255, cv::THRESH_OTSU);
+	cv::erode(result, result, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(7, 7), cv::Point(3, 3)));
 
+	std::vector<std::vector<cv::Point>> contours;
+	cv::findContours(result, contours, cv::RETR_TREE, cv::CHAIN_APPROX_SIMPLE);
+	
+	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
+	std::vector<cv::Rect> boundRect(contours.size());
+	std::vector<cv::Point2f>centers(contours.size());
+	std::vector<float>radius(contours.size());
+	for (size_t i = 0; i < contours.size(); i++)
+	{
+		approxPolyDP(contours[i], contours_poly[i], 3, true);
+		boundRect[i] = cv::boundingRect(contours_poly[i]);
+		cv::minEnclosingCircle(contours_poly[i], centers[i], radius[i]);
+	}
 
-	cv::imshow("view", split_colors[2]);
+	
+	cv::imshow("view", result);
 	cv::waitKey(1);
 
+	if (centers.size() > 0) {
+		glm::dvec3 strawberry_pos = glm::dvec3(centers[0].x , centers[0].y, 0.0);
+		glm::dvec3 strawberry_fract = glm::dvec3(strawberry_pos.x / (double)config->vision_config.frame_width,
+													strawberry_pos.y / (double)config->vision_config.frame_height, 0.0);
+		glm::dvec3 strawberry_actual = config->vision_config.frustum_size * strawberry_fract;
 
-	std::vector<double> pose2 = { config->vision_config.conveyor_start[0], config->vision_config.conveyor_start[1] , config->vision_config.conveyor_start[2],
-	config->vision_config.conveyor_start[3] ,config->vision_config.conveyor_start[4] ,config->vision_config.conveyor_start[5] };
-	this->control->moveL(pose2, speed, accel, false);
+
+		std::vector<double> pose2 = { config->vision_config.conveyor_start[0] - strawberry_actual.y , config->vision_config.conveyor_start[1] - strawberry_actual.x, config->vision_config.conveyor_start[2],
+		config->vision_config.conveyor_start[3] ,config->vision_config.conveyor_start[4] ,config->vision_config.conveyor_start[5] };
+
+
+		this->control->moveL(pose2, speed, accel, false);
+	}
+	else {
+		Logger::LogWarning("Could not find strawberry: moving on to next state");
+	}
+
+	
 }
 
 bool AardbeiController::GrabCloseState::Init()
