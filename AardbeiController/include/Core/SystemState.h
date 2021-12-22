@@ -3,6 +3,7 @@
 #include "Core/MachineContext.h"
 #include "Control/CobotData.h"
 #include "StrawberryMachineConfig.h"
+#include "Strawberry.h"
 #include <memory>
 
 namespace AardbeiController {
@@ -81,7 +82,10 @@ namespace AardbeiController {
 		ConveyorConfig cconfig;
 		double speed;
 		double accel;
+
+		void DetectStrawberry(cv::Mat input);
 	public:
+		Strawberry detected_strawberry;
 		DetectState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::MOVE_TO_STBY) {
 			

@@ -84,11 +84,13 @@ bool AardbeiController::DetectState::Init()
 	this->cconfig = config->conveyor_config;
 	speed = 2.0;
 	accel = 0.5;
+	detected_strawberry = Strawberry();
 	return control != nullptr;
 }
 
-void DoStuff(Mat input) {
+void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 	std::vector<Mat> splitImage;
+	Strawberry detected = Strawberry();
 	split(input, splitImage);
 
 	Mat Background, BackgroundInv;
@@ -108,47 +110,30 @@ void DoStuff(Mat input) {
 	threshold(Crown, Crown, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
 	cv::morphologyEx(Crown, Crown, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
 	cv::morphologyEx(Crown, Crown, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
-	//cv::morphologyEx(Crown, Crown, cv::MorphTypes::MORPH_OPEN, kernel);
-	//cv::morphologyEx(Crown, Crown, cv::MorphTypes::MORPH_CLOSE, kernel);
+	detected.crown_frame = Crown;
 
 	//Thresh Berry channel and isolate Berry
 	inRange(input, red_min, red_max, Berry);
 	threshold(Berry, Berry, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
 	cv::morphologyEx(Berry, Berry, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
 	cv::morphologyEx(Berry, Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
-	//cv::morphologyEx(Berry, Berry, cv::MorphTypes::MORPH_CLOSE, kernel);
+	detected.berry_frame = Berry;
 	
 	Moments crown_moment = moments(Crown);
-	Point crown_center = Point(crown_moment.m10 / crown_moment.m00, crown_moment.m01 / crown_moment.m00);
-
+	detected.crown_center_pixel_pos = glm::vec2(crown_moment.m10 / crown_moment.m00, crown_moment.m01 / crown_moment.m00);
 
 	Moments berry_moment = moments(Berry);
-	Point berry_center = Point(berry_moment.m10 / berry_moment.m00, berry_moment.m01 / berry_moment.m00);
+	detected.berry_center_pixel_pos = glm::vec2(berry_moment.m10 / berry_moment.m00, berry_moment.m01 / berry_moment.m00);
 
-	float distance = sqrt(pow(crown_center.x - berry_center.x, 2)
-						+ pow(crown_center.y - berry_center.y, 2));
-
+	float distance = glm::distance(detected.crown_center_pixel_pos, detected.berry_center_pixel_pos);
 	if (distance < 500.0f) {
-		circle(input, berry_center, (int)distance, Scalar(255, 255, 255), 2);
+		detected.valid = true;
 	}
-	line(input, crown_center, berry_center, Scalar(0, 0, 255), 2);
-	
-	//Rect rect = boundingRect(Berry);
-	//cv::rectangle(input, rect, Scalar(255, 0, 0));
-	
-	imshow("Bei Gebied", Berry);
-	imshow("Kroon Gebied", Crown);
-	imshow("view", input);
-
+	this->detected_strawberry = detected;
 }
 
 void AardbeiController::DetectState::Start()
 {
-	// do strawberry detection;
-	//std::vector<double> pose = { cconfig.conveyor_home_pose[0], cconfig.conveyor_home_pose[1], cconfig.conveyor_home_pose[2], cconfig.conveyor_home_pose[3], cconfig.conveyor_home_pose[4], cconfig.conveyor_home_pose[5] };
-	////this->control->moveL(pose, speed, accel, false);
-	//this->control->moveJ(pose, speed, accel, false);
-
 	cv::Mat frame, result, hsv_frame;
 	std::vector<cv::Mat> split_colors;
 	for (int i = 0; i < 2; i++) {
@@ -161,51 +146,18 @@ void AardbeiController::DetectState::Start()
 	}
 	cvtColor(frame, hsv_frame, ColorConversionCodes::COLOR_BGR2HSV);
 	
-	DoStuff(hsv_frame);
+	DetectStrawberry(hsv_frame);
+	if (detected_strawberry.valid) {
+		cv::line(hsv_frame, detected_strawberry.GetBerryCenter(), detected_strawberry.GetCrownCenter(), cv::Scalar(255, 0, 0), 2);
+		float distance = glm::distance(detected_strawberry.berry_center_pixel_pos, detected_strawberry.crown_center_pixel_pos);
+		cv::circle(hsv_frame, detected_strawberry.GetBerryCenter(), distance, cv::Scalar(0, 255, 255), 2);
+		imshow("berry", detected_strawberry.berry_frame);
+		imshow("crown", detected_strawberry.crown_frame);
+	}
+	imshow("view", hsv_frame);
+	
 	cv::waitKey(1);
 	return;
-
-
-	cv::split(frame, split_colors);
-	cv::threshold(split_colors[2], result, 0, 255, cv::THRESH_OTSU);
-	cv::erode(result, result, cv::getStructuringElement(cv::MORPH_RECT, cv::Size(7, 7), cv::Point(3, 3)));
-
-	std::vector<std::vector<cv::Point>> contours;
-	cv::findContours(result, contours, cv::RETR_TREE, cv::CHAIN_APPROX_SIMPLE);
-
-	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
-	std::vector<cv::Rect> boundRect(contours.size());
-	std::vector<cv::Point2f>centers(contours.size());
-	std::vector<float>radius(contours.size());
-	for (size_t i = 0; i < contours.size(); i++)
-	{
-		approxPolyDP(contours[i], contours_poly[i], 3, true);
-		boundRect[i] = cv::boundingRect(contours_poly[i]);
-		cv::minEnclosingCircle(contours_poly[i], centers[i], radius[i]);
-	}
-
-
-	cv::imshow("view", result);
-	cv::waitKey(1);
-
-	if (centers.size() > 0) {
-		glm::dvec3 strawberry_pos = glm::dvec3(centers[0].x, centers[0].y, 0.0);
-		glm::dvec3 strawberry_fract = glm::dvec3(strawberry_pos.x / (double)config->vision_config.frame_width,
-			strawberry_pos.y / (double)config->vision_config.frame_height, 0.0);
-		glm::dvec3 strawberry_actual = config->vision_config.frustum_size * strawberry_fract;
-
-
-		std::vector<double> pose2 = { config->vision_config.conveyor_start[0] - strawberry_actual.y , config->vision_config.conveyor_start[1] - strawberry_actual.x, config->vision_config.conveyor_start[2],
-		config->vision_config.conveyor_start[3] ,config->vision_config.conveyor_start[4] ,config->vision_config.conveyor_start[5] };
-
-
-		this->control->moveL(pose2, speed, accel, false);
-	}
-	else {
-		Logger::LogWarning("Could not find strawberry: moving on to next state");
-	}
-
-
 }
 #pragma endregion
 

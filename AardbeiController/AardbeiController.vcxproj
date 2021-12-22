@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="include\Control\CobotData.h" />
     <ClInclude Include="include\Control\UR5PollThread.h" />
+    <ClInclude Include="include\Core\Strawberry.h" />
     <ClInclude Include="include\Core\SystemState.h" />
     <ClInclude Include="include\StrawberryMachineConfig.h" />
     <ClInclude Include="include\Util\Delegate.h" />

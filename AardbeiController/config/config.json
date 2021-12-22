@@ -6,7 +6,7 @@
 
   "conveyor": {
     "home_pose": [ 0.61000, -0.02000, -0.05000, 0.00000, 3.1415, 0.00000 ],
-    "conveyor_z_offset": -0.13000,
+    "conveyor_z_offset": -0.14000,
     "speed": 0.038865,
     "width": 0.20
   },
