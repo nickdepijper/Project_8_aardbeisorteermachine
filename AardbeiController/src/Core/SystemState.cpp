@@ -137,21 +137,6 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 		Logger::LogWarning("Berry and crown contour mismatch: found berries does not equal found crowns");
 		return;
 	}
-	
-	//for (int i = 0; i < found_berries.size(); i++) {
-	//	Strawberry detec;
-	//	detec.valid = false;
-	//	glm::vec3 crown_circle = found_crowns[i];
-	//	glm::vec3 berry_circle = found_berries[i];
-	//	detec.crown_center_pixel_pos = glm::vec2(crown_circle.x, crown_circle.y);
-	//	detec.berry_center_pixel_pos = glm::vec2(berry_circle.x, berry_circle.y);
-	//
-	//	float distance = glm::distance(detec.crown_center_pixel_pos, detec.berry_center_pixel_pos);
-	//	if (distance < 500.0f && distance != 0) {
-	//		detec.valid = true;
-	//	}
-	//	this->detected.push_back(detec);
-	//}
 
 	glm::dvec3 frame_physical_center = glm::dvec3(config->vision_config.conveyor_start[0], config->vision_config.conveyor_start[1], config->vision_config.conveyor_start[2]);
 	for (int i = 0; i < found_berries.size(); i++) {
@@ -172,6 +157,13 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 		detec.valid = false;
 		detec.crown_center_pixel_pos = glm::vec2(crown_center_pixel.x, crown_center_pixel.y);
 		detec.berry_center_pixel_pos = glm::vec2(berry_center_pixel.x, berry_center_pixel.y);
+
+		if(detec.crown_center_pixel_pos.x > (config->vision_config.frame_width - 200)
+			|| detec.berry_center_pixel_pos.x > (config->vision_config.frame_width - 200)) {
+			continue;
+		}
+		else {
+
 		float distance = glm::distance(detec.crown_center_pixel_pos, detec.berry_center_pixel_pos);
 		if (distance < 500.0f && distance != 0) {
 			detec.valid = true;
@@ -187,6 +179,8 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 		glm::dvec2 physical_distance = (detec.center_position_in_frame - frame_center) * glm::dvec2(meter_per_pixel_x, meter_per_pixel_y);
 		detec.physical_position = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
 		this->detected.push_back(detec);
+
+		}
 	}
 }
 
@@ -307,8 +301,7 @@ bool AardbeiController::GrabCloseState::Init()
 
 void AardbeiController::GrabCloseState::Start()
 {
-	//io_control->setStandardDigitalOut(1, false);
-	//io_control->setStandardDigitalOut(2, true);
+	io_control->setAnalogOutputVoltage(0, 0.5);
 }
 #pragma endregion
 
@@ -398,5 +391,9 @@ void AardbeiController::GrabOpenState::Start()
 	//std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
 	////this->control->moveL(pose, speed, accel, false);
 	//this->control->moveJ(pose, speed, accel, false);
+	//this->io_control->setAnalogOutputVoltage(0, 0.5);
+	//this->io_control->setAnalogOutputVoltage(0, 0.0);
+	//this->io_control->setAnalogOutputVoltage(0, 0.5);
+	this->io_control->setAnalogOutputVoltage(0, 0.0);
 }
 #pragma endregion
