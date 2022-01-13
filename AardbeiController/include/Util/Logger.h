@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <string>
 #include <sstream>
+#include <conio.h>
+#include <stdlib.h>
 
 #define LOG_INFO(msg) {}
 
@@ -55,6 +57,11 @@ class Logger {
 	#endif
 	#ifdef LOG_THROW_EXCEPTIONS
 			throw new std::exception(msg.c_str());
+	#else
+			LogMessage("Press any key to stop the program........");
+			int character = getchar();
+			exit(EXIT_FAILURE);
+
 	#endif
 		}
 
