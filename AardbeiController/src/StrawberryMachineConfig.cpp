@@ -15,17 +15,8 @@ void ParseDoubleArr6(rapidjson::GenericObject<false, rapidjson::Value>& obj, std
 
 StrawberryMachineConfig::StrawberryMachineConfig()
 {
-	//home_pos = glm::dvec3(0.0, 0.0, 0.0);
-	//home_orient = glm::dvec3(0.0, 0.0, 0.0);
-	//
-	//tray_pos = glm::dvec3(0.0, 0.0, 0.0);
-	//tray_orient = glm::dvec3(0.0, 0.0, 0.0);
-	//
-	//tray_first_slot_pos = glm::dvec3(0.0, 0.0, 0.0);
-	//tray_first_slot_orient = glm::dvec3(0.0, 0.0, 0.0);
-	//
-	//tray_index_offsets = glm::dvec3(0.0, 0.0, 0.0);
-	//cobot_ip = "127.0.0.1";
+	vision_config = VisionConfig();
+	conveyor_config = ConveyorConfig();
 	tray_config.tray_current_index = glm::dvec2(0.0, 0.0);
 }
 
@@ -47,12 +38,12 @@ void StrawberryMachineConfig::Import(std::string config_path, StrawberryMachineC
 	}
 
 	auto cobotdata = doc["cobot"].GetObject();
-	ParseDoubleArr6(cobotdata, "home_pose", result->cobot_config.home_pose);
-	result->cobot_config.cobot_ip = std::string(cobotdata["cobot_ip"].GetString());
+	result->cobot_config.cobot_ip = std::string(cobotdata["ip"].GetString());
+	result->cobot_config.cobot_port = cobotdata["port"].GetInt();
 
 	auto conveyordata = doc["conveyor"].GetObject();
 	ParseDoubleArr6(conveyordata, "home_pose", result->conveyor_config.conveyor_home_pose);
-	result->conveyor_config.conveyor_z_offset = conveyordata["conveyor_z_offset"].GetDouble();
+	result->conveyor_config.conveyor_z_height = conveyordata["conveyor_z_height"].GetDouble();
 	result->conveyor_config.speed = conveyordata["speed"].GetDouble();
 	result->conveyor_config.width = conveyordata["width"].GetDouble();
 

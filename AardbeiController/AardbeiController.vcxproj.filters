@@ -92,5 +92,14 @@
     <ClInclude Include="include\Core\Strawberry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Util\IComparable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util\Context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Core\SerialContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

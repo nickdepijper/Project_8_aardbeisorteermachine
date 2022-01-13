@@ -2,6 +2,7 @@
 #include "ur_rtde/rtde_receive_interface.h"
 #include <vector>
 #include <sstream>
+#include <Windows.h>
 
 void AardbeiController::Control::UR5PollThread::PollFunc()
 {
@@ -14,8 +15,8 @@ void AardbeiController::Control::UR5PollThread::PollFunc()
 		AquireToolData(rcontext);
 		AquireMachineData(rcontext);
 		AquireJointData(rcontext);
-
-		Logger::LogDebug(machineinfo_ptr->tool.ToString());
+		std::string data = machineinfo_ptr->tool.actual_data.ConcatToolData();
+		SetConsoleTitleA(data.c_str());
 	}
 	
 }

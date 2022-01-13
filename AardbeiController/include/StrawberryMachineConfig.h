@@ -14,9 +14,9 @@ struct CobotConfig {
 	std::string cobot_ip;
 
 	/// <summary>
-	/// The home position of the cobot
+	/// The cobot's communication port number
 	/// </summary>
-	std::array<double, 6> home_pose;
+	int cobot_port;
 };
 
 /// <summary>
@@ -31,7 +31,7 @@ struct ConveyorConfig {
 	/// <summary>
 	/// The distance between the toolhead and the conveyor
 	/// </summary>
-	double conveyor_z_offset;
+	double conveyor_z_height;
 
 	/// <summary>
 	/// The speed of the conveyor belt

@@ -5,6 +5,7 @@
 #include "StrawberryMachineConfig.h"
 #include "Strawberry.h"
 #include <memory>
+#include <Util/Object.h>
 
 namespace AardbeiController {
 	enum class StateEnum {
@@ -20,7 +21,7 @@ namespace AardbeiController {
 		GRAB_OPEN
 	};
 	
-	class SystemState {
+	class SystemState : public Object {
 	public:
 		StateEnum state_id;
 		StateEnum next_state;
@@ -55,6 +56,8 @@ namespace AardbeiController {
 
 		void Start() override;
 
+		std::string ToString() override;
+
 		std::shared_ptr<StrawberryMachineConfig> CollectResult();
 	};
 
@@ -82,10 +85,13 @@ namespace AardbeiController {
 		ConveyorConfig cconfig;
 		double speed;
 		double accel;
+		double berry_min_radius;
+		double crown_min_radius;
 
 		void DetectStrawberry(cv::Mat input);
+		void FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius);
 	public:
-		Strawberry detected_strawberry;
+		std::vector<Strawberry> detected;
 		DetectState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::MOVE_TO_STBY) {
 			
@@ -98,6 +104,9 @@ namespace AardbeiController {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
 	public:
+		std::vector<Strawberry> detected_berries;
+		Strawberry target;
+
 		MoveToStrawBerryState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::GRAB_CLOSE) {
 		}
@@ -125,6 +134,8 @@ namespace AardbeiController {
 		TrayConfig tconfig;
 		double speed;
 		double accel;
+		glm::dvec3 tray_pos;
+		glm::dvec3 tray_orient;
 	public:
 		TravelToTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::INDEXING_TRAY) {
@@ -141,6 +152,11 @@ namespace AardbeiController {
 		TrayConfig tconfig;
 		double speed;
 		double accel;
+		double index_z_pre_place;
+		glm::dvec3 index_pos;
+		glm::dvec3 index_orient;
+
+		void IncrementIdx();
 	public:
 		IndexingTrayState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
 			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::GRAB_OPEN) {

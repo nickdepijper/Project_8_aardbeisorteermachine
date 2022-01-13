@@ -12,11 +12,11 @@ void JointData::Init()
 std::string JointData::ToString()
 {
 	std::stringstream ss;
-	ss << "[JointData]" << std::endl;
-	ss << "Position:" << this->position << std::endl;
-	ss << "Velocity:" << this->velocity << std::endl;
-	ss << "Acceleration:" << this->acceleration << std::endl;
-	ss << "Current:" << this->current << std::endl;
+	ss << "JointData\n";
+	ss << "\tPosition:" << this->position << std::endl;
+	ss << "\tVelocity:" << this->velocity << std::endl;
+	ss << "\tAcceleration:" << this->acceleration << std::endl;
+	ss << "\tCurrent:" << this->current << std::endl;
 	return ss.str();
 }
 
@@ -30,10 +30,19 @@ void ToolData::Init()
 std::string ToolData::ToString()
 {
 	std::stringstream ss;
-	ss << "[ToolData]" << std::endl;
-	ss << "Position: [" << this->position.x << " " << this->position.y << " " << this->position.z << "]" << std::endl;
-	ss << "Rotation: [" << this->rotation.x << " " << this->rotation.y << " " << this->rotation.z << "]" << std::endl;
-	ss << "Speed: [" << this->speed.x << " " << this->speed.y << " " << this->speed.z << "]" << std::endl;
+	ss << "ToolData\n";
+	ss << "\tPosition: [" << this->position.x << " " << this->position.y << " " << this->position.z << "]" << std::endl;
+	ss << "\tRotation: [" << this->rotation.x << " " << this->rotation.y << " " << this->rotation.z << "]" << std::endl;
+	ss << "\tSpeed: [" << this->speed.x << " " << this->speed.y << " " << this->speed.z << "]" << std::endl;
+	return ss.str();
+}
+
+std::string ToolData::ConcatToolData()
+{
+	std::stringstream ss;
+	ss << "\tPosition: [" << this->position.x << " " << this->position.y << " " << this->position.z << "] ";
+	ss << "\tRotation: [" << this->rotation.x << " " << this->rotation.y << " " << this->rotation.z << "] ";
+	ss << "\tSpeed: [" << this->speed.x << " " << this->speed.y << " " << this->speed.z << "] ";
 	return ss.str();
 }
 
@@ -50,10 +59,10 @@ void Joint::Init()
 std::string Joint::ToString()
 {
 	std::stringstream ss;
-	ss << "[Joint]" << std::endl;
-	ss << "Temp:" << this->temp << std::endl;
-	ss << "Voltage:" << this->voltage << std::endl;
-	ss << "Mode:" << this->mode << std::endl;
+	ss << "Joint\n";
+	ss << "\tTemp:" << this->temp << std::endl;
+	ss << "\tVoltage:" << this->voltage << std::endl;
+	ss << "\tMode:" << this->mode << std::endl;
 	ss << actual_data.ToString() << ": Actual" << std::endl;
 	ss << target_data.ToString() << ": Target" << std::endl;
 	return ss.str();
@@ -68,7 +77,7 @@ void Tool::Init()
 std::string Tool::ToString()
 {
 	std::stringstream ss;
-	ss << "[Tool]" << std::endl;
+	ss << "Tool\n";
 	ss << actual_data.ToString() << ": Actual" << std::endl;
 	ss << target_data.ToString() << ": Target" << std::endl;
 	return ss.str();
@@ -77,11 +86,11 @@ std::string Tool::ToString()
 std::string MachineInfo::ToString()
 {
 	std::stringstream ss;
-	ss << "[Cobot]" << std::endl;
-	ss << "voltage: " << voltage << std::endl;
-	ss << "current: " << current << std::endl;
-	ss << "mode: " << (int32_t)mode << std::endl;
-	ss << "status: " << status.GetStatus() << std::endl;
+	ss << "Cobot\n" << std::endl;
+	ss << "\tvoltage: " << voltage << std::endl;
+	ss << "\tcurrent: " << current << std::endl;
+	ss << "\tmode: " << (int32_t)mode << std::endl;
+	ss << "\tstatus: " << status.GetStatus() << std::endl;
 	for (int i = 0; i < joints.size(); i++) {
 		ss << "[Joint " << i << "]" << std::endl;
 		ss << joints[i].ToString();

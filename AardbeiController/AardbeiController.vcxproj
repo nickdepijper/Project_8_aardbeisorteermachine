@@ -139,7 +139,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);LOG_LEVEL_ALL;LOG_THROW_EXCEPTIONS;_WIN32_WINNT=0x0601;RAPIDJSON_NOMEMBERITERATORCLASS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);LOG_LEVEL_ALL;_WIN32_WINNT=0x0601;RAPIDJSON_NOMEMBERITERATORCLASS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)include;..\..\..\libs\ur_rtde\include\ext\;..\..\..\libs\ur_rtde\include\;..\..\..\libs\glm\include\;..\..\..\libs\rapidjson\include\;..\..\..\libs\opencv\build\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -169,11 +169,14 @@
   <ItemGroup>
     <ClInclude Include="include\Control\CobotData.h" />
     <ClInclude Include="include\Control\UR5PollThread.h" />
+    <ClInclude Include="include\Core\SerialContext.h" />
     <ClInclude Include="include\Core\Strawberry.h" />
     <ClInclude Include="include\Core\SystemState.h" />
     <ClInclude Include="include\StrawberryMachineConfig.h" />
+    <ClInclude Include="include\Util\Context.h" />
     <ClInclude Include="include\Util\Delegate.h" />
     <ClInclude Include="include\Util\FileManager.h" />
+    <ClInclude Include="include\Util\IComparable.h" />
     <ClInclude Include="include\Util\MultiDelegate.h" />
     <ClInclude Include="include\Util\IDisposable.h" />
     <ClInclude Include="include\Util\Logger.h" />

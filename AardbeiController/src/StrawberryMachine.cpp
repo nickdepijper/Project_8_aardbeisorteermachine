@@ -17,10 +17,20 @@ AardbeiController::StrawberryMachine::StrawberryMachine(std::string config_path)
 	this->config = st->CollectResult();
 
 	this->machine_context = std::make_shared<AardbeiController::MachineContext>();
-	machine_context->Init(config->cobot_config.cobot_ip);
+	bool context_init_result = machine_context->Init(config->cobot_config.cobot_ip);
+	if (!context_init_result) {
+		Logger::LogError("[StrawberryMachine]: Could not initialize cobot machines context");
+	}
 
 	this->vision_context = std::make_shared<VisionContext>();
-	vision_context->Init(config->vision_config);
+	bool vision_init_result = vision_context->Init(config->vision_config);
+	if (!vision_init_result) {
+		Logger::LogError("[StrawberryMachine]: Could not initialize vision context");
+	}
+
+	Logger::LogDebug(this->machine_context->ToString());
+	Logger::LogDebug(this->vision_context->ToString());
+	
 	this->polling_thread = std::make_unique<AardbeiController::Control::UR5PollThread>(machine_context, this->machine_info);
 	this->polling_thread->Start();
 }
@@ -34,11 +44,13 @@ void AardbeiController::StrawberryMachine::Start()
 {
 	bool stop_pressed = false;
 	bool logg = false;
+	SystemState* old = nullptr;
+
 	while (!stop_pressed) {
 		if (!logg) {
 
 			StateEnum next_state = current_state->next_state;
-			delete current_state;
+			old = current_state;
 			switch (next_state) {
 			case StateEnum::HOMING:
 			{
@@ -65,6 +77,7 @@ void AardbeiController::StrawberryMachine::Start()
 			{
 				this->current_state = new MoveToStrawBerryState(config, machine_context, vision_context, machine_info);
 				MoveToStrawBerryState* ptr = (MoveToStrawBerryState*)this->current_state;
+				ptr->detected_berries = ((DetectState*)old)->detected;
 				ptr->Init();
 				ptr->Start();
 			}
@@ -102,6 +115,12 @@ void AardbeiController::StrawberryMachine::Start()
 			}
 			break;
 			}
+			delete old;
+		}
+		else {
+			this->machine_info->info_mutex.lock();
+			Logger::LogInfo(machine_info->tool.ToString());
+			this->machine_info->info_mutex.unlock();
 		}
 		this->machine_info->info_mutex.lock();
 		stop_pressed = this->machine_info->safety_status.IsGenEmergencyStop();

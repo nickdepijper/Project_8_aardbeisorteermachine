@@ -55,7 +55,7 @@ namespace AardbeiController {
 		catch (std::exception ex) {
 			std::stringstream ss;
 			ss << "[MachineContext] An Error occured while trying to connect to Control Interface: " << ex.what();
-			Logger::LogError(ss.str());
+			Logger::LogWarning(ss.str());
 			return false;
 		}
 	}
@@ -71,7 +71,7 @@ namespace AardbeiController {
 		catch (std::exception ex) {
 			std::stringstream ss;
 			ss << "[MachineContext] An Error occured while trying to connect to IO Interface:" << ex.what();
-			Logger::LogError(ss.str());
+			Logger::LogWarning(ss.str());
 			return false;
 		}
 	}
@@ -87,7 +87,7 @@ namespace AardbeiController {
 		catch (std::exception ex) {
 			std::stringstream ss;
 			ss << "[MachineContext] An Error occured while trying to connect to DataReceive Interface:" << ex.what();
-			Logger::LogError(ss.str());
+			Logger::LogWarning(ss.str());
 			return false;
 		}
 	}
@@ -119,6 +119,54 @@ namespace AardbeiController {
 			receive_interface->disconnect();
 			Logger::LogDebug("[MachineContext] DataReceive interface disconnected");
 		}
+	}
+
+	std::string MachineContext::ToString()
+	{
+		std::stringstream ss;
+		ss << "MachineContext\n";
+
+		ss << "\tcontrol interface: ";
+		if (control_interface != nullptr) {
+			if (control_interface->isConnected()) {
+				ss << "CONNECTED\n";
+			}
+			else {
+				ss << "NOT CONNECTED\n";
+			}
+		}
+		else {
+			ss << "UNINITIALISED\n";
+		}
+
+		ss << "\rreceive interface: ";
+		if (receive_interface != nullptr) {
+			if (receive_interface->isConnected()) {
+				ss << "CONNECTED\n";
+			}
+			else {
+				ss << "NOT CONNECTED\n";
+			}
+		}
+		else {
+			ss << "UNINITIALISED\n";
+		}
+
+		ss << "\rio interface: ";
+		if (control_interface != nullptr) {
+			if (control_interface->isConnected()) {
+				ss << "CONNECTED\n";
+			}
+			else {
+				ss << "NOT CONNECTED\n";
+			}
+		}
+		else {
+			ss << "UNINITIALISED\n";
+		}
+
+
+		return ss.str();
 	}
 
 }

@@ -113,6 +113,8 @@ struct ToolData : public Object {
 	/// </summary>
 	void Init();
 	std::string ToString();
+
+	std::string ConcatToolData();
 };
 
 /// <summary>
