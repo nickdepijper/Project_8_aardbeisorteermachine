@@ -11,12 +11,22 @@ void AardbeiController::Control::UR5PollThread::PollFunc()
 		Logger::LogError("[UR5PollThread] Could not get a lock on RTDEReceiveInterface");
 	}
 	else {
-		const std::lock_guard<std::mutex> lock(machineinfo_ptr->info_mutex);
-		AquireToolData(rcontext);
-		AquireMachineData(rcontext);
-		AquireJointData(rcontext);
-		std::string data = machineinfo_ptr->tool.actual_data.ConcatToolData();
-		SetConsoleTitleA(data.c_str());
+		machineinfo_ptr->info_mutex.lock();
+
+		try {
+			AquireToolData(rcontext);
+			AquireMachineData(rcontext);
+			AquireJointData(rcontext);
+			std::string data = machineinfo_ptr->tool.actual_data.ConcatToolData();
+			SetConsoleTitleA(data.c_str());
+		}
+		catch (std::exception ex) {
+			std::stringstream ss;
+			ss << "[UR5PollThread]: Encountered an exception" << ex.what();
+			Logger::LogWarning(ss.str());
+		}
+
+		machineinfo_ptr->info_mutex.unlock();
 	}
 	
 }
