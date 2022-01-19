@@ -74,7 +74,7 @@ void AardbeiController::StrawberryMachine::Start()
 		{
 			this->current_state = new MoveToStrawBerryState(config, machine_context, vision_context, machine_info);
 			MoveToStrawBerryState* ptr = (MoveToStrawBerryState*)this->current_state;
-			ptr->detected_berries = ((DetectState*)old)->detected;
+			ptr->target = ((DetectState*)old)->target_berry;
 			ptr->Init();
 			ptr->Start();
 		}

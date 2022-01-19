@@ -64,6 +64,7 @@ namespace AardbeiController {
 	class HomeState : public SystemState {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		std::shared_ptr<ur_rtde::RTDEIOInterface> io_control;
 		glm::dvec3 home_pos;
 		glm::dvec3 home_orient;
 		double speed;
@@ -80,21 +81,28 @@ namespace AardbeiController {
 	};
 
 	class DetectState : public SystemState {
+	public:
+		cv::Mat Crown;
+		cv::Mat Berry;
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		std::shared_ptr<ur_rtde::RTDEIOInterface> io_control;
 		ConveyorConfig cconfig;
 		double speed;
 		double accel;
 		double berry_min_radius;
 		double crown_min_radius;
 
+		
+		std::vector<Strawberry> detected;
+
 		void DetectStrawberry(cv::Mat input);
 		void FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius);
 	public:
-		std::vector<Strawberry> detected;
+		Strawberry target_berry;
+		
 		DetectState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)
-			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::MOVE_TO_STBY) {
-			
+			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::MOVE_TO_STBY) {			
 		}
 		bool Init() override;
 		void Start() override;
@@ -103,8 +111,8 @@ namespace AardbeiController {
 	class MoveToStrawBerryState : public SystemState {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		std::shared_ptr<ur_rtde::RTDEIOInterface> io_control;
 	public:
-		std::vector<Strawberry> detected_berries;
 		Strawberry target;
 
 		MoveToStrawBerryState(std::weak_ptr<StrawberryMachineConfig> _cfg, std::weak_ptr<MachineContext> _context, std::weak_ptr<VisionContext> _vcontext, std::weak_ptr<UR5Info> _info)

@@ -87,6 +87,7 @@ void AardbeiController::HomeState::Start()
 bool AardbeiController::DetectState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
+	io_control = this->mcontext->GetIOInterface().lock();
 	this->cconfig = config->conveyor_config;
 	speed = 2.0;
 	accel = 0.5;
@@ -101,8 +102,6 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 	split(input, splitImage);
 
 	Mat Background, BackgroundInv;
-	Mat Crown;
-	Mat Berry;
 
 	Scalar green_min(45, 125, 0);
 	Scalar green_max(75, 255, 255);
@@ -112,26 +111,22 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 	
 	Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3), cv::Point(-1, -1));
 	//Thresh Crown channel and isolate Crown
-	inRange(input, green_min, green_max, Crown);
-	threshold(Crown, Crown, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
-	cv::morphologyEx(Crown, Crown, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
-	cv::morphologyEx(Crown, Crown, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
-	//cv::imshow("crown", Crown);
-	//detected.crown_frame = Crown;
-
+	inRange(input, green_min, green_max, this->Crown);
+	threshold(this->Crown, this->Crown, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
+	cv::morphologyEx(this->Crown, this->Crown, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
+	cv::morphologyEx(this->Crown, this->Crown, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
 	//Thresh Berry channel and isolate Berry
 	inRange(input, red_min, red_max, Berry);
-	threshold(Berry, Berry, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
-	cv::morphologyEx(Berry, Berry, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
-	cv::morphologyEx(Berry, Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
-	//cv::imshow("berry", Berry);
-	//detected.berry_frame = Berry;
+	threshold(this->Berry, this->Berry, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
+	cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
+	cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1), 4);
 	
+
 	std::vector<glm::vec3> found_crowns;
-	FindBoundingCircle(Crown, &found_crowns, crown_min_radius);
+	FindBoundingCircle(this->Crown, &found_crowns, crown_min_radius);
 	
 	std::vector<glm::vec3> found_berries;
-	FindBoundingCircle(Berry, &found_berries, berry_min_radius);
+	FindBoundingCircle(this->Berry, &found_berries, berry_min_radius);
 	
 	if (found_crowns.size() != found_berries.size()) {
 		Logger::LogWarning("Berry and crown contour mismatch: found berries does not equal found crowns");
@@ -158,28 +153,28 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 		detec.crown_center_pixel_pos = glm::vec2(crown_center_pixel.x, crown_center_pixel.y);
 		detec.berry_center_pixel_pos = glm::vec2(berry_center_pixel.x, berry_center_pixel.y);
 
-		if(detec.crown_center_pixel_pos.x > (config->vision_config.frame_width - 200)
-			|| detec.berry_center_pixel_pos.x > (config->vision_config.frame_width - 200)) {
+		if(detec.crown_center_pixel_pos.x > double(config->vision_config.frame_width - 200)
+			|| detec.berry_center_pixel_pos.x > double(config->vision_config.frame_width - 200)) {
 			continue;
 		}
 		else {
+			float distance = glm::distance(detec.crown_center_pixel_pos, detec.berry_center_pixel_pos);
+			if (distance < 500.0f && distance != 0) {
+				detec.valid = true;
+			}
 
-		float distance = glm::distance(detec.crown_center_pixel_pos, detec.berry_center_pixel_pos);
-		if (distance < 500.0f && distance != 0) {
-			detec.valid = true;
-		}
+			detec.estemated_length = 0;
+			detec.estemated_width = 0;
+			detec.center_position_in_frame = detec.berry_center_pixel_pos;
 
-		detec.estemated_length = 0;
-		detec.estemated_width = 0;
-		detec.center_position_in_frame = detec.berry_center_pixel_pos;
-
-		double meter_per_pixel_x = config->vision_config.frustum_size.x / double(config->vision_config.frame_width);
-		double meter_per_pixel_y = config->vision_config.frustum_size.y / double(config->vision_config.frame_height);
-		glm::dvec2 frame_center = glm::dvec2(double(config->vision_config.frame_width) / 2.0, double(config->vision_config.frame_height) / 2.0);
-		glm::dvec2 physical_distance = (detec.center_position_in_frame - frame_center) * glm::dvec2(meter_per_pixel_x, meter_per_pixel_y);
-		detec.physical_position = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
-		this->detected.push_back(detec);
-
+			double meter_per_pixel_x = config->vision_config.frustum_size.x / double(config->vision_config.frame_width);
+			double meter_per_pixel_y = config->vision_config.frustum_size.y / double(config->vision_config.frame_height);
+			glm::dvec2 frame_center = glm::dvec2(double(config->vision_config.frame_width) / 2.0, double(config->vision_config.frame_height) / 2.0);
+			glm::dvec2 physical_distance = (detec.center_position_in_frame - frame_center) * glm::dvec2(meter_per_pixel_x, meter_per_pixel_y);
+			detec.physical_position = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
+			
+			
+			this->detected.push_back(detec);
 		}
 	}
 }
@@ -224,6 +219,7 @@ void AardbeiController::DetectState::FindBoundingCircle(cv::Mat input, std::vect
 
 void AardbeiController::DetectState::Start()
 {
+	io_control->setStandardDigitalOut(4, true);
 	cv::Mat frame, result, hsv_frame;
 	std::vector<cv::Mat> split_colors;
 	for (int i = 0; i < 2; i++) {
@@ -240,18 +236,35 @@ void AardbeiController::DetectState::Start()
 	for (int i = 0; i < detected.size(); i++) {
 		Strawberry detected_strawberry = detected[i];
 		if (detected_strawberry.valid) {
+			detected_strawberry.GetStrawberryEndpoints(Berry);
 			cv::line(hsv_frame, detected_strawberry.GetBerryCenter(), detected_strawberry.GetCrownCenter(), cv::Scalar(255, 0, 0), 2);
 			float distance = glm::distance(detected_strawberry.berry_center_pixel_pos, detected_strawberry.crown_center_pixel_pos);
 			cv::circle(hsv_frame, detected_strawberry.GetBerryCenter(), distance, cv::Scalar(0, 255, 255), 2);
+			cv::circle(hsv_frame, detected_strawberry.GetStrawberryWidestPoint1(), 10, cv::Scalar(0, 255, 255), 2);
+			cv::circle(hsv_frame, detected_strawberry.GetStrawberryWidestPoint2(), 10, cv::Scalar(0, 255, 255), 2);
 		}
 	}
 	
 	imshow("view", hsv_frame);
+	imshow("berry", this->Berry);
 	
 	cv::waitKey(1);
 	if (detected.size() == 0) {
 		this->next_state = StateEnum::DETECT;
 	}
+	else {
+		int smallest_x = config->vision_config.frame_width;
+		for (int i = 0; i < detected.size(); i++) {
+			int center = detected[i].GetBerryCenter().x;
+			if (center < smallest_x) {
+				smallest_x = center;
+				target_berry = detected[i];
+			}
+		}
+	}
+
+	this->Crown.release();
+	this->Berry.release();
 	return;
 }
 #pragma endregion
@@ -260,32 +273,34 @@ void AardbeiController::DetectState::Start()
 bool AardbeiController::MoveToStrawBerryState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
-	for (int i = 0; i < detected_berries.size(); i++) {
-		Logger::LogInfo(detected_berries[i].ToString());
-		target = detected_berries[i];
-		
-	}
+	io_control = this->mcontext->GetIOInterface().lock();
+	Logger::LogInfo(target.ToString());
 	return false;
 }
 
+#define ADJUSTMENT_OFFSET 0.020
+
 void AardbeiController::MoveToStrawBerryState::Start()
 {
-	if (detected_berries.size() != 0) {
+	if (target.valid) {
 		std::vector<double> pose = { target.physical_position.x, target.physical_position.y, target.physical_position.z , 0, 3.1415, 0 };
 		int wait_time = 5;
 		double covered_distance = wait_time * config->conveyor_config.speed;
-		pose[1] = pose[1] + covered_distance + 0.030;
+		pose[1] = pose[1] + covered_distance + ADJUSTMENT_OFFSET;
 		pose[2] = 0.3500;
 		control->moveL(pose, 0.5, 0.5, true);
 		Logger::LogInfo("Starting Wait");
 		std::this_thread::sleep_for(std::chrono::seconds(wait_time));
-		Logger::LogInfo("Stop the belt");
+		io_control->setStandardDigitalOut(4, false);
+		io_control->setAnalogOutputVoltage(1, 0.45);
 		pose[2] = 0.2900;
 		control->moveL(pose, 1.0, 0.5, false);
 		pose[2] = 0.3500;
 		control->moveL(pose, 0.5, 0.5, false);
 	}
-	
+	else {
+		this->next_state = StateEnum::DETECT;
+	}
 }
 #pragma endregion
 
@@ -386,14 +401,6 @@ bool AardbeiController::GrabOpenState::Init()
 
 void AardbeiController::GrabOpenState::Start()
 {
-	//io_control->setStandardDigitalOut(1, true);
-	//io_control->setStandardDigitalOut(2, false);
-	//std::vector<double> pose = { tconfig.tray_pose[0], tconfig.tray_pose[1], tconfig.tray_pose[2], tconfig.tray_pose[3], tconfig.tray_pose[4], tconfig.tray_pose[5] };
-	////this->control->moveL(pose, speed, accel, false);
-	//this->control->moveJ(pose, speed, accel, false);
-	//this->io_control->setAnalogOutputVoltage(0, 0.5);
-	//this->io_control->setAnalogOutputVoltage(0, 0.0);
-	//this->io_control->setAnalogOutputVoltage(0, 0.5);
-	this->io_control->setAnalogOutputVoltage(0, 0.0);
+	this->io_control->setAnalogOutputVoltage(1, 0.0);
 }
 #pragma endregion
