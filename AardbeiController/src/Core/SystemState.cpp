@@ -50,22 +50,7 @@ std::string AardbeiController::InitialState::ToString()
 bool AardbeiController::HomeState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
-	if (!control) {
-		this->ready = false;
-		Logger::LogError("[HomeState] Could not grab valid MachineContext");
-		return ready;
-	}
-
-	if (!control->isConnected()) {
-		this->ready = false;
-		Logger::LogError("[HomeState] Could not complete init: ");
-		return ready;
-	}
-
-	if (!config) {
-		this->ready = false;
-		Logger::LogError("[HomeState] Could not grab valid Config");
-	}
+	io_control = this->mcontext->GetIOInterface().lock();
 	this->ready = true;
 
 	this->home_pos = glm::dvec3(config->conveyor_config.conveyor_home_pose[0], config->conveyor_config.conveyor_home_pose[1], config->conveyor_config.conveyor_home_pose[2]);
@@ -166,17 +151,27 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 			detec.estemated_length = 0;
 			detec.estemated_width = 0;
 			detec.center_position_in_frame = detec.berry_center_pixel_pos;
-
-			double meter_per_pixel_x = config->vision_config.frustum_size.x / double(config->vision_config.frame_width);
-			double meter_per_pixel_y = config->vision_config.frustum_size.y / double(config->vision_config.frame_height);
-			glm::dvec2 frame_center = glm::dvec2(double(config->vision_config.frame_width) / 2.0, double(config->vision_config.frame_height) / 2.0);
-			glm::dvec2 physical_distance = (detec.center_position_in_frame - frame_center) * glm::dvec2(meter_per_pixel_x, meter_per_pixel_y);
-			detec.physical_position = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
 			
+			detec.physical_position = CastPointToWorld(detec.center_position_in_frame);
+
 			
 			this->detected.push_back(detec);
 		}
 	}
+}
+
+glm::dvec3 AardbeiController::DetectState::CastPointToWorld(glm::dvec2 point)
+{
+	glm::dvec3 output = glm::dvec3();
+	glm::dvec3 frame_physical_center = glm::dvec3(config->vision_config.conveyor_start[0], config->vision_config.conveyor_start[1], config->vision_config.conveyor_start[2]);
+	double meter_per_pixel = config->vision_config.frustum_size.x / double(config->vision_config.frame_width);
+	
+	
+	glm::dvec2 frame_center = glm::dvec2(double(config->vision_config.frame_width) / 2.0, double(config->vision_config.frame_height) / 2.0);
+	glm::dvec2 physical_distance = (point - frame_center) * glm::dvec2(meter_per_pixel, meter_per_pixel);
+	output = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
+
+	return output;
 }
 
 void AardbeiController::DetectState::FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius)
@@ -233,10 +228,10 @@ void AardbeiController::DetectState::Start()
 	cvtColor(frame, hsv_frame, ColorConversionCodes::COLOR_BGR2HSV);
 	
 	DetectStrawberry(hsv_frame);
+	
 	for (int i = 0; i < detected.size(); i++) {
 		Strawberry detected_strawberry = detected[i];
 		if (detected_strawberry.valid) {
-			detected_strawberry.GetStrawberryEndpoints(Berry);
 			cv::line(hsv_frame, detected_strawberry.GetBerryCenter(), detected_strawberry.GetCrownCenter(), cv::Scalar(255, 0, 0), 2);
 			float distance = glm::distance(detected_strawberry.berry_center_pixel_pos, detected_strawberry.crown_center_pixel_pos);
 			cv::circle(hsv_frame, detected_strawberry.GetBerryCenter(), distance, cv::Scalar(0, 255, 255), 2);
@@ -246,7 +241,6 @@ void AardbeiController::DetectState::Start()
 	}
 	
 	imshow("view", hsv_frame);
-	imshow("berry", this->Berry);
 	
 	cv::waitKey(1);
 	if (detected.size() == 0) {
@@ -261,6 +255,8 @@ void AardbeiController::DetectState::Start()
 				target_berry = detected[i];
 			}
 		}
+
+		target_berry.CalcWidestPoints(Berry);
 	}
 
 	this->Crown.release();
@@ -278,7 +274,12 @@ bool AardbeiController::MoveToStrawBerryState::Init()
 	return false;
 }
 
-#define ADJUSTMENT_OFFSET 0.020
+
+
+#define ADJUSTMENT_OFFSET -0.005
+#define JOINT_ROTATION_PER_DEGREE_X 0.02467
+#define JOINT_ROTATION_PER_DEGREE_Y 0.05957
+
 
 void AardbeiController::MoveToStrawBerryState::Start()
 {
@@ -292,15 +293,22 @@ void AardbeiController::MoveToStrawBerryState::Start()
 		Logger::LogInfo("Starting Wait");
 		std::this_thread::sleep_for(std::chrono::seconds(wait_time));
 		io_control->setStandardDigitalOut(4, false);
-		io_control->setAnalogOutputVoltage(1, 0.45);
-		pose[2] = 0.2900;
-		control->moveL(pose, 1.0, 0.5, false);
-		pose[2] = 0.3500;
-		control->moveL(pose, 0.5, 0.5, false);
+		MoveToCorrectOrientation(&pose);
+		return;
+		//io_control->setAnalogOutputVoltage(1, 0.45);
+		//double distance = glm::distance(target.berry_widest_pos1, target.berry_widest_pos2);
 	}
 	else {
 		this->next_state = StateEnum::DETECT;
 	}
+}
+
+void AardbeiController::MoveToStrawBerryState::MoveToCorrectOrientation(std::vector<double>* current_pose)
+{
+	minfo->info_mutex.lock();
+	double current_joint_rot = minfo->joints[minfo->joints.size() - 1].actual_data.position;
+	minfo->info_mutex.unlock();
+
 }
 #pragma endregion
 

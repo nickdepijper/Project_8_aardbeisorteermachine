@@ -97,6 +97,7 @@ namespace AardbeiController {
 		std::vector<Strawberry> detected;
 
 		void DetectStrawberry(cv::Mat input);
+		glm::dvec3 CastPointToWorld(glm::dvec2);
 		void FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius);
 	public:
 		Strawberry target_berry;
@@ -119,6 +120,7 @@ namespace AardbeiController {
 			: SystemState(_cfg, _context, _vcontext, _info, StateEnum::GRAB_CLOSE) {
 		}
 		bool Init() override;
+		void MoveToCorrectOrientation(std::vector<double>* current_pose);
 		void Start() override;
 	};
 

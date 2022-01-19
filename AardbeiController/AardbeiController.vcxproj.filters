@@ -98,8 +98,8 @@
     <ClInclude Include="include\Util\Context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Core\SerialContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\config.json" />
   </ItemGroup>
 </Project>
