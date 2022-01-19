@@ -152,8 +152,7 @@ void AardbeiController::DetectState::DetectStrawberry(Mat input) {
 			detec.estemated_width = 0;
 			detec.center_position_in_frame = detec.berry_center_pixel_pos;
 			
-			detec.physical_position = CastPointToWorld(detec.center_position_in_frame);
-
+			detec.physical_position = CastPointToWorld(detec.center_position_in_frame); 
 			
 			this->detected.push_back(detec);
 		}
@@ -172,6 +171,14 @@ glm::dvec3 AardbeiController::DetectState::CastPointToWorld(glm::dvec2 point)
 	output = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
 
 	return output;
+}
+
+double AardbeiController::DetectState::CalcDistance(glm::dvec3 pos1, glm::dvec3 pos2)
+{
+	double x_comp = std::pow(pos1.x - pos2.x, 2);
+	double y_comp = std::pow(pos1.y - pos2.y, 2);
+	double z_comp = std::pow(pos1.z - pos2.z, 2);
+	return std::sqrt(x_comp + y_comp + z_comp);
 }
 
 void AardbeiController::DetectState::FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius)
@@ -243,6 +250,7 @@ void AardbeiController::DetectState::Start()
 	imshow("view", hsv_frame);
 	
 	cv::waitKey(1);
+
 	if (detected.size() == 0) {
 		this->next_state = StateEnum::DETECT;
 	}
@@ -257,6 +265,39 @@ void AardbeiController::DetectState::Start()
 		}
 
 		target_berry.CalcWidestPoints(Berry);
+		double crown_distance_to_center = glm::distance(target_berry.berry_center_pixel_pos, target_berry.crown_center_pixel_pos);
+		double belt_distance_to_center = glm::distance(target_berry.berry_center_pixel_pos, glm::dvec2(target_berry.crown_center_pixel_pos.x, target_berry.berry_center_pixel_pos.y));
+		double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)) * (180.0 / M_PI);
+		
+		if (target_berry.berry_center_pixel_pos.x > target_berry.crown_center_pixel_pos.x) {
+			//if the crown is to the left of the berry
+			if (target_berry.berry_center_pixel_pos.y < target_berry.crown_center_pixel_pos.y) {
+				// if the crown is above the berry
+				angle = 180 + angle;
+				
+			}
+			else {
+				//if the crown is below the berry
+				angle = 90 + (90 - angle);
+			}
+		}
+		else {
+			//if the crown is to the right of the berry
+			if (target_berry.berry_center_pixel_pos.y < target_berry.crown_center_pixel_pos.y) {
+				// if the crown is above the berry
+				angle = 360 - angle;
+				
+			}
+			else {
+				//if the crown is below the berry
+				angle = 0 + angle;
+			}
+		}
+		target_berry.angle_to_belt_dir = angle;
+
+		target_berry.estemated_width = CalcDistance(CastPointToWorld(target_berry.berry_widest_pos1), CastPointToWorld(target_berry.berry_widest_pos2));
+		target_berry.estemated_length = (glm::distance(CastPointToWorld(target_berry.berry_center_pixel_pos), CastPointToWorld(target_berry.crown_center_pixel_pos)) * 2) + 0.5;
+
 	}
 
 	this->Crown.release();
@@ -276,9 +317,7 @@ bool AardbeiController::MoveToStrawBerryState::Init()
 
 
 
-#define ADJUSTMENT_OFFSET -0.005
-#define JOINT_ROTATION_PER_DEGREE_X 0.02467
-#define JOINT_ROTATION_PER_DEGREE_Y 0.05957
+#define ADJUSTMENT_OFFSET -0.020
 
 
 void AardbeiController::MoveToStrawBerryState::Start()
@@ -293,7 +332,23 @@ void AardbeiController::MoveToStrawBerryState::Start()
 		Logger::LogInfo("Starting Wait");
 		std::this_thread::sleep_for(std::chrono::seconds(wait_time));
 		io_control->setStandardDigitalOut(4, false);
-		MoveToCorrectOrientation(&pose);
+		MoveToCorrectOrientation();
+		//MoveBackToStandardOrientation();
+		
+		minfo->info_mutex.lock();
+		glm::dvec3 actual_rot = minfo->tool.actual_data.rotation;
+		minfo->info_mutex.unlock();
+
+		double oldzpos = pose[2];
+		pose[2] = config->conveyor_config.conveyor_z_height + (target.estemated_width / 2);
+		pose[3] = actual_rot.x;
+		pose[4] = actual_rot.y;
+		pose[5] = actual_rot.z;
+
+		control->moveL(pose, 0.05, 0.05, false);
+		pose[2] = oldzpos;
+		control->moveL(pose, 0.1, 0.1, false);
+		MoveBackToStandardOrientation();
 		return;
 		//io_control->setAnalogOutputVoltage(1, 0.45);
 		//double distance = glm::distance(target.berry_widest_pos1, target.berry_widest_pos2);
@@ -303,13 +358,34 @@ void AardbeiController::MoveToStrawBerryState::Start()
 	}
 }
 
-void AardbeiController::MoveToStrawBerryState::MoveToCorrectOrientation(std::vector<double>* current_pose)
+void AardbeiController::MoveToStrawBerryState::MoveToCorrectOrientation()
 {
 	minfo->info_mutex.lock();
-	double current_joint_rot = minfo->joints[minfo->joints.size() - 1].actual_data.position;
+	std::vector<double> joint_angles;
+	minfo->GetJointAngles(joint_angles);
 	minfo->info_mutex.unlock();
 
+	double offset = joint_angles[joint_angles.size() - 1];
+
+	joint_angles[joint_angles.size() - 1] = offset - ((M_PI / 180.0) * target.angle_to_belt_dir);
+
+	control->moveJ(joint_angles, 0.5, 0.5, false);
+
 }
+
+void AardbeiController::MoveToStrawBerryState::MoveBackToStandardOrientation()
+{
+	minfo->info_mutex.lock();
+	std::vector<double> joint_angles;
+	minfo->GetJointAngles(joint_angles);
+	minfo->info_mutex.unlock();
+
+	joint_angles[joint_angles.size() - 1] = 0;
+
+	control->moveJ(joint_angles, 0.5, 0.5, true);
+}
+
+
 #pragma endregion
 
 #pragma region GrabCloseState
@@ -324,7 +400,7 @@ bool AardbeiController::GrabCloseState::Init()
 
 void AardbeiController::GrabCloseState::Start()
 {
-	io_control->setAnalogOutputVoltage(0, 0.5);
+	//io_control->setAnalogOutputVoltage(0, 0.5);
 }
 #pragma endregion
 

@@ -5,7 +5,7 @@
   },
   "conveyor": {
     "home_pose": [ 0.6100, -0.20000, 0.3500, 0.00000, 3.1415, 0.00000 ],
-    "conveyor_z_height": -0.14000,
+    "conveyor_z_height": 0.28000,
     "speed": 0.038865,
     "width": 0.20
   },

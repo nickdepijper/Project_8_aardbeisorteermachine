@@ -219,6 +219,12 @@ public:
 
 	~MachineInfo() = default;
 
+	void GetJointAngles(std::vector<double>& vec) {
+		for (int i = 0; i < joints.size(); i++) {
+			vec.push_back(joints[i].actual_data.position);
+		}
+	}
+
 	std::string ToString();
 };
 
