@@ -5,6 +5,25 @@
 #include <thread>
 using namespace cv;
 
+void SetGripperAngle(float angledeg, std::shared_ptr<RTDEIOInterface> io_control) {
+	if (angledeg > 90.0f) {
+		Logger::LogWarning("Gripper can only move between 0 and 90 degrees");
+	}
+	double gripperval = (0.5f / 90) * angledeg;
+	if (gripperval > 0.5) {
+		Logger::LogWarning("Gripper voltage safety triggered: voltage was over 5v");
+	}
+	io_control->setAnalogOutputVoltage(0, gripperval);
+}
+
+void SetBeltEnabled(bool enabled, std::shared_ptr<RTDEIOInterface> io_control) {
+	io_control->setStandardDigitalOut(4, enabled);
+}
+
+void SetVacuumEnabled(bool enabled, std::shared_ptr<RTDEIOInterface> io_control) {
+	io_control->setStandardDigitalOut(5, enabled);
+}
+
 AardbeiController::SystemState::SystemState(std::weak_ptr<StrawberryMachineConfig> _cfg, 
 	std::weak_ptr<MachineContext> _context,
 	std::weak_ptr<VisionContext> _vcontext,
@@ -65,6 +84,8 @@ void AardbeiController::HomeState::Start()
 {
 	std::vector<double> pose = { home_pos[0], home_pos[1], home_pos[2], home_orient[0],  home_orient[1],  home_orient[2] };
 	this->control->moveL(pose, speed, accel, false);
+	SetGripperAngle(0, io_control);
+	SetVacuumEnabled(false, io_control);
 }
 #pragma endregion
 
@@ -317,7 +338,7 @@ bool AardbeiController::MoveToStrawBerryState::Init()
 
 
 
-#define ADJUSTMENT_OFFSET -0.020
+#define ADJUSTMENT_OFFSET -0.021
 
 
 void AardbeiController::MoveToStrawBerryState::Start()
@@ -332,16 +353,21 @@ void AardbeiController::MoveToStrawBerryState::Start()
 		Logger::LogInfo("Starting Wait");
 		std::this_thread::sleep_for(std::chrono::seconds(wait_time));
 		io_control->setStandardDigitalOut(4, false);
-		io_control->setAnalogOutputVoltage(1, 0.45);
+		//SetGripperAngle(5, io_control);
+		SetBeltEnabled(false, io_control);
 		MoveToCorrectOrientation();
+		SetVacuumEnabled(true, io_control);
 		//MoveBackToStandardOrientation();
 		
 		minfo->info_mutex.lock();
 		glm::dvec3 actual_rot = minfo->tool.actual_data.rotation;
+		glm::dvec3 actual_pos = minfo->tool.actual_data.position;
 		minfo->info_mutex.unlock();
 
 		double oldzpos = pose[2];
-		pose[2] = config->conveyor_config.conveyor_z_height + (target.estemated_width / 2);
+		pose[0] = actual_pos.x;
+		pose[1] = actual_pos.y;
+		pose[2] = config->conveyor_config.conveyor_z_height + ((target.estemated_width / 2) + 0.002);
 		pose[3] = actual_rot.x;
 		pose[4] = actual_rot.y;
 		pose[5] = actual_rot.z;
@@ -399,7 +425,7 @@ bool AardbeiController::GrabCloseState::Init()
 
 void AardbeiController::GrabCloseState::Start()
 {
-	io_control->setAnalogOutputVoltage(0, 0.5);
+	SetGripperAngle(90, io_control);
 }
 #pragma endregion
 
@@ -429,6 +455,7 @@ void AardbeiController::TravelToTrayState::Start()
 bool AardbeiController::IndexingTrayState::Init()
 {
 	control = this->mcontext->GetControlInterface().lock();
+	io_control = this->mcontext->GetIOInterface().lock();
 	this->tconfig = config->tray_config;
 	this->speed = 2.0;
 	this->accel = 0.5;
@@ -466,7 +493,11 @@ void AardbeiController::IndexingTrayState::Start()
 
 	this->control->moveL(pre_place_pose, speed, accel, false);
 	this->control->moveL(place_pose, speed, accel, false);
+	SetVacuumEnabled(false, io_control);
+	std::this_thread::sleep_for(std::chrono::seconds(2));
 	this->control->moveL(pre_place_pose, speed, accel, false);
+	SetGripperAngle(90, io_control);
+
 	IncrementIdx();
 }
 #pragma endregion
@@ -484,7 +515,6 @@ bool AardbeiController::GrabOpenState::Init()
 
 void AardbeiController::GrabOpenState::Start()
 {
-	this->io_control->setAnalogOutputVoltage(1, 0.0);
-	io_control->setAnalogOutputVoltage(0, 0.0);
+	//SetVacuumEnabled(false, io_control);
 }
 #pragma endregion

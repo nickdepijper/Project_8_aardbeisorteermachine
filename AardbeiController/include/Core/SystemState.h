@@ -161,6 +161,7 @@ namespace AardbeiController {
 	class IndexingTrayState : public SystemState {
 	private:
 		std::shared_ptr<ur_rtde::RTDEControlInterface> control;
+		std::shared_ptr<ur_rtde::RTDEIOInterface> io_control;
 		TrayConfig tconfig;
 		double speed;
 		double accel;
