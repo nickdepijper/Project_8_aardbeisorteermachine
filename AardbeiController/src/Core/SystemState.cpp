@@ -332,6 +332,7 @@ void AardbeiController::MoveToStrawBerryState::Start()
 		Logger::LogInfo("Starting Wait");
 		std::this_thread::sleep_for(std::chrono::seconds(wait_time));
 		io_control->setStandardDigitalOut(4, false);
+		io_control->setAnalogOutputVoltage(1, 0.45);
 		MoveToCorrectOrientation();
 		//MoveBackToStandardOrientation();
 		
@@ -349,8 +350,6 @@ void AardbeiController::MoveToStrawBerryState::Start()
 		pose[2] = oldzpos;
 		control->moveL(pose, 0.1, 0.1, false);
 		MoveBackToStandardOrientation();
-		return;
-		//io_control->setAnalogOutputVoltage(1, 0.45);
 		//double distance = glm::distance(target.berry_widest_pos1, target.berry_widest_pos2);
 	}
 	else {
@@ -400,7 +399,7 @@ bool AardbeiController::GrabCloseState::Init()
 
 void AardbeiController::GrabCloseState::Start()
 {
-	//io_control->setAnalogOutputVoltage(0, 0.5);
+	io_control->setAnalogOutputVoltage(0, 0.5);
 }
 #pragma endregion
 
@@ -486,5 +485,6 @@ bool AardbeiController::GrabOpenState::Init()
 void AardbeiController::GrabOpenState::Start()
 {
 	this->io_control->setAnalogOutputVoltage(1, 0.0);
+	io_control->setAnalogOutputVoltage(0, 0.0);
 }
 #pragma endregion
