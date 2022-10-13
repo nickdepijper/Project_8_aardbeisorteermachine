@@ -1,0 +1,8 @@
+prefix=/home/nick/AardbeiSorteerMachine/devel
+
+Name: rm_common
+Description: Description of rm_common
+Version: 0.1.15
+Cflags: -I/home/nick/AardbeiSorteerMachine/src/rm_control/rm_common/include -I/usr/include/eigen3
+Libs: -L${prefix}/lib -lrm_common
+Requires: tf rm_msgs geometry_msgs control_msgs controller_manager_msgs imu_complementary_filter imu_filter_madgwick roscpp dynamic_reconfigure
