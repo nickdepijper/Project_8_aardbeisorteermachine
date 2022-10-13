@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/AardbeiSorteerMachine/src/vision/src/vision_camera_node.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
 ros/ros.h
-/home/nick/AardbeiSorteerMachine/src/vision/src/ros/ros.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/ros/ros.h
 opencv2/opencv.hpp
-/home/nick/AardbeiSorteerMachine/src/vision/src/opencv2/opencv.hpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/opencv2/opencv.hpp
 std_msgs/String.h
 -
 std_msgs/ColorRGBA.h

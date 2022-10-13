@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "galaxy_camera"
-PROJECT_SPACE_DIR = "/home/nick/AardbeiSorteerMachine/devel"
+PROJECT_SPACE_DIR = "/home/nick/Project_8_aardbeisorteermachine/devel"
 PROJECT_VERSION = "1.0.0"

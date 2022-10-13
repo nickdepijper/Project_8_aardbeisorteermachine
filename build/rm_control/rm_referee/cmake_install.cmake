@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee/catkin_generated/installspace/rm_referee.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee/catkin_generated/installspace/rm_referee.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_referee/cmake" TYPE FILE FILES
-    "/home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee/catkin_generated/installspace/rm_refereeConfig.cmake"
-    "/home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee/catkin_generated/installspace/rm_refereeConfig-version.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee/catkin_generated/installspace/rm_refereeConfig.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee/catkin_generated/installspace/rm_refereeConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_referee" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_referee" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -59,12 +59,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_referee/rm_referee"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rm_referee" TYPE EXECUTABLE FILES "/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rm_referee" TYPE EXECUTABLE FILES "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_referee/rm_referee" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_referee/rm_referee")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_referee/rm_referee"
-         OLD_RPATH "/opt/ros/melodic/lib:/home/nick/AardbeiSorteerMachine/devel/lib:"
+         OLD_RPATH "/opt/ros/melodic/lib:/home/nick/Project_8_aardbeisorteermachine/devel/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_referee/rm_referee")
@@ -73,10 +73,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/rm_referee" TYPE DIRECTORY FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/" FILES_MATCHING REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/rm_referee" TYPE DIRECTORY FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_referee" TYPE DIRECTORY FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_referee" TYPE DIRECTORY FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/launch")
 endif()
 

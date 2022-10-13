@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_embeddedlinux
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_embeddedlinux
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,28 +38,28 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/rosserial_embeddedlinux.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/rosserial_embeddedlinux.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_embeddedlinux/cmake" TYPE FILE FILES
-    "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/rosserial_embeddedlinuxConfig.cmake"
-    "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/rosserial_embeddedlinuxConfig-version.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/rosserial_embeddedlinuxConfig.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/rosserial_embeddedlinuxConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_embeddedlinux" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_embeddedlinux/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_embeddedlinux" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_embeddedlinux/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_embeddedlinux/src" TYPE DIRECTORY FILES
-    "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_embeddedlinux/src/ros_lib"
-    "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_embeddedlinux/src/examples"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_embeddedlinux/src/ros_lib"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_embeddedlinux/src/examples"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rosserial_embeddedlinux" TYPE PROGRAM FILES "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/make_libraries.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rosserial_embeddedlinux" TYPE PROGRAM FILES "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_embeddedlinux/catkin_generated/installspace/make_libraries.py")
 endif()
 

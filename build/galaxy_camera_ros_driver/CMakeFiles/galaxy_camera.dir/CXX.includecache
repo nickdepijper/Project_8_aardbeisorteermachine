@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/galaxy_camera.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/galaxy_camera.h
 libgxiapi/GxIAPI.h
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/libgxiapi/GxIAPI.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/libgxiapi/GxIAPI.h
 libgxiapi/DxImageProc.h
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/libgxiapi/DxImageProc.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/libgxiapi/DxImageProc.h
 image_transport/image_transport.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/galaxy_camera_node.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/galaxy_camera_node.h
 galaxy_camera.h
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/galaxy_camera.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/galaxy_camera.h
 camera_info_manager/camera_info_manager.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/libgxiapi/DxImageProc.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/libgxiapi/DxImageProc.h
 stdafx.h
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/libgxiapi/stdafx.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/libgxiapi/stdafx.h
 stdlib.h
 -
 string.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include/libgxiapi/GxIAPI.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include/libgxiapi/GxIAPI.h
 stdint.h
 -
 stdint.h
@@ -40,15 +40,15 @@ stddef.h
 Windows.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp
 galaxy_camera.h
 -
 utility
 -
 
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp
 galaxy_camera_node.h
-/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.h
+/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.h
 
 /opt/ros/melodic/include/camera_info_manager/camera_info_manager.h
 ros/ros.h

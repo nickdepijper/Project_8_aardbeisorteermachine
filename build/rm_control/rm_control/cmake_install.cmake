@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_control
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_control
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_control" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_control/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_control" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_control/package.xml")
 endif()
 

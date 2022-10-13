@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Utility rule file for roslint_rm_referee.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
 include rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/progress.make
 
 roslint_rm_referee: rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/build.make
-	cd /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee && /opt/ros/melodic/share/roslint/cmake/../../../lib/roslint/cpplint /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/graph.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/ui.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/main.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/referee_base.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/common/data.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/common/graph.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/common/protocol.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/common/ui.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee/engineer_referee.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee/hero_referee.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee/radar_referee.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee/referee_base.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee/robot_referee.h /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/include/rm_referee/referee/standard_referee.h
+	cd /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee && /opt/ros/melodic/share/roslint/cmake/../../../lib/roslint/cpplint /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/graph.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/ui.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/main.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/referee_base.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/common/data.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/common/graph.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/common/protocol.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/common/ui.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee/engineer_referee.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee/hero_referee.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee/radar_referee.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee/referee_base.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee/robot_referee.h /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/include/rm_referee/referee/standard_referee.h
 .PHONY : roslint_rm_referee
 
 # Rule to build all files generated by this target.
@@ -63,10 +63,10 @@ rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/build: roslint_rm_refere
 .PHONY : rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/build
 
 rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && $(CMAKE_COMMAND) -P CMakeFiles/roslint_rm_referee.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && $(CMAKE_COMMAND) -P CMakeFiles/roslint_rm_referee.dir/cmake_clean.cmake
 .PHONY : rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/clean
 
 rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rm_control/rm_referee/CMakeFiles/roslint_rm_referee.dir/depend
 

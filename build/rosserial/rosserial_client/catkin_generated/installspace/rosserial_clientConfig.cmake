@@ -67,14 +67,14 @@ set(rosserial_client_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(rosserial_client_SOURCE_PREFIX /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_client)
-  set(rosserial_client_DEVEL_PREFIX /home/nick/AardbeiSorteerMachine/devel)
+  set(rosserial_client_SOURCE_PREFIX /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_client)
+  set(rosserial_client_DEVEL_PREFIX /home/nick/Project_8_aardbeisorteermachine/devel)
   set(rosserial_client_INSTALL_PREFIX "")
   set(rosserial_client_PREFIX ${rosserial_client_DEVEL_PREFIX})
 else()
   set(rosserial_client_SOURCE_PREFIX "")
   set(rosserial_client_DEVEL_PREFIX "")
-  set(rosserial_client_INSTALL_PREFIX /home/nick/AardbeiSorteerMachine/install)
+  set(rosserial_client_INSTALL_PREFIX /home/nick/Project_8_aardbeisorteermachine/install)
   set(rosserial_client_PREFIX ${rosserial_client_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/nick/AardbeiSorteerMachine/install/lib;/home/nick/AardbeiSorteerMachineROS/devel/lib;/home/nick/workspace/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/nick/Project_8_aardbeisorteermachine/install/lib;/home/nick/AardbeiSorteerMachineROS/devel/lib;/home/nick/workspace/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/float64_test.dir/test/float64_test.cpp.o"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test.pdb"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test.pdb"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test"
 )
 
 # Per-language clean rules from dependency scanning.

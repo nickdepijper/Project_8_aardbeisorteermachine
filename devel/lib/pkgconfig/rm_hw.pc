@@ -1,8 +1,8 @@
-prefix=/home/nick/AardbeiSorteerMachine/devel
+prefix=/home/nick/Project_8_aardbeisorteermachine/devel
 
 Name: rm_hw
 Description: Description of rm_hw
 Version: 0.1.15
-Cflags: -I/home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw/include
+Cflags: -I/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw/include
 Libs: -L${prefix}/lib -lrm_hw_loader_plugins
 Requires: roscpp roslint rm_common rm_msgs hardware_interface controller_interface transmission_interface joint_limits_interface controller_manager urdf realtime_tools

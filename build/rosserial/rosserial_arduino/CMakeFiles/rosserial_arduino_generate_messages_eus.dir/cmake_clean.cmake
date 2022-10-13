@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rosserial_arduino_generate_messages_eus"
-  "/home/nick/AardbeiSorteerMachine/devel/share/roseus/ros/rosserial_arduino/msg/Adc.l"
-  "/home/nick/AardbeiSorteerMachine/devel/share/roseus/ros/rosserial_arduino/srv/Test.l"
-  "/home/nick/AardbeiSorteerMachine/devel/share/roseus/ros/rosserial_arduino/manifest.l"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/share/roseus/ros/rosserial_arduino/msg/Adc.l"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/share/roseus/ros/rosserial_arduino/srv/Test.l"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/share/roseus/ros/rosserial_arduino/manifest.l"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "rosserial_vex_cortex"
-PROJECT_SPACE_DIR = "/home/nick/AardbeiSorteerMachine/install"
+PROJECT_SPACE_DIR = "/home/nick/Project_8_aardbeisorteermachine/install"
 PROJECT_VERSION = "0.9.2"

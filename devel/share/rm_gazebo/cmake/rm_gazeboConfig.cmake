@@ -67,14 +67,14 @@ set(rm_gazebo_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(rm_gazebo_SOURCE_PREFIX /home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo)
-  set(rm_gazebo_DEVEL_PREFIX /home/nick/AardbeiSorteerMachine/devel)
+  set(rm_gazebo_SOURCE_PREFIX /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo)
+  set(rm_gazebo_DEVEL_PREFIX /home/nick/Project_8_aardbeisorteermachine/devel)
   set(rm_gazebo_INSTALL_PREFIX "")
   set(rm_gazebo_PREFIX ${rm_gazebo_DEVEL_PREFIX})
 else()
   set(rm_gazebo_SOURCE_PREFIX "")
   set(rm_gazebo_DEVEL_PREFIX "")
-  set(rm_gazebo_INSTALL_PREFIX /home/nick/AardbeiSorteerMachine/install)
+  set(rm_gazebo_INSTALL_PREFIX /home/nick/Project_8_aardbeisorteermachine/install)
   set(rm_gazebo_PREFIX ${rm_gazebo_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(rm_gazebo_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/include " STREQUAL " ")
+if(NOT "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo/include " STREQUAL " ")
   set(rm_gazebo_INCLUDE_DIRS "")
-  set(_include_dirs "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/include")
+  set(_include_dirs "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/include " STRE
         message(FATAL_ERROR "Project 'rm_gazebo' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'rm_gazebo' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'rm_gazebo' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo/${idir}'.  ${_report}")
     endif()
     _list_append_unique(rm_gazebo_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/nick/AardbeiSorteerMachine/devel/lib;/home/nick/AardbeiSorteerMachineROS/devel/lib;/home/nick/workspace/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/nick/Project_8_aardbeisorteermachine/devel/lib;/home/nick/AardbeiSorteerMachineROS/devel/lib;/home/nick/workspace/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -6,8 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rm_hw.dir/src/hardware_interface/can_bus.cpp.o"
   "CMakeFiles/rm_hw.dir/src/hardware_interface/gpio_manager.cpp.o"
   "CMakeFiles/rm_hw.dir/src/control_loop.cpp.o"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/rm_hw/rm_hw.pdb"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/rm_hw/rm_hw"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_hw/rm_hw.pdb"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_hw/rm_hw"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Utility rule file for run_tests_rosserial_test_rostest.
 
@@ -63,10 +63,10 @@ rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/build: 
 .PHONY : rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/build
 
 rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_rosserial_test_rostest.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test && $(CMAKE_COMMAND) -P CMakeFiles/run_tests_rosserial_test_rostest.dir/cmake_clean.cmake
 .PHONY : rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/clean
 
 rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_test /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_test /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rosserial/rosserial_test/CMakeFiles/run_tests_rosserial_test_rostest.dir/depend
 

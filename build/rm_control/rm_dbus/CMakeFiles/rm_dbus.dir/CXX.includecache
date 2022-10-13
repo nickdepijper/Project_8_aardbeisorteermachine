@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/AardbeiSorteerMachine/devel/include/rm_msgs/DbusData.h
+/home/nick/Project_8_aardbeisorteermachine/devel/include/rm_msgs/DbusData.h
 string
 -
 vector
@@ -22,21 +22,21 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/include/rm_dbus/dbus.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/include/rm_dbus/dbus.h
 cstdint
 -
 rm_msgs/DbusData.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/include/rm_dbus/dbus_node.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/include/rm_dbus/dbus_node.h
 dbus.h
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/include/rm_dbus/dbus.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/include/rm_dbus/dbus.h
 ros/ros.h
 -
 rm_msgs/DbusData.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/src/dbus.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/src/dbus.cpp
 rm_dbus/dbus.h
 -
 ros/ros.h
@@ -52,9 +52,9 @@ asm/termios.h
 termios.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/src/dbus_node.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/src/dbus_node.cpp
 rm_dbus/dbus_node.h
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/src/rm_dbus/dbus_node.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/src/rm_dbus/dbus_node.h
 
 /opt/ros/melodic/include/ros/advertise_options.h
 ros/forwards.h

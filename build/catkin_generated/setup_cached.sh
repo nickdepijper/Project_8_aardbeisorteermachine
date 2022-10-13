@@ -7,10 +7,9 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/nick/AardbeiSorteerMachine/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/nick/AardbeiSorteerMachine/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/nick/AardbeiSorteerMachine/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD='/home/nick/AardbeiSorteerMachine/build'
-export PYTHONPATH="/home/nick/AardbeiSorteerMachine/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/nick/AardbeiSorteerMachine/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/nick/AardbeiSorteerMachine/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/nick/Project_8_aardbeisorteermachine/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/nick/Project_8_aardbeisorteermachine/devel/lib:$LD_LIBRARY_PATH"
+export PWD='/home/nick/Project_8_aardbeisorteermachine/build'
+export PYTHONPATH="/home/nick/Project_8_aardbeisorteermachine/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/nick/Project_8_aardbeisorteermachine/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/nick/Project_8_aardbeisorteermachine/src:$ROS_PACKAGE_PATH"

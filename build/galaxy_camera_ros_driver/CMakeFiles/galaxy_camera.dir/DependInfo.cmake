@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp" "/home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o"
-  "/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp" "/home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o"
+  "/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp" "/home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o"
+  "/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp" "/home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,8 +20,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/include"
-  "/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/."
+  "/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/include"
+  "/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/."
   )
 
 # Targets to which this target links.

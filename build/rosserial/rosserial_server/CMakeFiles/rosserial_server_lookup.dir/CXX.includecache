@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/include/rosserial_server/msg_lookup.h
+/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/include/rosserial_server/msg_lookup.h
 string
 -
 stdexcept
 -
 
-/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/src/msg_lookup.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/src/msg_lookup.cpp
 rosserial_server/msg_lookup.h
-/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/src/rosserial_server/msg_lookup.h
+/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/src/rosserial_server/msg_lookup.h
 Python.h
-/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/src/Python.h
+/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/src/Python.h
 
 /usr/include/python2.7/Python.h
 patchlevel.h

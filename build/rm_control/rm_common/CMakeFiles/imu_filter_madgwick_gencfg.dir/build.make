@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Utility rule file for imu_filter_madgwick_gencfg.
 
@@ -63,10 +63,10 @@ rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/build: imu_filter
 .PHONY : rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/build
 
 rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_common && $(CMAKE_COMMAND) -P CMakeFiles/imu_filter_madgwick_gencfg.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_common && $(CMAKE_COMMAND) -P CMakeFiles/imu_filter_madgwick_gencfg.dir/cmake_clean.cmake
 .PHONY : rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/clean
 
 rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/rm_control/rm_common /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/rm_control/rm_common /home/nick/AardbeiSorteerMachine/build/rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_common /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_common /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rm_control/rm_common/CMakeFiles/imu_filter_madgwick_gencfg.dir/depend
 

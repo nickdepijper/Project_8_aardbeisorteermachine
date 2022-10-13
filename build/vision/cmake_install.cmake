@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/vision
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/vision
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/vision/catkin_generated/installspace/vision.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/vision/catkin_generated/installspace/vision.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/vision/cmake" TYPE FILE FILES
-    "/home/nick/AardbeiSorteerMachine/build/vision/catkin_generated/installspace/visionConfig.cmake"
-    "/home/nick/AardbeiSorteerMachine/build/vision/catkin_generated/installspace/visionConfig-version.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/vision/catkin_generated/installspace/visionConfig.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/vision/catkin_generated/installspace/visionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/vision" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/vision/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/vision" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/vision/package.xml")
 endif()
 

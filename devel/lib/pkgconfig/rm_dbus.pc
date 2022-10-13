@@ -1,8 +1,8 @@
-prefix=/home/nick/AardbeiSorteerMachine/devel
+prefix=/home/nick/Project_8_aardbeisorteermachine/devel
 
 Name: rm_dbus
 Description: Description of rm_dbus
 Version: 0.1.15
-Cflags: -I/home/nick/AardbeiSorteerMachine/src/rm_control/rm_dbus/include
+Cflags: -I/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_dbus/include
 Libs: -L${prefix}/lib 
 Requires: roscpp rm_common

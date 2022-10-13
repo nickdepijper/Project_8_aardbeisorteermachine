@@ -1,4 +1,4 @@
-prefix=/home/nick/AardbeiSorteerMachine/install
+prefix=/home/nick/Project_8_aardbeisorteermachine/install
 
 Name: rosserial_vex_cortex
 Description: Description of rosserial_vex_cortex

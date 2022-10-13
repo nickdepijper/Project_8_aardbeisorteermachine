@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rosserial_server_socket_node.dir/src/socket_node.cpp.o"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_server/socket_node.pdb"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_server/socket_node"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_server/socket_node.pdb"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_server/socket_node"
 )
 
 # Per-language clean rules from dependency scanning.

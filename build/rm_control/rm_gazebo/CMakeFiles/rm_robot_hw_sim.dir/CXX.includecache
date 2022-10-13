@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_common/include/rm_common/hardware_interface/robot_state_interface.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_common/include/rm_common/hardware_interface/robot_state_interface.h
 utility
 -
 hardware_interface/internal/hardware_resource_manager.h
@@ -16,9 +16,9 @@ tf2_ros/transform_listener.h
 tf2_ros/transform_broadcaster.h
 -
 rm_common/tf_rt_broadcaster.h
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_common/include/rm_common/hardware_interface/rm_common/tf_rt_broadcaster.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_common/include/rm_common/hardware_interface/rm_common/tf_rt_broadcaster.h
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_common/include/rm_common/tf_rt_broadcaster.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_common/include/rm_common/tf_rt_broadcaster.h
 ros/ros.h
 -
 tf2_msgs/TFMessage.h
@@ -28,7 +28,7 @@ geometry_msgs/TransformStamped.h
 realtime_tools/realtime_publisher.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/include/rm_gazebo/rm_robot_hw_sim.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo/include/rm_gazebo/rm_robot_hw_sim.h
 gazebo_ros_control/default_robot_hw_sim.h
 -
 hardware_interface/imu_sensor_interface.h
@@ -36,9 +36,9 @@ hardware_interface/imu_sensor_interface.h
 rm_common/hardware_interface/robot_state_interface.h
 -
 
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/src/rm_robot_hw_sim.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo/src/rm_robot_hw_sim.cpp
 rm_gazebo/rm_robot_hw_sim.h
-/home/nick/AardbeiSorteerMachine/src/rm_control/rm_gazebo/src/rm_gazebo/rm_robot_hw_sim.h
+/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_gazebo/src/rm_gazebo/rm_robot_hw_sim.h
 gazebo_ros_control/gazebo_ros_control_plugin.h
 -
 

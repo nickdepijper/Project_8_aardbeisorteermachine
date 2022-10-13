@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/catkin_generated/installspace/galaxy_camera.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/catkin_generated/installspace/galaxy_camera.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/galaxy_camera/cmake" TYPE FILE FILES
-    "/home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/catkin_generated/installspace/galaxy_cameraConfig.cmake"
-    "/home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/catkin_generated/installspace/galaxy_cameraConfig-version.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/catkin_generated/installspace/galaxy_cameraConfig.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/catkin_generated/installspace/galaxy_cameraConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/galaxy_camera" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/galaxy_camera" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/package.xml")
 endif()
 

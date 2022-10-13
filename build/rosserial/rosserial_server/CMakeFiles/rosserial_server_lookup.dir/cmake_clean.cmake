@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rosserial_server_lookup.dir/src/msg_lookup.cpp.o"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/librosserial_server_lookup.pdb"
-  "/home/nick/AardbeiSorteerMachine/devel/lib/librosserial_server_lookup.so"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/librosserial_server_lookup.pdb"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/lib/librosserial_server_lookup.so"
 )
 
 # Per-language clean rules from dependency scanning.

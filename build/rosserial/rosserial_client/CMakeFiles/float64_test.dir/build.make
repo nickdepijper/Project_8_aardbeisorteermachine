@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Include any dependencies generated for this target.
 include rosserial/rosserial_client/CMakeFiles/float64_test.dir/depend.make
@@ -58,17 +58,17 @@ include rosserial/rosserial_client/CMakeFiles/float64_test.dir/progress.make
 include rosserial/rosserial_client/CMakeFiles/float64_test.dir/flags.make
 
 rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o: rosserial/rosserial_client/CMakeFiles/float64_test.dir/flags.make
-rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o: /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_client/test/float64_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/float64_test.dir/test/float64_test.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_client/test/float64_test.cpp
+rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_client/test/float64_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/float64_test.dir/test/float64_test.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_client/test/float64_test.cpp
 
 rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/float64_test.dir/test/float64_test.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_client/test/float64_test.cpp > CMakeFiles/float64_test.dir/test/float64_test.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_client/test/float64_test.cpp > CMakeFiles/float64_test.dir/test/float64_test.cpp.i
 
 rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/float64_test.dir/test/float64_test.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_client/test/float64_test.cpp -o CMakeFiles/float64_test.dir/test/float64_test.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_client/test/float64_test.cpp -o CMakeFiles/float64_test.dir/test/float64_test.cpp.s
 
 rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o.requires:
 
@@ -88,15 +88,15 @@ float64_test_OBJECTS = \
 # External object files for target float64_test
 float64_test_EXTERNAL_OBJECTS =
 
-/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/build.make
-/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test: gtest/googlemock/gtest/libgtest.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test"
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/float64_test.dir/link.txt --verbose=$(VERBOSE)
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/test/float64_test.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/build.make
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test: gtest/googlemock/gtest/libgtest.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test: rosserial/rosserial_client/CMakeFiles/float64_test.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/float64_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-rosserial/rosserial_client/CMakeFiles/float64_test.dir/build: /home/nick/AardbeiSorteerMachine/devel/lib/rosserial_client/float64_test
+rosserial/rosserial_client/CMakeFiles/float64_test.dir/build: /home/nick/Project_8_aardbeisorteermachine/devel/lib/rosserial_client/float64_test
 
 .PHONY : rosserial/rosserial_client/CMakeFiles/float64_test.dir/build
 
@@ -105,10 +105,10 @@ rosserial/rosserial_client/CMakeFiles/float64_test.dir/requires: rosserial/rosse
 .PHONY : rosserial/rosserial_client/CMakeFiles/float64_test.dir/requires
 
 rosserial/rosserial_client/CMakeFiles/float64_test.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client && $(CMAKE_COMMAND) -P CMakeFiles/float64_test.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client && $(CMAKE_COMMAND) -P CMakeFiles/float64_test.dir/cmake_clean.cmake
 .PHONY : rosserial/rosserial_client/CMakeFiles/float64_test.dir/clean
 
 rosserial/rosserial_client/CMakeFiles/float64_test.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_client /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_client/CMakeFiles/float64_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_client /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_client/CMakeFiles/float64_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rosserial/rosserial_client/CMakeFiles/float64_test.dir/depend
 

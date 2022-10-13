@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,39 +38,39 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivac.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivac.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac/cmake" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivac-extras.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac/cmake" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivac-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac/cmake" TYPE FILE FILES
-    "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivacConfig.cmake"
-    "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivacConfig-version.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivacConfig.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_tivac/catkin_generated/installspace/rosserial_tivacConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac/src" TYPE DIRECTORY FILES
-    "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac/src/ros_lib"
-    "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac/src/ros_lib_energia"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac/src/ros_lib"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac/src/ros_lib_energia"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac" TYPE DIRECTORY FILES "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac/tivac-cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac" TYPE DIRECTORY FILES "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac/tivac-cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_tivac" TYPE PROGRAM FILES
-    "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac/src/rosserial_tivac/make_libraries_energia"
-    "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_tivac/src/rosserial_tivac/make_libraries_tiva"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac/src/rosserial_tivac/make_libraries_energia"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_tivac/src/rosserial_tivac/make_libraries_tiva"
     )
 endif()
 

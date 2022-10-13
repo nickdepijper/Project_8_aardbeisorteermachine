@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/nick/AardbeiSorteerMachine/src
-# Build directory: /home/nick/AardbeiSorteerMachine/build
+# Source directory: /home/nick/Project_8_aardbeisorteermachine/src
+# Build directory: /home/nick/Project_8_aardbeisorteermachine/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

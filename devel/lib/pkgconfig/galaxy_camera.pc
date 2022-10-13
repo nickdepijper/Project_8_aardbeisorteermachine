@@ -1,4 +1,4 @@
-prefix=/home/nick/AardbeiSorteerMachine/devel
+prefix=/home/nick/Project_8_aardbeisorteermachine/devel
 
 Name: galaxy_camera
 Description: Description of galaxy_camera

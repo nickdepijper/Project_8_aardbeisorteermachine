@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rosserial_arduino_generate_messages_nodejs"
-  "/home/nick/AardbeiSorteerMachine/devel/share/gennodejs/ros/rosserial_arduino/msg/Adc.js"
-  "/home/nick/AardbeiSorteerMachine/devel/share/gennodejs/ros/rosserial_arduino/srv/Test.js"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/share/gennodejs/ros/rosserial_arduino/msg/Adc.js"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/share/gennodejs/ros/rosserial_arduino/srv/Test.js"
 )
 
 # Per-language clean rules from dependency scanning.

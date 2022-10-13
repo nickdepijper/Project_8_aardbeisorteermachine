@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rosserial_mbed_generate_messages_cpp"
-  "/home/nick/AardbeiSorteerMachine/devel/include/rosserial_mbed/Adc.h"
-  "/home/nick/AardbeiSorteerMachine/devel/include/rosserial_mbed/Test.h"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/include/rosserial_mbed/Adc.h"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/include/rosserial_mbed/Test.h"
 )
 
 # Per-language clean rules from dependency scanning.

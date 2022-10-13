@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Include any dependencies generated for this target.
 include galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/depend.make
@@ -58,17 +58,17 @@ include galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/progress.make
 include galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/flags.make
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/flags.make
-galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o: /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o -c /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp
+galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp > CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp > CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.i
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera.cpp -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.s
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o.requires:
 
@@ -82,17 +82,17 @@ galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o.pr
 
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/flags.make
-galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o: /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o -c /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp
+galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp > CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp > CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.i
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver/src/galaxy_camera_node.cpp -o CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.s
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o.requires:
 
@@ -113,45 +113,45 @@ galaxy_camera_OBJECTS = \
 # External object files for target galaxy_camera
 galaxy_camera_EXTERNAL_OBJECTS =
 
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build.make
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libimage_transport.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libmessage_filters.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libclass_loader.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/libPocoFoundation.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroslib.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librospack.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcamera_info_manager.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcamera_calibration_parsers.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroscpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librostime.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcpp_common.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera"
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/galaxy_camera.dir/link.txt --verbose=$(VERBOSE)
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build.make
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libimage_transport.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libmessage_filters.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libclass_loader.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/libPocoFoundation.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroslib.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librospack.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcamera_info_manager.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcamera_calibration_parsers.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroscpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librostime.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcpp_common.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/galaxy_camera.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build: /home/nick/AardbeiSorteerMachine/devel/lib/galaxy_camera/galaxy_camera
+galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build: /home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera
 
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build
 
@@ -161,10 +161,10 @@ galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/requires: galaxy_camera_ro
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/requires
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -P CMakeFiles/galaxy_camera.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -P CMakeFiles/galaxy_camera.dir/cmake_clean.cmake
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/clean
 
 galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/depend
 

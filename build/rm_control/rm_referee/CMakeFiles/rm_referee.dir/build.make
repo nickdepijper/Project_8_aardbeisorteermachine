@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Include any dependencies generated for this target.
 include rm_control/rm_referee/CMakeFiles/rm_referee.dir/depend.make
@@ -58,17 +58,17 @@ include rm_control/rm_referee/CMakeFiles/rm_referee.dir/progress.make
 include rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/main.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/main.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/main.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/main.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/main.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/main.cpp > CMakeFiles/rm_referee.dir/src/main.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/main.cpp > CMakeFiles/rm_referee.dir/src/main.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/main.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/main.cpp -o CMakeFiles/rm_referee.dir/src/main.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/main.cpp -o CMakeFiles/rm_referee.dir/src/main.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o.requires:
 
@@ -82,17 +82,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o.provides.build: r
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee.cpp > CMakeFiles/rm_referee.dir/src/referee.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee.cpp > CMakeFiles/rm_referee.dir/src/referee.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee.cpp -o CMakeFiles/rm_referee.dir/src/referee.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee.cpp -o CMakeFiles/rm_referee.dir/src/referee.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o.requires:
 
@@ -106,17 +106,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o.provides.build
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/graph.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/common/graph.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/graph.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/graph.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/common/graph.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/graph.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/common/graph.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/graph.cpp > CMakeFiles/rm_referee.dir/src/common/graph.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/graph.cpp > CMakeFiles/rm_referee.dir/src/common/graph.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/common/graph.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/graph.cpp -o CMakeFiles/rm_referee.dir/src/common/graph.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/graph.cpp -o CMakeFiles/rm_referee.dir/src/common/graph.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o.requires:
 
@@ -130,17 +130,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o.provides.
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/ui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/common/ui.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/ui.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/ui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/common/ui.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/ui.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/common/ui.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/ui.cpp > CMakeFiles/rm_referee.dir/src/common/ui.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/ui.cpp > CMakeFiles/rm_referee.dir/src/common/ui.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/common/ui.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/common/ui.cpp -o CMakeFiles/rm_referee.dir/src/common/ui.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/common/ui.cpp -o CMakeFiles/rm_referee.dir/src/common/ui.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o.requires:
 
@@ -154,17 +154,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o.provides.bui
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/engineer_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o.requires:
 
@@ -178,17 +178,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/hero_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o.requires:
 
@@ -202,17 +202,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o.p
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/radar_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o.requires:
 
@@ -226,17 +226,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o.
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/referee_base.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/referee_base.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/referee_base.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/referee_base.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/referee_base.cpp > CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/referee_base.cpp > CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/referee_base.cpp -o CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/referee_base.cpp -o CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o.requires:
 
@@ -250,17 +250,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o.p
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/robot_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o.requires:
 
@@ -274,17 +274,17 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o.
 
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o: rm_control/rm_referee/CMakeFiles/rm_referee.dir/flags.make
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o -c /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.i"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.i
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp > CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.i
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.s"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.s
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee/src/referee/standard_referee.cpp -o CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.s
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o.requires:
 
@@ -313,85 +313,85 @@ rm_referee_OBJECTS = \
 # External object files for target rm_referee
 rm_referee_EXTERNAL_OBJECTS =
 
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/build.make
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libserial.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /home/nick/AardbeiSorteerMachine/devel/lib/librm_common.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libcomplementary_filter.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libtf.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libimu_filter.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libimu_filter_nodelet.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libnodeletlib.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libbondcpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libuuid.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libclass_loader.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/libPocoFoundation.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroslib.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librospack.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/liborocos-kdl.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libtf2_ros.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libmessage_filters.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libtf2.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libactionlib.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librostime.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libcpp_common.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librealtime_tools.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librostime.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libcpp_common.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable /home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee"
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rm_referee.dir/link.txt --verbose=$(VERBOSE)
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/main.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/graph.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/common/ui.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/engineer_referee.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/hero_referee.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/radar_referee.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/referee_base.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/robot_referee.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/src/referee/standard_referee.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/build.make
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libserial.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /home/nick/Project_8_aardbeisorteermachine/devel/lib/librm_common.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libcomplementary_filter.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libtf.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libimu_filter.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libimu_filter_nodelet.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libnodeletlib.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libbondcpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libuuid.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libclass_loader.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/libPocoFoundation.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroslib.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librospack.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/liborocos-kdl.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libtf2_ros.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libmessage_filters.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libtf2.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libactionlib.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librostime.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libcpp_common.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librealtime_tools.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libroscpp_serialization.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/librostime.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /opt/ros/melodic/lib/libcpp_common.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee: rm_control/rm_referee/CMakeFiles/rm_referee.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable /home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rm_referee.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-rm_control/rm_referee/CMakeFiles/rm_referee.dir/build: /home/nick/AardbeiSorteerMachine/devel/lib/rm_referee/rm_referee
+rm_control/rm_referee/CMakeFiles/rm_referee.dir/build: /home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_referee/rm_referee
 
 .PHONY : rm_control/rm_referee/CMakeFiles/rm_referee.dir/build
 
@@ -409,10 +409,10 @@ rm_control/rm_referee/CMakeFiles/rm_referee.dir/requires: rm_control/rm_referee/
 .PHONY : rm_control/rm_referee/CMakeFiles/rm_referee.dir/requires
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee && $(CMAKE_COMMAND) -P CMakeFiles/rm_referee.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee && $(CMAKE_COMMAND) -P CMakeFiles/rm_referee.dir/cmake_clean.cmake
 .PHONY : rm_control/rm_referee/CMakeFiles/rm_referee.dir/clean
 
 rm_control/rm_referee/CMakeFiles/rm_referee.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/rm_control/rm_referee /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee /home/nick/AardbeiSorteerMachine/build/rm_control/rm_referee/CMakeFiles/rm_referee.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_referee /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee /home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_referee/CMakeFiles/rm_referee.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rm_control/rm_referee/CMakeFiles/rm_referee.dir/depend
 

@@ -1,8 +1,0 @@
-prefix=/home/nick/AardbeiSorteerMachine/devel
-
-Name: appel
-Description: Description of appel
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

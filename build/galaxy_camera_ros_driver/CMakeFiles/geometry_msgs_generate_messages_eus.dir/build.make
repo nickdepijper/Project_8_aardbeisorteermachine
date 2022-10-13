@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Utility rule file for geometry_msgs_generate_messages_eus.
 
@@ -63,10 +63,10 @@ galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/buil
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 
 galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_eus.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -P CMakeFiles/geometry_msgs_generate_messages_eus.dir/cmake_clean.cmake
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 
 galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/galaxy_camera_ros_driver /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver /home/nick/AardbeiSorteerMachine/build/galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/galaxy_camera_ros_driver /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
 

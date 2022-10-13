@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"rosserial_server\" -Drosserial_server_lookup_EXPORTS
 
-CXX_INCLUDES = -I/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/include -I/home/nick/AardbeiSorteerMachine/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/python2.7 
+CXX_INCLUDES = -I/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/include -I/home/nick/Project_8_aardbeisorteermachine/devel/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /usr/include/python2.7 
 

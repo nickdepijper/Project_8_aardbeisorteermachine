@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/src/msg_lookup.cpp" "/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_server/CMakeFiles/rosserial_server_lookup.dir/src/msg_lookup.cpp.o"
+  "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/src/msg_lookup.cpp" "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_server/CMakeFiles/rosserial_server_lookup.dir/src/msg_lookup.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,8 +17,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_server/include"
-  "/home/nick/AardbeiSorteerMachine/devel/include"
+  "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/include"
+  "/home/nick/Project_8_aardbeisorteermachine/devel/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/python2.7"

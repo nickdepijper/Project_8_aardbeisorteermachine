@@ -1,8 +1,8 @@
-# Install script for directory: /home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw
+# Install script for directory: /home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/nick/AardbeiSorteerMachine/install")
+  set(CMAKE_INSTALL_PREFIX "/home/nick/Project_8_aardbeisorteermachine/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/build/rm_control/rm_hw/catkin_generated/installspace/rm_hw.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_hw/catkin_generated/installspace/rm_hw.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_hw/cmake" TYPE FILE FILES
-    "/home/nick/AardbeiSorteerMachine/build/rm_control/rm_hw/catkin_generated/installspace/rm_hwConfig.cmake"
-    "/home/nick/AardbeiSorteerMachine/build/rm_control/rm_hw/catkin_generated/installspace/rm_hwConfig-version.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_hw/catkin_generated/installspace/rm_hwConfig.cmake"
+    "/home/nick/Project_8_aardbeisorteermachine/build/rm_control/rm_hw/catkin_generated/installspace/rm_hwConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_hw" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_hw" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -59,12 +59,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_hw/rm_hw"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rm_hw" TYPE EXECUTABLE FILES "/home/nick/AardbeiSorteerMachine/devel/lib/rm_hw/rm_hw")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rm_hw" TYPE EXECUTABLE FILES "/home/nick/Project_8_aardbeisorteermachine/devel/lib/rm_hw/rm_hw")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_hw/rm_hw" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_hw/rm_hw")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_hw/rm_hw"
-         OLD_RPATH "/home/nick/AardbeiSorteerMachine/devel/lib:/opt/ros/melodic/lib:"
+         OLD_RPATH "/home/nick/Project_8_aardbeisorteermachine/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rm_hw/rm_hw")
@@ -79,12 +79,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librm_hw_loader_plugins.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/nick/AardbeiSorteerMachine/devel/lib/librm_hw_loader_plugins.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/nick/Project_8_aardbeisorteermachine/devel/lib/librm_hw_loader_plugins.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librm_hw_loader_plugins.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librm_hw_loader_plugins.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librm_hw_loader_plugins.so"
-         OLD_RPATH "/home/nick/AardbeiSorteerMachine/devel/lib:/opt/ros/melodic/lib:"
+         OLD_RPATH "/home/nick/Project_8_aardbeisorteermachine/devel/lib:/opt/ros/melodic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/librm_hw_loader_plugins.so")
@@ -93,17 +93,17 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/rm_hw" TYPE DIRECTORY FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw/include/rm_hw/" FILES_MATCHING REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/rm_hw" TYPE DIRECTORY FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw/include/rm_hw/" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_hw" TYPE DIRECTORY FILES
-    "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw/config"
-    "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw/launch"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw/config"
+    "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw/launch"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_hw" TYPE FILE FILES "/home/nick/AardbeiSorteerMachine/src/rm_control/rm_hw/rm_hw_loader_plugins.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rm_hw" TYPE FILE FILES "/home/nick/Project_8_aardbeisorteermachine/src/rm_control/rm_hw/rm_hw_loader_plugins.xml")
 endif()
 

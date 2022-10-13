@@ -2,7 +2,7 @@
 DEVELSPACE = 'FALSE' == 'TRUE'
 INSTALLSPACE = 'TRUE' == 'TRUE'
 
-CATKIN_DEVEL_PREFIX = '/home/nick/AardbeiSorteerMachine/devel'
+CATKIN_DEVEL_PREFIX = '/home/nick/Project_8_aardbeisorteermachine/devel'
 
 CATKIN_GLOBAL_BIN_DESTINATION = 'bin'
 CATKIN_GLOBAL_ETC_DESTINATION = 'etc'
@@ -20,14 +20,14 @@ CATKIN_PACKAGE_LIBEXEC_DESTINATION = 'lib/rosserial_arduino'
 CATKIN_PACKAGE_PYTHON_DESTINATION = 'lib/python2.7/dist-packages/rosserial_arduino'
 CATKIN_PACKAGE_SHARE_DESTINATION = 'share/rosserial_arduino'
 
-CMAKE_BINARY_DIR = '/home/nick/AardbeiSorteerMachine/build'
-CMAKE_CURRENT_BINARY_DIR = '/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_arduino'
-CMAKE_CURRENT_SOURCE_DIR = '/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_arduino'
-CMAKE_INSTALL_PREFIX = '/home/nick/AardbeiSorteerMachine/install'
-CMAKE_SOURCE_DIR = '/home/nick/AardbeiSorteerMachine/src'
+CMAKE_BINARY_DIR = '/home/nick/Project_8_aardbeisorteermachine/build'
+CMAKE_CURRENT_BINARY_DIR = '/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_arduino'
+CMAKE_CURRENT_SOURCE_DIR = '/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_arduino'
+CMAKE_INSTALL_PREFIX = '/home/nick/Project_8_aardbeisorteermachine/install'
+CMAKE_SOURCE_DIR = '/home/nick/Project_8_aardbeisorteermachine/src'
 
 PKG_CMAKE_DIR = '${rosserial_arduino_DIR}'
 
 PROJECT_NAME = 'rosserial_arduino'
-PROJECT_BINARY_DIR = '/home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_arduino'
-PROJECT_SOURCE_DIR = '/home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_arduino'
+PROJECT_BINARY_DIR = '/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_arduino'
+PROJECT_SOURCE_DIR = '/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_arduino'

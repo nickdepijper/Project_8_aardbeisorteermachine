@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/AardbeiSorteerMachine/src
+CMAKE_SOURCE_DIR = /home/nick/Project_8_aardbeisorteermachine/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/AardbeiSorteerMachine/build
+CMAKE_BINARY_DIR = /home/nick/Project_8_aardbeisorteermachine/build
 
 # Utility rule file for rosserial_test_rosserial_lib.
 
@@ -57,8 +57,8 @@ rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib: rosserial/ross
 
 
 rosserial/rosserial_test/include/rosserial:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/nick/AardbeiSorteerMachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating include/rosserial"
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test && /home/nick/AardbeiSorteerMachine/devel/env.sh /usr/bin/python2 /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_test/scripts/generate_client_ros_lib.py /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test/include
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating include/rosserial"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test && /home/nick/Project_8_aardbeisorteermachine/devel/env.sh /usr/bin/python2 /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_test/scripts/generate_client_ros_lib.py /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test/include
 
 rosserial_test_rosserial_lib: rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib
 rosserial_test_rosserial_lib: rosserial/rosserial_test/include/rosserial
@@ -72,10 +72,10 @@ rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/build: ross
 .PHONY : rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/build
 
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/clean:
-	cd /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test && $(CMAKE_COMMAND) -P CMakeFiles/rosserial_test_rosserial_lib.dir/cmake_clean.cmake
+	cd /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test && $(CMAKE_COMMAND) -P CMakeFiles/rosserial_test_rosserial_lib.dir/cmake_clean.cmake
 .PHONY : rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/clean
 
 rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/depend:
-	cd /home/nick/AardbeiSorteerMachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/AardbeiSorteerMachine/src /home/nick/AardbeiSorteerMachine/src/rosserial/rosserial_test /home/nick/AardbeiSorteerMachine/build /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test /home/nick/AardbeiSorteerMachine/build/rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nick/Project_8_aardbeisorteermachine/src /home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_test /home/nick/Project_8_aardbeisorteermachine/build /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test /home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : rosserial/rosserial_test/CMakeFiles/rosserial_test_rosserial_lib.dir/depend
 
