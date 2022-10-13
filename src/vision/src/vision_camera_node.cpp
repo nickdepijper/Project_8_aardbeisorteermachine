@@ -8,6 +8,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include "Strawberry.h"
 using namespace cv;
 
 static const std::string OPENCV_WINDOW  = "Image window";
@@ -91,6 +92,7 @@ class ImageConverter
      ImageConverter ic;
      ros::NodeHandle n;
      ros::Publisher image_color = n.advertise<std_msgs::ColorRGBA>("image_color", 1000);
+     
      while (ros::ok()){
       image_color.publish(ic.get_avarage_color());
       ros::spinOnce();
