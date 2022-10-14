@@ -3,9 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "/home/nick/AardbeiSorteerMachineROS/devel/include/**",
+                "/home/nick/Project_8_aardbeisorteermachine/devel/include/**",
                 "/opt/ros/melodic/include/**",
-                "/home/nick/AardbeiSorteerMachineROS/**",
+                "/home/nick/Project_8_aardbeisorteermachine/**",
                 "/usr/include/**"
             ],
             "defines": [],
