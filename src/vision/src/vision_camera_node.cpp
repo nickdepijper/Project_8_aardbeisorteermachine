@@ -10,7 +10,7 @@
 #include <opencv2/highgui/highgui.hpp>
 //#include "include/StrawberryMachine.h"
 #include "include/Core/Strawberry.h"
-#include "include/Core/SystemState.h"
+//#include "include/Core/SystemState.h"
 using namespace cv;
 
 static const std::string OPENCV_WINDOW  = "Image window";
@@ -71,7 +71,8 @@ class ImageConverter
        cvtColor(cv_ptr->image, hsv_image, COLOR_BGR2HSV);
        ROS_INFO_STREAM("binary image converted?");
        //Threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
-
+       this->DetectStrawberry(this->hsv_image);
+       
        
        // Update GUI Window
        //cv::imshow(OPENCV_WINDOW, cv_ptr->image);
@@ -108,9 +109,12 @@ class ImageConverter
     //Thresh Berry channel and isolate Berry
     inRange(input, red_min, red_max, Berry);
     threshold(this->Berry, this->Berry, 0, 255, cv::ThresholdTypes::THRESH_OTSU);
+    
     cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
     cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1), 4);
-    
+    Mat merge = this->Berry + this->Crown;
+    //imshow("crown", this->Crown);
+    imshow("strawberry merge", merge);
 
     std::vector<glm::vec3> found_crowns;
     FindBoundingCircle(this->Crown, &found_crowns, crown_min_radius);
@@ -119,7 +123,7 @@ class ImageConverter
     FindBoundingCircle(this->Berry, &found_berries, berry_min_radius);
     
     if (found_crowns.size() != found_berries.size()) {
-      Logger::LogWarning("Berry and crown contour mismatch: found berries does not equal found crowns");
+      //Logger::LogWarning("Berry and crown contour mismatch: found berries does not equal found crowns");
       return;
     }
 
@@ -160,6 +164,7 @@ class ImageConverter
         detec.physical_position = CastPointToWorld(detec.center_position_in_frame); 
         
         this->detected.push_back(detec);
+        ROS_WARN_STREAM(this->detected.size());
       }
     }
   }
@@ -227,9 +232,9 @@ class ImageConverter
      while (ros::ok()){
       image_color.publish(ic.get_avarage_color());
       ros::spinOnce();
-      ic.DetectStrawberry(ic.hsv_image);
-      imshow("strawberry", ic.Berry);
-      imshow("strawberry", ic.Crown);
+      //ic.DetectStrawberry(ic.hsv_image);
+      //imshow("strawberry", ic.Berry);
+      //imshow("strawberry", ic.Crown);
      }
      
      ros::spin();

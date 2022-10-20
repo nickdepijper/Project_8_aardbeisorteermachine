@@ -20,6 +20,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/opencv"
+  "/home/nick/Project_8_aardbeisorteermachine/src/vision/include"
+  "/home/nick/Project_8_aardbeisorteermachine/src/vision/."
   )
 
 # Targets to which this target links.

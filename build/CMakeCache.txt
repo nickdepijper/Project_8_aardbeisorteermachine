@@ -728,6 +728,12 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//Value Computed by CMake
+aardbei_controller_pkg_BINARY_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/build/aardbei_controller_pkg
+
+//Value Computed by CMake
+aardbei_controller_pkg_SOURCE_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/src/aardbei_controller_pkg
+
 //The directory containing a CMake configuration file for actionlib.
 actionlib_DIR:PATH=/opt/ros/melodic/share/actionlib/cmake
 
@@ -926,6 +932,9 @@ nodelet_DIR:PATH=/opt/ros/melodic/share/nodelet/cmake
 
 //Path to a library.
 onelib:FILEPATH=/usr/lib/x86_64-linux-gnu/libsdformat.so
+
+//The directory containing a CMake configuration file for opencv2.
+opencv2_DIR:PATH=opencv2_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/melodic/share/pluginlib/cmake
@@ -1181,6 +1190,9 @@ urdf_DIR:PATH=/opt/ros/melodic/share/urdf/cmake
 
 //Value Computed by CMake
 vision_BINARY_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/build/vision
+
+//Dependencies for target
+vision_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
 vision_SOURCE_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/src/vision
