@@ -167,57 +167,69 @@ class ImageConverter
         ROS_WARN_STREAM(this->detected.size());
       }
     }
+    for (int i = 0; i < detected.size(); i++) {
+		  Strawberry detected_strawberry = detected[i];
+      if (detected_strawberry.valid) {
+        cv::line(hsv_image, detected_strawberry.GetBerryCenter(), detected_strawberry.GetCrownCenter(), cv::Scalar(255, 0, 0), 2);
+        float distance = glm::distance(detected_strawberry.berry_center_pixel_pos, detected_strawberry.crown_center_pixel_pos);
+        cv::circle(hsv_image, detected_strawberry.GetBerryCenter(), distance, cv::Scalar(0, 255, 255), 2);
+        cv::circle(hsv_image, detected_strawberry.GetStrawberryWidestPoint1(), 10, cv::Scalar(0, 255, 255), 2);
+        cv::circle(hsv_image, detected_strawberry.GetStrawberryWidestPoint2(), 10, cv::Scalar(0, 255, 255), 2);
+      }
+	}
+  imshow("Test", hsv_image);
   }
+
+
     void FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius)
-{
-	std::vector<std::vector<cv::Point> > contours;
-	std::vector<cv::Vec4i> hierarchy;
-	cv::findContours(input, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
+      {
+        std::vector<std::vector<cv::Point> > contours;
+        std::vector<cv::Vec4i> hierarchy;
+        cv::findContours(input, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
 
-	if (contours.size() == 0 || contours.size() > 50) {
-		return;
-	}
+        if (contours.size() == 0 || contours.size() > 50) {
+          return;
+        }
 
-	std::vector<std::vector<Point>> contours_poly(contours.size());
-	std::vector<Rect> boundRect(contours.size());
-	std::vector<Point2f>center(contours.size());
-	std::vector<float>radius(contours.size());
+        std::vector<std::vector<Point>> contours_poly(contours.size());
+        std::vector<Rect> boundRect(contours.size());
+        std::vector<Point2f>center(contours.size());
+        std::vector<float>radius(contours.size());
 
-	for (size_t i = 0; i < contours.size(); i++)
-	{
-		approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
-		boundRect[i] = boundingRect(Mat(contours_poly[i]));
-		minEnclosingCircle(contours_poly[i], center[i], radius[i]);
-	}
+        for (size_t i = 0; i < contours.size(); i++)
+        {
+          approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
+          boundRect[i] = boundingRect(Mat(contours_poly[i]));
+          minEnclosingCircle(contours_poly[i], center[i], radius[i]);
+        }
 
-	std::vector<glm::vec2> valid;
+        std::vector<glm::vec2> valid;
 
-	for (int i = 0; i < contours.size(); i++) {
-		if (radius[i] > min_radius) {
-			valid.push_back(glm::vec2(i, radius[i]));
-		}
-	}
+        for (int i = 0; i < contours.size(); i++) {
+          if (radius[i] > min_radius) {
+            valid.push_back(glm::vec2(i, radius[i]));
+          }
+        }
 
-	for (int i = 0; i < valid.size(); i++) {
-		cv::Point c_point = center[valid[i].x];
-		arr->push_back(glm::vec3(c_point.x, c_point.y, valid[i].y));
-	}
-	
-	return;
-}
+        for (int i = 0; i < valid.size(); i++) {
+          cv::Point c_point = center[valid[i].x];
+          arr->push_back(glm::vec3(c_point.x, c_point.y, valid[i].y)); // gives back the center points (x,y) and radius of circle around contour
+        }
+	//i, i, 
+
     glm::dvec3 CastPointToWorld(glm::dvec2 point)
-{
-	glm::dvec3 output = glm::dvec3();
-	glm::dvec3 frame_physical_center = glm::dvec3(0.60845, -0.52619, 0.29200);
-	double meter_per_pixel = 0.212 / double(1280);
-	
-	
-	glm::dvec2 frame_center = glm::dvec2(double(1280) / 2.0, double(960) / 2.0);
-	glm::dvec2 physical_distance = (point - frame_center) * glm::dvec2(meter_per_pixel, meter_per_pixel);
-	output = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
+      {
+        glm::dvec3 output = glm::dvec3();
+        glm::dvec3 frame_physical_center = glm::dvec3(0.60845, -0.52619, 0.29200);
+        double meter_per_pixel = 0.212 / double(1280);
+        
+        
+        glm::dvec2 frame_center = glm::dvec2(double(1280) / 2.0, double(960) / 2.0);
+        glm::dvec2 physical_distance = (point - frame_center) * glm::dvec2(meter_per_pixel, meter_per_pixel);
+        output = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
 
-	return output;
-}
+        return output;
+      }
 
 
 };
