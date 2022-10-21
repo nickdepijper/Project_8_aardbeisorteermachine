@@ -79,6 +79,9 @@ vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o
  /opt/ros/melodic/include/sensor_msgs/image_encodings.h
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h
  /opt/ros/melodic/include/std_msgs/Header.h
+ /opt/ros/melodic/include/std_msgs/Int16MultiArray.h
+ /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+ /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
  /opt/ros/melodic/include/std_msgs/String.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h

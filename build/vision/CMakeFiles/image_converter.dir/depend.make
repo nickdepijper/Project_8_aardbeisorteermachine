@@ -78,6 +78,9 @@ vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/mel
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/sensor_msgs/image_encodings.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/ColorRGBA.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Int16MultiArray.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/String.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h

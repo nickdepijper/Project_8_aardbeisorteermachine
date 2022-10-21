@@ -728,6 +728,9 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//Path to a file.
+_path_name:FILEPATH=/home/nick/Project_8_aardbeisorteermachine/src/rqt_ez_publisher/test/function_test.py
+
 //Value Computed by CMake
 aardbei_controller_pkg_BINARY_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/build/aardbei_controller_pkg
 
@@ -1143,6 +1146,12 @@ rostest_DIR:PATH=/opt/ros/melodic/share/rostest/cmake
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/melodic/share/rostime/cmake
 
+//Value Computed by CMake
+rqt_ez_publisher_BINARY_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/build/rqt_ez_publisher
+
+//Value Computed by CMake
+rqt_ez_publisher_SOURCE_DIR:STATIC=/home/nick/Project_8_aardbeisorteermachine/src/rqt_ez_publisher
+
 //The directory containing a CMake configuration file for sensor_msgs.
 sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
 
@@ -1526,7 +1535,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=28
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=29
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
