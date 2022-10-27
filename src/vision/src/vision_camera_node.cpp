@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "opencv2/opencv.hpp"
+#include "opencv2/features2d/features2d.hpp"
 #include <std_msgs/String.h>
 #include <std_msgs/ColorRGBA.h>
 #include <std_msgs/Int16MultiArray.h>
@@ -41,10 +42,10 @@ class ImageConverter
      Mat hsv_image;
      Mat Crown;
 		 Mat Berry;
-     Scalar green_min_copy = {35, 30, 30};
-     Scalar green_max_copy = {103, 200, 150};
-     Scalar red_max_copy = {15, 255, 255};
-     Scalar red_min_copy = {0, 0.5, 0.5};
+     Scalar green_min_copy = {40, 30, 30};
+     Scalar green_max_copy = {58, 200, 150};
+     Scalar red_min_copy = {4, 0.5, 0.5};
+     Scalar red_max_copy = {39, 255, 255};
      ImageConverter()
        : it_(nh_)
     {
@@ -104,19 +105,17 @@ class ImageConverter
       std::vector<Mat> splitImage;
       Strawberry detected = Strawberry();
       split(input, splitImage);
-      imshow("image 1", splitImage.at(0));
-      imshow("image 2", splitImage.at(1));
-      imshow("image 3", splitImage.at(2));
-
-      Mat Background, BackgroundInv;
+      //imshow("image 1", splitImage.at(0));
+      //imshow("image 2", splitImage.at(1));
+      //imshow("image 3", splitImage.at(2));
 
       //Scalar green_min(45, 125, 0);
       //Scalar green_max(75, 255, 255);
-      Scalar green_min(35, 30, 30);
-      Scalar green_max(103, 200, 150);
+      Scalar green_min(48, 199, 247);
+      Scalar green_max(58, 255, 255);
 
-      Scalar red_min(0, 0.5, 0.5);
-      Scalar red_max(15, 255, 255);
+      Scalar red_min(4, 255, 247);
+      Scalar red_max(39, 255, 255);
       
       Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3), cv::Point(-1, -1));
       //Thresh Crown channel and isolate Crown
@@ -131,9 +130,80 @@ class ImageConverter
       cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
       cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1), 4);
       Mat merge = this->Crown + this->Berry;
-      //imshow("crown", this->Crown);
+      imshow("crown", this->Crown);
+      imshow("berry", this->Berry);
       imshow("strawberry merge", merge);
-      ROS_WARN_STREAM("gmi: " << green_min_copy << "gma: " << green_max_copy);
+      //ROS_WARN_STREAM("gmi: " << green_min_copy << "gma: " << green_max_copy);
+      // Setup SimpleBlobDetector parameters.
+      SimpleBlobDetector::Params params_1;
+        
+      // Change thresholds
+      params_1.minThreshold = 0;
+      params_1.maxThreshold = 255;
+      
+      params_1.filterByColor = true;
+      params_1.blobColor = 255;
+
+
+        // Filter by Area.
+      params_1.filterByArea = true;
+      params_1.minArea = 800;
+      params_1.maxArea = 30000;
+        
+        // Filter by Circularity
+      params_1.filterByCircularity = false;
+      params_1.minCircularity = 0.1;
+        
+        // Filter by Convexity
+      params_1.filterByConvexity = false;
+      params_1.minConvexity = 0.87;
+        
+        // Filter by Inertia
+      params_1.filterByInertia = false;
+      params_1.minInertiaRatio = 0.01;
+
+      // Setup SimpleBlobDetector parameters.
+      SimpleBlobDetector::Params params_2;
+            // Change thresholds
+      params_2.minThreshold = 0;
+      params_2.maxThreshold = 255;
+      
+      params_2.filterByColor = true;
+      params_2.blobColor = 255;
+
+
+        // Filter by Area.
+      params_2.filterByArea = true;
+      params_2.minArea = 400;
+      params_2.maxArea = 20000;
+        
+        // Filter by Circularity
+      params_2.filterByCircularity = false;
+      params_2.minCircularity = 0.1;
+        
+        // Filter by Convexity
+      params_2.filterByConvexity = false;
+      params_2.minConvexity = 0.87;
+        
+        // Filter by Inertia
+      params_2.filterByInertia = false;
+      params_2.minInertiaRatio = 0.01;
+
+      std::vector<KeyPoint> keypoints_berry;
+      std::vector<KeyPoint> keypoints_crown;
+      Ptr<SimpleBlobDetector> detector_1 = SimpleBlobDetector::create(params_1);
+      Ptr<SimpleBlobDetector> detector_2 = SimpleBlobDetector::create(params_2);
+      Mat cropped_image = merge(Range(150, 800), Range (290, 1100));
+      Mat cropped_image_berry = this->Berry(Range(150, 800), Range (290, 1100));
+      Mat cropped_image_crown = this->Crown(Range(150, 800), Range (290, 1100));
+      
+      detector_1->detect(cropped_image_berry, keypoints_berry);
+      detector_2->detect(cropped_image_crown, keypoints_crown);
+
+      
+      drawKeypoints(cropped_image, keypoints_berry, cropped_image, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+      drawKeypoints(cropped_image, keypoints_crown, cropped_image, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+      imshow("keypoints", cropped_image);
 
       std::vector<glm::vec3> found_crowns;
       FindBoundingCircle(this->Crown, &found_crowns, crown_min_radius);
@@ -266,6 +336,60 @@ class ImageConverter
         this->red_max_copy [0] = hsv.data[9], hsv.data[10], hsv.data[11];    
         ROS_WARN_STREAM("gmi: " << this->green_min_copy << "gma: " << this->green_max_copy);
     }
+    void DetectStrawberryTest(Mat input) 
+      {
+        
+        // Setup SimpleBlobDetector parameters.
+        SimpleBlobDetector::Params params;
+        
+        // Change thresholds
+        params.minThreshold = 200;
+        params.maxThreshold = 255;
+        
+        // Filter by Area.
+        params.filterByArea = false;
+        params.minArea = 100;
+        params.maxArea = 3000;
+        
+        // Filter by Circularity
+        params.filterByCircularity = true;
+        params.minCircularity = 0.1;
+        
+        // Filter by Convexity
+        params.filterByConvexity = false;
+        params.minConvexity = 0.87;
+        
+        // Filter by Inertia
+        params.filterByInertia = false;
+        params.minInertiaRatio = 0.01;
+
+        std::vector<Mat> splitImage;
+        split(input, splitImage);
+        Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3), cv::Point(-1, -1));
+
+
+        //threshold(splitImage.at(2), splitImage.at(2), 0, 255, cv::ThresholdTypes::THRESH_OTSU);
+        //cv::morphologyEx(splitImage.at(2), splitImage.at(2), cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
+        //cv::morphologyEx(splitImage.at(2), splitImage.at(2), cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
+
+        // Set up the detector with default parameters.
+        std::vector<KeyPoint> keypoints;
+        Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
+        detector->detect(splitImage.at(2), keypoints);
+        ROS_WARN_STREAM(input.channels());
+        Mat im_with_keypoints;
+        drawKeypoints(splitImage.at(2), keypoints, im_with_keypoints, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+        imshow("keypoints", im_with_keypoints);
+        imshow("image r", splitImage.at(0));
+        imshow("image g", splitImage.at(1));
+        imshow("image b", splitImage.at(2));
+        ROS_WARN_STREAM(keypoints.size());
+        waitKey(0);
+        
+        
+      
+
+      }
     
 
 
@@ -288,15 +412,27 @@ class ImageConverter
      ros::NodeHandle n;
      ros::Publisher image_color = n.advertise<std_msgs::ColorRGBA>("image_color", 1000);
      ros::Subscriber h = n.subscribe("h", 1000, CB_h);
+    //  Mat foto_copy =  imread("/home/nick/Downloads/test.png", 1);
+    //  imshow("original", foto_copy);
+    //  waitKey(0);
+    //   if(! foto_copy.data )                              // Check for invalid input
+    //   {
+    //     ROS_WARN_STREAM("Could not open or find the image");
+    //   }
+      //imshow("foto", foto_copy);
+      //waitKey(0);
+      // ic.DetectStrawberryTest(foto_copy);
      
      while (ros::ok()){
-      image_color.publish(ic.get_avarage_color());
+      
+      
       if (hsv_real.data.size() >= 12){
         ic.hsv_configurator(hsv_real);
       }
+
       ros::spinOnce();
       
-      //ic.DetectStrawberry(ic.hsv_image);
+     
       //imshow("strawberry", ic.Berry);
       //imshow("strawberry", ic.Crown);
      }

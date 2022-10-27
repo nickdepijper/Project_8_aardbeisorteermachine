@@ -31,6 +31,8 @@ ros/ros.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/ros/ros.h
 opencv2/opencv.hpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/opencv2/opencv.hpp
+opencv2/features2d/features2d.hpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/opencv2/features2d/features2d.hpp
 std_msgs/String.h
 -
 std_msgs/ColorRGBA.h

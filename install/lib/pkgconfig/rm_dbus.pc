@@ -1,0 +1,8 @@
+prefix=/home/nick/Project_8_aardbeisorteermachine/install
+
+Name: rm_dbus
+Description: Description of rm_dbus
+Version: 0.1.15
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rm_common

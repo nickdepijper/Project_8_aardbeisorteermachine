@@ -1,0 +1,8 @@
+prefix=/home/nick/Project_8_aardbeisorteermachine/install
+
+Name: galaxy_camera
+Description: Description of galaxy_camera
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

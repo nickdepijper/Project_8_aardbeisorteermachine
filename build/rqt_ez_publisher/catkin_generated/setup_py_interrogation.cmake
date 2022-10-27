@@ -1,0 +1,7 @@
+set(rqt_ez_publisher_SETUP_PY_SETUP_MODULE "distutils.core")
+set(rqt_ez_publisher_SETUP_PY_VERSION "0.5.0")
+set(rqt_ez_publisher_SETUP_PY_SCRIPTS "")
+set(rqt_ez_publisher_SETUP_PY_PACKAGES "rqt_ez_publisher")
+set(rqt_ez_publisher_SETUP_PY_PACKAGE_DIRS "src/rqt_ez_publisher")
+set(rqt_ez_publisher_SETUP_PY_MODULES "")
+set(rqt_ez_publisher_SETUP_PY_MODULE_DIRS "")
