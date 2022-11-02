@@ -37,6 +37,7 @@ private:
   std::vector<Strawberry> detected;
   int counter = 0;
   double angles[10];
+  std::vector<Strawberry> *arr;
 
 public:
   cv_bridge::CvImagePtr cv_ptr;
@@ -210,7 +211,7 @@ public:
 
     detector_1->detect(cropped_image_berry, keypoints_berry);
     detector_2->detect(cropped_image_crown, keypoints_crown);
-    //std::vector<Strawberry> *arr;
+    
     
 
     if (keypoints_berry.size() != keypoints_crown.size())
@@ -228,11 +229,11 @@ public:
         angles[i] = angle;
         ROS_WARN_STREAM(angles[0]);
         // x and y crop offsets compensate for cropping and opencv coordinate switch (x,y) = (y,x)
-        Point2f upper_left;
+        Point upper_left;
         upper_left.x = keypoints_berry.at(i).pt.x - (keypoints_berry.at(i).size / 2) + y_crop_start;
         upper_left.y = keypoints_berry.at(i).pt.y - (keypoints_berry.at(i).size / 2) + x_crop_start;
 
-        Point2f lower_right;
+        Point lower_right;
         lower_right.x = keypoints_berry.at(i).pt.x + (keypoints_berry.at(i).size / 2) + y_crop_start;
         lower_right.y = keypoints_berry.at(i).pt.y + (keypoints_berry.at(i).size / 2) + x_crop_start;
       
@@ -245,7 +246,7 @@ public:
         strawberry.crown_center_pixel_pos.x = keypoints_crown.at(i).pt.x;
         strawberry.crown_center_pixel_pos.y = keypoints_crown.at(i).pt.y;
         strawberry.angle_to_belt_dir = angle;
-        //arr->push_back(strawberry);
+        arr->push_back(strawberry);
 
       }
     }
