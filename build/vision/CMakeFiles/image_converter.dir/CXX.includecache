@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Core/Strawberry.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Strawberry.h
 Util/Object.h
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Core/Util/Object.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/Object.h
 Util/IComparable.h
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Core/Util/IComparable.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/IComparable.h
 glm/glm.hpp
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Core/glm/glm.hpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/glm/glm.hpp
 opencv2/opencv.hpp
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Core/opencv2/opencv.hpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/opencv2/opencv.hpp
 
-/home/nick/Project_8_aardbeisorteermachine/src/vision/include/Util/IComparable.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/IComparable.h
 
-/home/nick/Project_8_aardbeisorteermachine/src/vision/include/Util/Object.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/Object.h
 string
 -
 sstream
@@ -51,8 +51,8 @@ opencv2/imgproc.hpp
 -
 opencv2/highgui/highgui.hpp
 -
-include/Core/Strawberry.h
-/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Core/Strawberry.h
+include/Strawberry.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Strawberry.h
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h
