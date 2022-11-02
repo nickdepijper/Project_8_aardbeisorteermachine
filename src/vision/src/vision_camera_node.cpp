@@ -11,7 +11,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 //#include "include/StrawberryMachine.h"
-#include "include/Core/Strawberry.h"
+#include "include/Strawberry.h"
 //#include "include/Core/SystemState.h"
 using namespace cv;
 
@@ -36,13 +36,14 @@ class ImageConverter
 	   double crown_min_radius = 2;
      std::vector<Strawberry> detected;
      int counter = 0;
+     int angles[10];
      
    public:
      cv_bridge::CvImagePtr cv_ptr;
      Mat hsv_image;
      Mat Crown;
 		 Mat Berry;
-     Scalar green_min_copy = {40, 30, 30};
+     Scalar green_min_copy = {42, 30, 30};
      Scalar green_max_copy = {58, 200, 150};
      Scalar red_min_copy = {4, 0.5, 0.5};
      Scalar red_max_copy = {39, 255, 255};
@@ -104,6 +105,7 @@ class ImageConverter
     void DetectStrawberry(Mat input) {
       std::vector<Mat> splitImage;
       Strawberry detected = Strawberry();
+      Mat detected_strawberries = input;
       split(input, splitImage);
       //imshow("image 1", splitImage.at(0));
       //imshow("image 2", splitImage.at(1));
@@ -111,11 +113,11 @@ class ImageConverter
 
       //Scalar green_min(45, 125, 0);
       //Scalar green_max(75, 255, 255);
-      Scalar green_min(48, 199, 247);
+      Scalar green_min(44, 199, 247);
       Scalar green_max(58, 255, 255);
 
       Scalar red_min(4, 255, 247);
-      Scalar red_max(39, 255, 255);
+      Scalar red_max(53, 255, 255);
       
       Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3), cv::Point(-1, -1));
       //Thresh Crown channel and isolate Crown
@@ -132,7 +134,7 @@ class ImageConverter
       Mat merge = this->Crown + this->Berry;
       imshow("crown", this->Crown);
       imshow("berry", this->Berry);
-      imshow("strawberry merge", merge);
+      //imshow("strawberry merge", merge);
       //ROS_WARN_STREAM("gmi: " << green_min_copy << "gma: " << green_max_copy);
       // Setup SimpleBlobDetector parameters.
       SimpleBlobDetector::Params params_1;
@@ -199,84 +201,41 @@ class ImageConverter
       
       detector_1->detect(cropped_image_berry, keypoints_berry);
       detector_2->detect(cropped_image_crown, keypoints_crown);
-
       
+
+      if (keypoints_berry.size() != keypoints_crown.size()) {
+        ROS_WARN_STREAM("Amount berries does not equal amount crowns");
+      }
+      else {
+        for (int i = 0 ; i < keypoints_berry.size(); i++)
+        {
+          line(cropped_image, keypoints_berry.at(i).pt,keypoints_crown.at(i).pt, cv::Scalar(0, 0, 0), 2);
+          double crown_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y),glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y));
+		      double belt_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_berry.at(i).pt.y));
+          double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)) * (180.0 / M_PI);
+          angles[i] = angle;
+          ROS_WARN_STREAM(angles[0]);
+
+          Point2f upper_left;
+          upper_left.x = keypoints_berry.at(i).pt.x - (keypoints_berry.at(i).size / 2) - 10;
+          upper_left.y = keypoints_berry.at(i).pt.y + (keypoints_berry.at(i).size / 2) + 10;
+
+          Point2f lower_right;
+          lower_right.x = keypoints_berry.at(i).pt.x + (keypoints_berry.at(i).size / 2) + 10;
+          lower_right.y = keypoints_berry.at(i).pt.y - (keypoints_berry.at(i).size / 2) - 10;
+
+          rectangle(detected_strawberries, upper_left, lower_right, cv::Scalar(0, 0, 255));
+          imshow("Detected strawberries", detected_strawberries);
+        }
+      }
+
       drawKeypoints(cropped_image, keypoints_berry, cropped_image, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
       drawKeypoints(cropped_image, keypoints_crown, cropped_image, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
       imshow("keypoints", cropped_image);
 
-      std::vector<glm::vec3> found_crowns;
-      FindBoundingCircle(this->Crown, &found_crowns, crown_min_radius);
-      
-      std::vector<glm::vec3> found_berries;
-      FindBoundingCircle(this->Berry, &found_berries, berry_min_radius);
-      
-      if (found_crowns.size() != found_berries.size()) {
-        ROS_WARN_STREAM("Berry and crown contour mismatch: found berries does not equal found crowns");
-        imshow("Test", hsv_image);
-        ROS_WARN_STREAM("amount crowns: " << found_crowns.size() << " and found berries: " << found_berries.size());
-        return;
-      }
 
-      //glm::dvec3 frame_physical_center = glm::dvec3(config->vision_config.conveyor_start[0], config->vision_config.conveyor_start[1], config->vision_config.conveyor_start[2]);
-      for (int i = 0; i < found_berries.size(); i++) {
-        glm::vec2 berry_center_pixel = found_berries[i];
-        glm::vec2 crown_center_pixel = glm::vec2(0.0f, 0.0f);
-        double smallest_distance = 0;
-        int index = 0;
-        for (int k = 0; k < found_crowns.size(); k++) {
-          crown_center_pixel = found_crowns[i];
-          float distance = glm::distance(berry_center_pixel, crown_center_pixel);
-          if (distance < smallest_distance) {
-            index = k;
-            smallest_distance = distance;
-          }
-        }
-        crown_center_pixel = found_crowns[index];
-        Strawberry detec;
-        detec.valid = false;
-        detec.crown_center_pixel_pos = glm::vec2(crown_center_pixel.x, crown_center_pixel.y);
-        detec.berry_center_pixel_pos = glm::vec2(berry_center_pixel.x, berry_center_pixel.y);
 
-        if(detec.crown_center_pixel_pos.x > double(1240 - 200)
-          || detec.berry_center_pixel_pos.x > double(960 - 200)) {
-          continue;
-        }
-        else {
-          float distance = glm::distance(detec.crown_center_pixel_pos, detec.berry_center_pixel_pos);
-          if (distance < 500.0f && distance != 0) { 
-            detec.valid = true;
-          }
-
-          detec.estemated_length = 0;
-          detec.estemated_width = 0;
-          detec.center_position_in_frame = detec.berry_center_pixel_pos;
-          
-          detec.physical_position = CastPointToWorld(detec.center_position_in_frame); 
-          
-          this->detected.push_back(detec);
-          ROS_WARN_STREAM(this->detected.size());
-        }
-      }
-      //cv::Mat hsv_history_image = hsv_image;
-      for (int i = 0; i < this->detected.size(); i++) {
-        Strawberry detected_strawberry = this->detected[i];
-        if (detected_strawberry.valid) {
-          cv::line(hsv_image, detected_strawberry.GetBerryCenter(), detected_strawberry.GetCrownCenter(), cv::Scalar(255, 0, 0), 2);
-          float distance = glm::distance(detected_strawberry.berry_center_pixel_pos, detected_strawberry.crown_center_pixel_pos);
-          cv::circle(hsv_image, detected_strawberry.GetBerryCenter(), distance, cv::Scalar(0, 255, 255), 2);
-          cv::circle(hsv_image, detected_strawberry.GetStrawberryWidestPoint1(), 10, cv::Scalar(0, 255, 255), 2);
-          cv::circle(hsv_image, detected_strawberry.GetStrawberryWidestPoint2(), 10, cv::Scalar(0, 255, 255), 2);
-        }
-
-      }
-    
-      imshow("Test", hsv_image);
-      //hsv_image = hsv_history_image;
-      this->detected.clear();
     }
-
-
     void FindBoundingCircle(cv::Mat input, std::vector<glm::vec3>* arr, double min_radius)
       {
         std::vector<std::vector<cv::Point> > contours;
@@ -367,11 +326,6 @@ class ImageConverter
         split(input, splitImage);
         Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3), cv::Point(-1, -1));
 
-
-        //threshold(splitImage.at(2), splitImage.at(2), 0, 255, cv::ThresholdTypes::THRESH_OTSU);
-        //cv::morphologyEx(splitImage.at(2), splitImage.at(2), cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
-        //cv::morphologyEx(splitImage.at(2), splitImage.at(2), cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1));
-
         // Set up the detector with default parameters.
         std::vector<KeyPoint> keypoints;
         Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
@@ -385,10 +339,6 @@ class ImageConverter
         imshow("image b", splitImage.at(2));
         ROS_WARN_STREAM(keypoints.size());
         waitKey(0);
-        
-        
-      
-
       }
     
 
