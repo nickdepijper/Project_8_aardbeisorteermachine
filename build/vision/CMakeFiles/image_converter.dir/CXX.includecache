@@ -6,27 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Strawberry.h
-Util/Object.h
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/Object.h
-Util/IComparable.h
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/IComparable.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Strawberry.cpp
 glm/glm.hpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/glm/glm.hpp
 opencv2/opencv.hpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/opencv2/opencv.hpp
 geometry_msgs/Pose.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/geometry_msgs/Pose.h
-
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/IComparable.h
-
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/Object.h
-string
--
-sstream
--
-memory
--
 
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
 ros/ros.h
@@ -53,8 +39,8 @@ opencv2/imgproc.hpp
 -
 opencv2/highgui/highgui.hpp
 -
-include/Strawberry.h
-/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Strawberry.h
+include/Strawberry.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Strawberry.cpp
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

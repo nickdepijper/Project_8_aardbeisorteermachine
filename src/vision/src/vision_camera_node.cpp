@@ -11,7 +11,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 //#include "include/StrawberryMachine.h"
-#include "include/Strawberry.h"
+#include "include/Strawberry.cpp"
 //#include "include/Core/SystemState.h"
 using namespace cv;
 
@@ -240,10 +240,10 @@ public:
         strawberry.angle_to_belt_dir = angle;
 
         for (int i =0; i<arr->size(); i++){
-          if 
+          if (strawberry.berry_center_pixel_pos.x > arr->at(i).berry_center_pixel_pos.x && strawberry.berry_center_pixel_pos.x < (arr->at(i).berry_center_pixel_pos.x + 10))
+            if (strawberry.berry_center_pixel_pos.y > (arr->at(i).berry_center_pixel_pos.x - 5) && strawberry.berry_center_pixel_pos.y < (arr->at(i).berry_center_pixel_pos.y + 5))
+              arr->push_back(strawberry);
         }
-        arr->push_back(strawberry);
-
       }
     }
 
