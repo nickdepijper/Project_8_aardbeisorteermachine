@@ -7,6 +7,9 @@ vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o
  /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/Object.h
  /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
  /opt/ros/melodic/include/cv_bridge/cv_bridge.h
+ /opt/ros/melodic/include/geometry_msgs/Point.h
+ /opt/ros/melodic/include/geometry_msgs/Pose.h
+ /opt/ros/melodic/include/geometry_msgs/Quaternion.h
  /opt/ros/melodic/include/image_transport/camera_publisher.h
  /opt/ros/melodic/include/image_transport/camera_subscriber.h
  /opt/ros/melodic/include/image_transport/exception.h

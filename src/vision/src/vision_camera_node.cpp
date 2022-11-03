@@ -37,7 +37,7 @@ private:
   std::vector<Strawberry> detected;
   int counter = 0;
   double angles[10];
-  std::vector<Strawberry> *arr;
+  std::vector<Strawberry>* arr = new std::vector<Strawberry>(50);
 
 public:
   cv_bridge::CvImagePtr cv_ptr;
@@ -118,13 +118,7 @@ public:
     std::vector<Mat> splitImage;
     Strawberry detected = Strawberry();
     Mat detected_strawberries = input;
-    split(input, splitImage);
-    // imshow("image 1", splitImage.at(0));
-    // imshow("image 2", splitImage.at(1));
-    // imshow("image 3", splitImage.at(2));
 
-    // Scalar green_min(45, 125, 0);
-    // Scalar green_max(75, 255, 255);
     Scalar green_min(44, 199, 247);
     Scalar green_max(58, 255, 255);
 
@@ -211,9 +205,7 @@ public:
 
     detector_1->detect(cropped_image_berry, keypoints_berry);
     detector_2->detect(cropped_image_crown, keypoints_crown);
-    
-    
-
+  
     if (keypoints_berry.size() != keypoints_crown.size())
     {
       ROS_WARN_STREAM("Amount berries does not equal amount crowns");
@@ -229,11 +221,11 @@ public:
         angles[i] = angle;
         ROS_WARN_STREAM(angles[0]);
         // x and y crop offsets compensate for cropping and opencv coordinate switch (x,y) = (y,x)
-        Point upper_left;
+        cv::Point upper_left;
         upper_left.x = keypoints_berry.at(i).pt.x - (keypoints_berry.at(i).size / 2) + y_crop_start;
         upper_left.y = keypoints_berry.at(i).pt.y - (keypoints_berry.at(i).size / 2) + x_crop_start;
 
-        Point lower_right;
+        cv::Point lower_right;
         lower_right.x = keypoints_berry.at(i).pt.x + (keypoints_berry.at(i).size / 2) + y_crop_start;
         lower_right.y = keypoints_berry.at(i).pt.y + (keypoints_berry.at(i).size / 2) + x_crop_start;
       
@@ -246,6 +238,10 @@ public:
         strawberry.crown_center_pixel_pos.x = keypoints_crown.at(i).pt.x;
         strawberry.crown_center_pixel_pos.y = keypoints_crown.at(i).pt.y;
         strawberry.angle_to_belt_dir = angle;
+
+        for (int i =0; i<arr->size(); i++){
+          if 
+        }
         arr->push_back(strawberry);
 
       }

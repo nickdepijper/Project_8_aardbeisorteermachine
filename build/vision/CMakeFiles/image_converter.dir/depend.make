@@ -6,6 +6,9 @@ vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /home/nick/P
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/Object.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/cv_bridge/cv_bridge.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/geometry_msgs/Pose.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/image_transport/camera_publisher.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/image_transport/camera_subscriber.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/image_transport/exception.h
