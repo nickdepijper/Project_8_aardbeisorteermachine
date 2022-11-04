@@ -58,7 +58,6 @@ struct Strawberry : public Object {
 			//depending on timestamp
 			arr->at(i).physical_position.position.x += 10; //test value
 		}
-		
 
 
 		

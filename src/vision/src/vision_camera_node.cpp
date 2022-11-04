@@ -12,7 +12,7 @@
 #include <opencv2/highgui/highgui.hpp>
 //#include "include/StrawberryMachine.h"
 #include "include/Strawberry.cpp"
-//#include "include/Core/SystemState.h"
+#include "include/Vision.cpp"
 using namespace cv;
 
 static const std::string OPENCV_WINDOW = "Image window";
@@ -37,7 +37,7 @@ private:
   std::vector<Strawberry> detected;
   int counter = 0;
   double angles[10];
-  std::vector<Strawberry>* arr = new std::vector<Strawberry>(50);
+  std::vector<Strawberry>* arr = new std::vector<Strawberry>(1);
 
 public:
   cv_bridge::CvImagePtr cv_ptr;
@@ -115,7 +115,7 @@ public:
 
   void DetectStrawberry(Mat input)
   {
-    std::vector<Mat> splitImage;
+    Vision visionStrawberry;
     Strawberry detected = Strawberry();
     Mat detected_strawberries = input;
 
@@ -140,71 +140,21 @@ public:
     Mat merge = this->Crown + this->Berry;
     imshow("crown", this->Crown);
     imshow("berry", this->Berry);
-    // imshow("strawberry merge", merge);
-    // ROS_WARN_STREAM("gmi: " << green_min_copy << "gma: " << green_max_copy);
-    //  Setup SimpleBlobDetector parameters.
-    SimpleBlobDetector::Params params_1;
 
-    // Change thresholds
-    params_1.minThreshold = 0;
-    params_1.maxThreshold = 255;
+    
+    Mat cropped_merge = visionStrawberry.crop_image(&merge, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
+    Mat cropped_image_berry = visionStrawberry.crop_image(&Berry, x_crop_start, x_crop_end,y_crop_start, y_crop_end);
+    Mat cropped_image_crown = visionStrawberry.crop_image(&Crown, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
 
-    params_1.filterByColor = true;
-    params_1.blobColor = 255;
-
-    // Filter by Area.
-    params_1.filterByArea = true;
-    params_1.minArea = 800;
-    params_1.maxArea = 30000;
-
-    // Filter by Circularity
-    params_1.filterByCircularity = false;
-    params_1.minCircularity = 0.1;
-
-    // Filter by Convexity
-    params_1.filterByConvexity = false;
-    params_1.minConvexity = 0.87;
-
-    // Filter by Inertia
-    params_1.filterByInertia = false;
-    params_1.minInertiaRatio = 0.01;
-
-    // Setup SimpleBlobDetector parameters.
-    SimpleBlobDetector::Params params_2;
-    // Change thresholds
-    params_2.minThreshold = 0;
-    params_2.maxThreshold = 255;
-
-    params_2.filterByColor = true;
-    params_2.blobColor = 255;
-
-    // Filter by Area.
-    params_2.filterByArea = true;
-    params_2.minArea = 400;
-    params_2.maxArea = 20000;
-
-    // Filter by Circularity
-    params_2.filterByCircularity = false;
-    params_2.minCircularity = 0.1;
-
-    // Filter by Convexity
-    params_2.filterByConvexity = false;
-    params_2.minConvexity = 0.87;
-
-    // Filter by Inertia
-    params_2.filterByInertia = false;
-    params_2.minInertiaRatio = 0.01;
-
+    
     std::vector<KeyPoint> keypoints_berry;
     std::vector<KeyPoint> keypoints_crown;
-    Ptr<SimpleBlobDetector> detector_1 = SimpleBlobDetector::create(params_1);
-    Ptr<SimpleBlobDetector> detector_2 = SimpleBlobDetector::create(params_2);
-    Mat cropped_image = merge(Range(x_crop_start, x_crop_end), Range(y_crop_start, y_crop_end));
-    Mat cropped_image_berry = this->Berry(Range(x_crop_start, x_crop_end), Range(y_crop_start, y_crop_end));
-    Mat cropped_image_crown = this->Crown(Range(x_crop_start, x_crop_end), Range(y_crop_start, y_crop_end));
 
-    detector_1->detect(cropped_image_berry, keypoints_berry);
-    detector_2->detect(cropped_image_crown, keypoints_crown);
+    visionStrawberry.set_blob_params(200, 255, false, 0, true, 800, 30000);
+    keypoints_berry = visionStrawberry.detect_berries(&this->Berry);
+
+    visionStrawberry.set_blob_params(200, 255, false, 0, true, 400, 20000);
+    keypoints_crown = visionStrawberry.detect_berries(&this->Crown);
   
     if (keypoints_berry.size() != keypoints_crown.size())
     {
@@ -233,10 +183,8 @@ public:
         imshow("Detected strawberries", detected_strawberries);
 
         Strawberry strawberry;
-        strawberry.berry_center_pixel_pos.x = keypoints_berry.at(i).pt.x;
-        strawberry.berry_center_pixel_pos.y = keypoints_berry.at(i).pt.y;
-        strawberry.crown_center_pixel_pos.x = keypoints_crown.at(i).pt.x;
-        strawberry.crown_center_pixel_pos.y = keypoints_crown.at(i).pt.y;
+        strawberry.berry_center_pixel_pos = glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y);
+        strawberry.crown_center_pixel_pos = glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y);
         strawberry.angle_to_belt_dir = angle;
 
         for (int i =0; i<arr->size(); i++){
@@ -277,30 +225,10 @@ public:
 
   void DetectStrawberryTest(Mat input)
   {
+    Vision visionStrawberry;
+    visionStrawberry.set_blob_params (200, 255, false, 0, true, 800, 30000);
 
-    // Setup SimpleBlobDetector parameters.
-    SimpleBlobDetector::Params params;
-
-    // Change thresholds
-    params.minThreshold = 200;
-    params.maxThreshold = 255;
-
-    // Filter by Area.
-    params.filterByArea = false;
-    params.minArea = 100;
-    params.maxArea = 3000;
-
-    // Filter by Circularity
-    params.filterByCircularity = true;
-    params.minCircularity = 0.1;
-
-    // Filter by Convexity
-    params.filterByConvexity = false;
-    params.minConvexity = 0.87;
-
-    // Filter by Inertia
-    params.filterByInertia = false;
-    params.minInertiaRatio = 0.01;
+    
 
     std::vector<Mat> splitImage;
     split(input, splitImage);
@@ -309,8 +237,7 @@ public:
     // Set up the detector with default parameters.
     std::vector<KeyPoint> keypoints;
     Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
-    detector->detect(splitImage.at(2), keypoints);
-    ROS_WARN_STREAM(input.channels());
+
     Mat im_with_keypoints;
     drawKeypoints(splitImage.at(2), keypoints, im_with_keypoints, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
     imshow("keypoints", im_with_keypoints);
