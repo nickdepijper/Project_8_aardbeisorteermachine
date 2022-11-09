@@ -49,10 +49,10 @@ public:
   Scalar green_max_copy = {58, 200, 150};
   Scalar red_min_copy = {4, 0.5, 0.5};
   Scalar red_max_copy = {39, 255, 255};
-  int x_crop_start = 150;
-  int x_crop_end = 800;
-  int y_crop_start = 290;
-  int y_crop_end = 1100;
+  const int x_crop_start = 250;
+  const int x_crop_end = 850;
+  const int y_crop_start = 290;
+  const int y_crop_end = 1100;
 
   ImageConverter()
       : it_(nh_)
@@ -138,23 +138,22 @@ public:
     cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_OPEN, kernel, cv::Point(-1, -1));
     cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1), 4);
     Mat merge = this->Crown + this->Berry;
-    imshow("crown", this->Crown);
-    imshow("berry", this->Berry);
-
+    //imshow("crown", this->Crown);
+    //imshow("berry", this->Berry);
     
     Mat cropped_merge = visionStrawberry.crop_image(&merge, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
     Mat cropped_image_berry = visionStrawberry.crop_image(&Berry, x_crop_start, x_crop_end,y_crop_start, y_crop_end);
     Mat cropped_image_crown = visionStrawberry.crop_image(&Crown, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
-
+    imshow("cropped?", cropped_merge);
     
     std::vector<KeyPoint> keypoints_berry;
     std::vector<KeyPoint> keypoints_crown;
 
     visionStrawberry.set_blob_params(200, 255, false, 0, true, 800, 30000);
-    keypoints_berry = visionStrawberry.detect_berries(&this->Berry);
+    keypoints_berry = visionStrawberry.detect_berries(&cropped_image_berry);
 
     visionStrawberry.set_blob_params(200, 255, false, 0, true, 400, 20000);
-    keypoints_crown = visionStrawberry.detect_berries(&this->Crown);
+    keypoints_crown = visionStrawberry.detect_berries(&cropped_image_crown);
   
     if (keypoints_berry.size() != keypoints_crown.size())
     {
@@ -164,7 +163,7 @@ public:
     {
       for (int i = 0; i < keypoints_berry.size(); i++)
       {
-        line(cropped_image, keypoints_berry.at(i).pt, keypoints_crown.at(i).pt, cv::Scalar(0, 0, 0), 2);
+        line(cropped_merge, keypoints_berry.at(i).pt, keypoints_crown.at(i).pt, cv::Scalar(0, 0, 0), 2);
         double crown_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y));
         double belt_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_berry.at(i).pt.y));
         double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)) * (180.0 / M_PI);
@@ -186,6 +185,8 @@ public:
         strawberry.berry_center_pixel_pos = glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y);
         strawberry.crown_center_pixel_pos = glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y);
         strawberry.angle_to_belt_dir = angle;
+        strawberry.distance_to_belt = (float)keypoints_berry.size() / 0.46875;
+        strawberry.distance_to_camera = 800 - ((float)keypoints_berry.size() / 0.46875); //determin actual distance in mm
 
         for (int i =0; i<arr->size(); i++){
           if (strawberry.berry_center_pixel_pos.x > arr->at(i).berry_center_pixel_pos.x && strawberry.berry_center_pixel_pos.x < (arr->at(i).berry_center_pixel_pos.x + 10))
@@ -195,9 +196,9 @@ public:
       }
     }
 
-    drawKeypoints(cropped_image, keypoints_berry, cropped_image, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
-    drawKeypoints(cropped_image, keypoints_crown, cropped_image, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
-    imshow("keypoints", cropped_image);
+    drawKeypoints(cropped_merge, keypoints_berry, cropped_merge, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+    drawKeypoints(cropped_merge, keypoints_crown, cropped_merge, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+    imshow("keypoints", cropped_merge);
   }
 
   glm::dvec3 CastPointToWorld(glm::dvec2 point)
@@ -235,16 +236,19 @@ public:
     Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3), cv::Point(-1, -1));
 
     // Set up the detector with default parameters.
-    std::vector<KeyPoint> keypoints;
-    Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
+    std::vector<KeyPoint> keypoints_berry;
+    std::vector<KeyPoint> keypoints_crown;
+
+    visionStrawberry.set_blob_params(200, 255, false, 0, true, 800, 30000);
+    keypoints_berry = visionStrawberry.detect_berries(&this->Berry);
 
     Mat im_with_keypoints;
-    drawKeypoints(splitImage.at(2), keypoints, im_with_keypoints, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+    drawKeypoints(splitImage.at(2), keypoints_berry, im_with_keypoints, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
     imshow("keypoints", im_with_keypoints);
     imshow("image r", splitImage.at(0));
     imshow("image g", splitImage.at(1));
     imshow("image b", splitImage.at(2));
-    ROS_WARN_STREAM(keypoints.size());
+    ROS_WARN_STREAM(keypoints_berry.size());
     waitKey(0);
   }
 };

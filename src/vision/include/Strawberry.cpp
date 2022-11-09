@@ -13,7 +13,7 @@ struct Strawberry;
 //DEF_UNIQUE(Strawberry)
 
 struct Strawberry : public Object {
-	Pose physical_position;
+	glm::dvec4 physical_position;
 	glm::dvec2 center_position_in_frame;
 
 	glm::dvec2 berry_center_pixel_pos;
@@ -27,26 +27,24 @@ struct Strawberry : public Object {
 	double estemated_length;
 	double angle_to_belt_dir;
 
-	bool valid;
+	float distance_to_belt;
+	float distance_to_camera;
+
+	bool reachable;
 
 	Strawberry() {
-		physical_position.position.x = 0.0; 
-		physical_position.position.y = 0.0; 
-		physical_position.position.z = 0.0; 
-
-		physical_position.orientation.w = 0.0;
-		physical_position.orientation.x = 0.0;
-		physical_position.orientation.y = 0.0;
-		physical_position.orientation.z = 0.0;
+		physical_position = glm::dvec4(0.0, 0.0, 0.0, 0.0); 
 
 		center_position_in_frame = glm::dvec2(0.0, 0.0);
 
 		berry_center_pixel_pos = glm::dvec2(0.0, 0.0);
 		crown_center_pixel_pos = glm::dvec2(0.0, 0.0);
+		distance_to_belt = 0;
+		distance_to_camera = 0;
 
 		estemated_length = 0.0;
 		estemated_width = 0.0;
-		valid = false;
+		reachable = false;
 	}
 
 	~Strawberry() {
@@ -56,7 +54,11 @@ struct Strawberry : public Object {
 		for (int i = 0; i<arr->size(); i++)
 		{
 			//depending on timestamp
-			arr->at(i).physical_position.position.x += 10; //test value
+			arr->at(i).physical_position[0] += 10; //test value
+			if (this->reachable)
+			{
+				;
+			}
 		}
 
 

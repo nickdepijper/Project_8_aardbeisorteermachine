@@ -113,45 +113,45 @@ galaxy_camera_OBJECTS = \
 # External object files for target galaxy_camera
 galaxy_camera_EXTERNAL_OBJECTS =
 
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build.make
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libimage_transport.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libmessage_filters.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libclass_loader.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/libPocoFoundation.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroslib.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librospack.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcamera_info_manager.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcamera_calibration_parsers.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroscpp.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/librostime.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /opt/ros/melodic/lib/libcpp_common.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera"
+galaxy_camera_ros_driver/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera.cpp.o
+galaxy_camera_ros_driver/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/src/galaxy_camera_node.cpp.o
+galaxy_camera_ros_driver/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build.make
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libimage_transport.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libmessage_filters.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libclass_loader.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/libPocoFoundation.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libdl.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libroslib.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/librospack.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpython2.7.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libcamera_info_manager.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libcamera_calibration_parsers.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libroscpp.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/librosconsole.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/librosconsole_log4cxx.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/librosconsole_backend_interface.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libxmlrpcpp.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libroscpp_serialization.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/librostime.so
+galaxy_camera_ros_driver/galaxy_camera: /opt/ros/melodic/lib/libcpp_common.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_system.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libpthread.so
+galaxy_camera_ros_driver/galaxy_camera: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+galaxy_camera_ros_driver/galaxy_camera: galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable galaxy_camera"
 	cd /home/nick/Project_8_aardbeisorteermachine/build/galaxy_camera_ros_driver && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/galaxy_camera.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build: /home/nick/Project_8_aardbeisorteermachine/devel/lib/galaxy_camera/galaxy_camera
+galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build: galaxy_camera_ros_driver/galaxy_camera
 
 .PHONY : galaxy_camera_ros_driver/CMakeFiles/galaxy_camera.dir/build
 

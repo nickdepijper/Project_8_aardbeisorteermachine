@@ -1,6 +1,7 @@
 #pragma once
 #include "opencv2/opencv.hpp"
 #include "opencv2/features2d/features2d.hpp"
+#include "Eigen/Dense"
 
 using namespace cv;
 
@@ -14,7 +15,8 @@ class Vision {
 
         Mat crop_image(Mat* image, int x_crop_start, int x_crop_end, int y_crop_start, int y_crop_end)
         {
-            Mat cropped_image = *image(Range(x_crop_start, x_crop_end), Range(y_crop_start, y_crop_end));
+            Mat cropped_image = *image;
+            cropped_image = cropped_image(Range(x_crop_start, x_crop_end), Range(y_crop_start, y_crop_end));
             return cropped_image;
         }
 
