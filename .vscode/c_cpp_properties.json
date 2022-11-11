@@ -6,7 +6,8 @@
                 "/home/nick/Project_8_aardbeisorteermachine/devel/include/**",
                 "/opt/ros/melodic/**",
                 "/home/nick/Project_8_aardbeisorteermachine/**",
-                "/usr/include/**"
+                "/usr/include/**",
+                "/usr/share/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-9",

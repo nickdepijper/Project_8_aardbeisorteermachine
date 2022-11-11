@@ -39,6 +39,7 @@ struct Strawberry : public Object {
 
 		berry_center_pixel_pos = glm::dvec2(0.0, 0.0);
 		crown_center_pixel_pos = glm::dvec2(0.0, 0.0);
+		
 		distance_to_belt = 0;
 		distance_to_camera = 0;
 
@@ -51,18 +52,13 @@ struct Strawberry : public Object {
 	}
 	void UpdateStrawberryPosition(std::vector<Strawberry>* arr)
 	{
-		for (int i = 0; i<arr->size(); i++)
-		{
+		for (int i = 0; i<arr->size(); i++){
 			//depending on timestamp
 			arr->at(i).physical_position[0] += 10; //test value
-			if (this->reachable)
-			{
-				;
+			if (this->reachable){
+				this->reachable = true;
 			}
 		}
-
-
-		
 	}
 	//void CalcWidestPoints(cv::Mat& BinaryImage) {
 
