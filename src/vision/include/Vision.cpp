@@ -2,6 +2,7 @@
 #include "opencv2/opencv.hpp"
 #include "opencv2/features2d/features2d.hpp"
 #include "Eigen/Dense"
+#include "ros/ros.h"
 
 using namespace cv;
 
@@ -12,6 +13,9 @@ class Vision {
         std::vector<KeyPoint> keypoints;
     
     public:
+        {
+            ros::Publisher image_color = nhs_.advertise<bool>("Testing", 1000);
+        }
 
         Mat crop_image(Mat* image, int x_crop_start, int x_crop_end, int y_crop_start, int y_crop_end)
         {
@@ -29,7 +33,7 @@ class Vision {
             params.maxThreshold = maxThreshold;
 
             params.filterByColor = filterBycolor;
-            params.blobColor = blobColor;
+            params.blobColor = blobColor;   
 
             // Filter by Area.
             params.filterByArea = filterByArea;

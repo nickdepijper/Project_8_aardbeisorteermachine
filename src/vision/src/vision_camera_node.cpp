@@ -8,8 +8,8 @@
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
-#include <opencv2/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
+//#include <opencv2/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
 //#include "include/StrawberryMachine.h"
 #include "include/Strawberry.cpp"
 #include "include/Vision.cpp"
@@ -38,6 +38,7 @@ private:
   int counter = 0;
   double angles[10];
   std::vector<Strawberry>* arr = new std::vector<Strawberry>(1);
+  std::vector<Strawberry>* path;
 
 public:
   cv_bridge::CvImagePtr cv_ptr;
@@ -83,20 +84,12 @@ public:
     //  ROS_ERROR("cv_bridge exception: %s", e.what());
     //  return;
     //}
-
     //cvtColor(cv_ptr->image, hsv_image, COLOR_BGR2HSV); // real testing
     cvtColor(image_test, hsv_image, COLOR_BGR2HSV); // fake testing
     ROS_INFO_STREAM("binary image converted?");
     // Threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
-    if (this->counter == 0)
-    {
-      this->DetectStrawberry(this->hsv_image);
-      this->counter = 0;
-    }
-    else
-    {
-      imshow("test", this->hsv_image);
-    }
+    this->DetectStrawberry(this->hsv_image);
+
     // this->counter++;
 
     // Update GUI Window
@@ -166,7 +159,7 @@ public:
         line(cropped_merge, keypoints_berry.at(i).pt, keypoints_crown.at(i).pt, cv::Scalar(0, 0, 0), 2);
         double crown_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y));
         double belt_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_berry.at(i).pt.y));
-        double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)) * (180.0 / M_PI);
+        double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)); // for degrees * (180.0 / M_PI)
         angles[i] = angle;
         ROS_WARN_STREAM(angles[0]);
         // x and y crop offsets compensate for cropping and opencv coordinate switch (x,y) = (y,x)
@@ -185,8 +178,12 @@ public:
         strawberry.berry_center_pixel_pos = glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y);
         strawberry.crown_center_pixel_pos = glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y);
         strawberry.angle_to_belt_dir = angle;
-        strawberry.distance_to_belt = (float)keypoints_berry.size() / 0.46875;
-        strawberry.distance_to_camera = 800 - ((float)keypoints_berry.size() / 0.46875); //determin actual distance in mm
+        strawberry.distance_to_belt = (float)keypoints_berry.at(i).size / 0.46875;
+        strawberry.distance_to_camera = 800 - ((float)keypoints_berry.at(i).size / 0.46875); //determin actual distance in mm
+        strawberry.physical_position = glm::dvec4(strawberry.berry_center_pixel_pos.x / 0.46875, 
+                                                  strawberry.berry_center_pixel_pos.y / 0.46875,
+                                                  strawberry.distance_to_camera,
+                                                  strawberry.angle_to_belt_dir);
 
         for (int i =0; i<arr->size(); i++){
           if (strawberry.berry_center_pixel_pos.x > arr->at(i).berry_center_pixel_pos.x && strawberry.berry_center_pixel_pos.x < (arr->at(i).berry_center_pixel_pos.x + 10))
