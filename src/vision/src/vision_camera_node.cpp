@@ -8,6 +8,8 @@
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
+#include <std_msgs/Float32.h>
+#include <std_msgs/Bool.h>
 //#include <opencv2/imgproc.hpp>
 //#include <opencv2/highgui/highgui.hpp>
 //#include "include/StrawberryMachine.h"
@@ -54,8 +56,6 @@ public:
     image_sub_ = it_.subscribe("/galaxy_camera/image_raw", 1,
                                &ImageConverter::imageCb, this);
     image_pub_ = it_.advertise("/image_converter/output_video", 1);
-
-    // cv::namedWindow(OPENCV_WINDOW);
   }
 
   ~ImageConverter()
@@ -69,7 +69,7 @@ public:
     //try
     //{
       /*cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8); real testing*/
-      image_test = imread("/home/nick/Downloads/Vision foto aardbeien_2.png", 1); //fake testing
+    image_test = imread("/home/nick/Downloads/Vision foto aardbeien_2.png", 1); //fake testing
     //}
     //catch (cv_bridge::Exception &e)
     //{
@@ -81,30 +81,21 @@ public:
     ROS_INFO_STREAM("binary image converted?");
     // Threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
     Vision visionStrawberry;
-    visionStrawberry.hsv_configurator(hsv_values);
-    visionStrawberry.DetectStrawberry(this->hsv_image);
-    
-    if (arr->size() > 5)
+    if (hsv_values.data.size() >= 12)
     {
-      ;
+      visionStrawberry.hsv_configurator(hsv_values);
     }
-
-    // this->counter++;
-
-    // Update GUI Window
-    // cv::imshow(OPENCV_WINDOW, cv_ptr->image);
-   
+    visionStrawberry.DetectStrawberry(this->hsv_image);
     cv::waitKey(3);
-
-    // Output modified video stream
-    //image_pub_.publish(cv_ptr->toImageMsg());
   }
-
-  std_msgs::ColorRGBA get_avarage_color()
+  void encoderCb(std_msgs::Float32Ptr distance_traveled)
   {
-    return avarage_RGBA_colors;
+    ;
   }
-
+  void robotCb(std_msgs::BoolConstPtr done)
+  {
+    ;
+  }
   glm::dvec3 CastPointToWorld(glm::dvec2 point)
   {
     glm::dvec3 output = glm::dvec3();
@@ -122,10 +113,6 @@ public:
   void hsv_configurator(std_msgs::Int16MultiArray hsv)
   {
     hsv_values = hsv;
-    // this->green_min_copy[0] = hsv_values.data[0], hsv_values.data[1], hsv_values.data[2];
-    // this->green_max_copy[0] = hsv_values.data[3], hsv_values.data[4], hsv_values.data[5];
-    // this->red_min_copy[0] = hsv_values.data[6], hsv_values.data[7], hsv_values.data[8];
-    // this->red_max_copy[0] = hsv_values.data[9], hsv_values.data[10], hsv_values.data[11];
   }
 };
 
@@ -137,7 +124,6 @@ void CB_h(const std_msgs::Int16MultiArray::ConstPtr &hsv)
   {
     hsv_real = *hsv;
   }
-  // ROS_WARN_STREAM(hsv->data.size());
 }
 
 int main(int argc, char **argv)
@@ -147,20 +133,10 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::Publisher image_color = n.advertise<std_msgs::ColorRGBA>("image_color", 1000);
   ros::Subscriber h = n.subscribe("h", 1000, CB_h);
+  ros::Subscriber encoder = n.subscribe("encoder", 1000, encoderCb);
 
   while (ros::ok())
   {
-    // Mat foto_copy = imread("/home/nick/Downloads/test.png", 1);
-    // imshow("original", foto_copy);
-    // //waitKey(0);
-    // if (!foto_copy.data) // Check for invalid input
-    // {
-    //   ROS_WARN_STREAM("Could not open or find the image");
-    // }
-    // imshow("foto", foto_copy);
-    // //waitKey(0);
-    // ic.DetectStrawberryTest(foto_copy);
-
     if (hsv_real.data.size() >= 12)
     {
       ic.hsv_configurator(hsv_real);
@@ -168,7 +144,6 @@ int main(int argc, char **argv)
 
     ros::spinOnce();
   }
-
   ros::spin();
   return 0;
 }
