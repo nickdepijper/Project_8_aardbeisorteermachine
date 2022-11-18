@@ -291,7 +291,9 @@ vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/mel
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/sensor_msgs/Image.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/sensor_msgs/RegionOfInterest.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/sensor_msgs/image_encodings.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Bool.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/ColorRGBA.h
+vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Float32.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/Int16MultiArray.h
 vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h

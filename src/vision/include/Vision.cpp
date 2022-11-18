@@ -3,7 +3,9 @@
 #include "opencv2/features2d/features2d.hpp"
 #include "Eigen/Dense"
 #include "ros/ros.h"
-#include "Vision.cpp"
+#include "include/Strawberry.cpp"
+#include <std_msgs/Int16MultiArray.h>
+
 
 using namespace cv;
 
@@ -161,7 +163,7 @@ class Vision {
                     double belt_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_berry.at(i).pt.y));
                     double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)); // for degrees * (180.0 / M_PI)
                     angles[i] = angle;
-                    ROS_WARN_STREAM(angles[0]);
+                    //ROS_WARN_STREAM(angles[0]);
                     // x and y crop offsets compensate for cropping and opencv coordinate switch (x,y) = (y,x)
                     cv::Point upper_left;
                     upper_left.x = keypoints_berry.at(i).pt.x - (keypoints_berry.at(i).size / 2) + y_crop_start;
@@ -180,11 +182,11 @@ class Vision {
                     strawberry.angle_to_belt_dir = angle;
                     strawberry.distance_to_belt = (float)keypoints_berry.at(i).size / 0.46875;
                     strawberry.distance_to_camera = 800 - ((float)keypoints_berry.at(i).size / 0.46875); // determin actual distance in mm
-                    strawberry.physical_position = glm::dvec4(strawberry.berry_center_pixel_pos.x / 0.46875,
-                                                              strawberry.berry_center_pixel_pos.y / 0.46875,
-                                                              strawberry.distance_to_camera,
-                                                              strawberry.angle_to_belt_dir);
-
+                    strawberry.physical_position.position.x = strawberry.berry_center_pixel_pos.x / 0.46875;
+                    strawberry.physical_position.position.y = strawberry.berry_center_pixel_pos.y / 0.46875;
+                    strawberry.physical_position.position.z = strawberry.distance_to_camera;
+                    strawberry.physical_position.orientation.z = strawberry.angle_to_belt_dir;                                   
+                                                              
                     for (int i = 0; i < arr->size(); i++)
                     {
                         if (strawberry.berry_center_pixel_pos.x > arr->at(i).berry_center_pixel_pos.x && strawberry.berry_center_pixel_pos.x < (arr->at(i).berry_center_pixel_pos.x + 10))

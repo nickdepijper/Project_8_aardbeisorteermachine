@@ -15,6 +15,7 @@
 //#include "include/StrawberryMachine.h"
 #include "include/Strawberry.cpp"
 #include "include/Vision.cpp"
+#include "geometry_msgs/Pose.h"
 using namespace cv;
 
 static const std::string OPENCV_WINDOW = "Image window";
@@ -88,14 +89,7 @@ public:
     visionStrawberry.DetectStrawberry(this->hsv_image);
     cv::waitKey(3);
   }
-  void encoderCb(std_msgs::Float32Ptr distance_traveled)
-  {
-    ;
-  }
-  void robotCb(std_msgs::BoolConstPtr done)
-  {
-    ;
-  }
+  
   glm::dvec3 CastPointToWorld(glm::dvec2 point)
   {
     glm::dvec3 output = glm::dvec3();
@@ -125,15 +119,25 @@ void CB_h(const std_msgs::Int16MultiArray::ConstPtr &hsv)
     hsv_real = *hsv;
   }
 }
+void encoderCb(std_msgs::Float32Ptr distance_traveled)
+{
+  ROS_WARN_STREAM(*distance_traveled);
+}
+void robotCb(std_msgs::BoolConstPtr done)
+{
+  ;
+}
+
 
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "image_converter");
   ImageConverter ic;
   ros::NodeHandle n;
+
   ros::Publisher image_color = n.advertise<std_msgs::ColorRGBA>("image_color", 1000);
   ros::Subscriber h = n.subscribe("h", 1000, CB_h);
-  ros::Subscriber encoder = n.subscribe("encoder", 1000, encoderCb);
+  ros::Subscriber encoder = n.subscribe("encoder_value", 1000, encoderCb);
 
   while (ros::ok())
   {
