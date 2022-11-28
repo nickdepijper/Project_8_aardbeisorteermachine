@@ -37,6 +37,7 @@ Scalar green_max_copy = {58, 200, 150};
 Scalar red_min_copy = {4, 0.5, 0.5};
 Scalar red_max_copy = {39, 255, 255};
 std_msgs::Int16MultiArray hsv_values;
+Vision visionStrawberry;
 
 cv_bridge::CvImagePtr cv_ptr;
 Mat hsv_image;
@@ -59,7 +60,6 @@ void imageCb(const sensor_msgs::ImageConstPtr &msg)
   cvtColor(image_test, hsv_image, COLOR_BGR2HSV); // fake testing
   ROS_INFO_STREAM("binary image converted?");
   // Threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
-  Vision visionStrawberry;
   if (hsv_values.data.size() >= 12)
   {
     visionStrawberry.hsv_configurator(hsv_values);

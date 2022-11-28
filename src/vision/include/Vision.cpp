@@ -118,7 +118,6 @@ class Vision {
         }
         void DetectStrawberry(Mat input)
         {
-            Vision visionStrawberry;
             Strawberry detected = Strawberry();
             Mat detected_strawberries = input;
 
@@ -136,19 +135,19 @@ class Vision {
             cv::morphologyEx(this->Berry, this->Berry, cv::MorphTypes::MORPH_CLOSE, kernel, cv::Point(-1, -1), 4);
             Mat merge = this->Crown + this->Berry;
 
-            Mat cropped_merge = visionStrawberry.crop_image(&merge, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
-            Mat cropped_image_berry = visionStrawberry.crop_image(&Berry, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
-            Mat cropped_image_crown = visionStrawberry.crop_image(&Crown, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
+            Mat cropped_merge = this->crop_image(&merge, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
+            Mat cropped_image_berry = this->crop_image(&Berry, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
+            Mat cropped_image_crown = this->crop_image(&Crown, x_crop_start, x_crop_end, y_crop_start, y_crop_end);
             imshow("cropped?", cropped_merge);
 
             std::vector<KeyPoint> keypoints_berry;
             std::vector<KeyPoint> keypoints_crown;
 
-            visionStrawberry.set_blob_params(200, 255, false, 0, true, 800, 30000);
-            keypoints_berry = visionStrawberry.detect_berries(&cropped_image_berry);
+            this->set_blob_params(200, 255, false, 0, true, 800, 30000);
+            keypoints_berry = this->detect_berries(&cropped_image_berry);
 
-            visionStrawberry.set_blob_params(200, 255, false, 0, true, 400, 20000);
-            keypoints_crown = visionStrawberry.detect_berries(&cropped_image_crown);
+            this->set_blob_params(200, 255, false, 0, true, 400, 20000);
+            keypoints_crown = this->detect_berries(&cropped_image_crown);
 
             if (keypoints_berry.size() != keypoints_crown.size())
             {
@@ -195,7 +194,6 @@ class Vision {
                     }
                 }
             }
-
             drawKeypoints(cropped_merge, keypoints_berry, cropped_merge, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
             drawKeypoints(cropped_merge, keypoints_crown, cropped_merge, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
             imshow("keypoints", cropped_merge);
