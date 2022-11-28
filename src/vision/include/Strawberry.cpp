@@ -58,11 +58,11 @@ struct Strawberry : public Object {
 
 	~Strawberry() {
 	}
-	void UpdateStrawberryPosition(std::vector<Strawberry>* arr)
+	static void UpdateStrawberryPosition(std::vector<Strawberry>* arr, float distance_traveled)
 	{
 		for (int i = 0; i<arr->size(); i++){
 			//depending on timestamp
-			arr->at(i).physical_position.position.x += 10; //test value
+			arr->at(i).physical_position.position.x += distance_traveled; //test value
 			if (this->reachable){
 				this->reachable = true;
 			}

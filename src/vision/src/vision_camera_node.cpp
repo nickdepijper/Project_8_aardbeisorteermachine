@@ -17,8 +17,7 @@ using namespace cv;
 
 static const std::string OPENCV_WINDOW = "Image window";
 
-ros::NodeHandle nh_;
-image_transport::ImageTransport it_;
+
 image_transport::Subscriber image_sub_;
 image_transport::Publisher image_pub_;
 Vec3b temp_sum_color;
@@ -38,6 +37,7 @@ Scalar green_max_copy = {58, 200, 150};
 Scalar red_min_copy = {4, 0.5, 0.5};
 Scalar red_max_copy = {39, 255, 255};
 std_msgs::Int16MultiArray hsv_values;
+Vision visionStrawberry;
 
 cv_bridge::CvImagePtr cv_ptr;
 Mat hsv_image;
@@ -60,7 +60,6 @@ void imageCb(const sensor_msgs::ImageConstPtr &msg)
   cvtColor(image_test, hsv_image, COLOR_BGR2HSV); // fake testing
   ROS_INFO_STREAM("binary image converted?");
   // Threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
-  Vision visionStrawberry;
   if (hsv_values.data.size() >= 12)
   {
     visionStrawberry.hsv_configurator(hsv_values);
@@ -109,8 +108,8 @@ void robotCb(std_msgs::BoolConstPtr done)
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "image_converter");
-
   ros::NodeHandle n;
+  image_transport::ImageTransport it_(n);
   image_sub_ = it_.subscribe("/galaxy_camera/image_raw", 1,
                              imageCb);
   image_pub_ = it_.advertise("/image_converter/output_video", 1);
