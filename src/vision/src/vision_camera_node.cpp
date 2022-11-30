@@ -25,6 +25,7 @@ long int b;
 long int g;
 long int r;
 Mat image_copy;
+Mat binary_image;
 long int pix_amount;
 std_msgs::ColorRGBA avarage_RGBA_colors;
 bool test = true;
@@ -46,25 +47,25 @@ Mat image_test;
 void imageCb(const sensor_msgs::ImageConstPtr &msg)
 {
 
-  // try
-  //{
-  /*cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8); real testing*/
-  image_test = imread("/home/nick/Downloads/Vision foto aardbeien_2.png", 1); // fake testing
-  //}
-  // catch (cv_bridge::Exception &e)
-  //{
-  //  ROS_ERROR("cv_bridge exception: %s", e.what());
-  //  return;
-  //}
-  // cvtColor(cv_ptr->image, hsv_image, COLOR_BGR2HSV); // real testing
-  cvtColor(image_test, hsv_image, COLOR_BGR2HSV); // fake testing
-  ROS_INFO_STREAM("binary image converted?");
-  // Threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
+  try
+  {
+  cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8); //real testing
+  //image_test = imread("/home/nick/Downloads/Vision foto aardbeien_2.png", 1); // fake testing
+  }
+   catch (cv_bridge::Exception &e)
+  {
+    ROS_ERROR("cv_bridge exception: %s", e.what());
+    return;
+  }
+  cvtColor(cv_ptr->image, hsv_image, COLOR_BGR2HSV); // real testing
+  //cvtColor(image_test, hsv_image, COLOR_BGR2HSV); // fake testing
+  cv::threshold(binary_image, cv_ptr->image, 100, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
   if (hsv_values.data.size() >= 12)
   {
     visionStrawberry.hsv_configurator(hsv_values);
   }
   visionStrawberry.DetectStrawberry(hsv_image);
+  cv::imshow("Original image", hsv_image);
   cv::waitKey(3);
 }
 
@@ -98,7 +99,9 @@ void CB_h(const std_msgs::Int16MultiArray::ConstPtr &hsv)
 }
 void encoderCb(std_msgs::Float32Ptr distance_traveled)
 {
-  ROS_WARN_STREAM(*distance_traveled);
+  Strawberry::UpdateStrawberryPosition(visionStrawberry.getStrawberryArray(), distance_traveled->data);
+  arr = visionStrawberry.getStrawberryArray();
+  ROS_WARN_STREAM("x = " << arr->at(0).physical_position.position.x << " y = " << arr->at(0).physical_position.position.y);
 }
 void robotCb(std_msgs::BoolConstPtr done)
 {

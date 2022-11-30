@@ -63,8 +63,8 @@ struct Strawberry : public Object {
 		for (int i = 0; i<arr->size(); i++){
 			//depending on timestamp
 			arr->at(i).physical_position.position.x += distance_traveled; //test value
-			if (this->reachable){
-				this->reachable = true;
+			if (arr->at(i).reachable){
+				arr->at(i).reachable = true;
 			}
 		}
 	}
