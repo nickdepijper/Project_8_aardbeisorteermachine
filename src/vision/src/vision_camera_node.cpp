@@ -69,19 +69,7 @@ void imageCb(const sensor_msgs::ImageConstPtr &msg)
   cv::waitKey(3);
 }
 
-glm::dvec3 CastPointToWorld(glm::dvec2 point)
-{
-  glm::dvec3 output = glm::dvec3();
-  glm::dvec3 frame_physical_center = glm::dvec3(0.60845, -0.52619, 0.29200);
-  // double meter_per_pixel = 0.212 / double(1280);
-  double meter_per_pixel = 0.212 / double(1280);
 
-  glm::dvec2 frame_center = glm::dvec2(double(1280) / 2.0, double(960) / 2.0);
-  glm::dvec2 physical_distance = (point - frame_center) * glm::dvec2(meter_per_pixel, meter_per_pixel);
-  output = frame_physical_center + glm::dvec3(-physical_distance.y, -physical_distance.x, 0.0);
-
-  return output;
-}
 
 void hsv_configurator(std_msgs::Int16MultiArray hsv)
 {
@@ -101,7 +89,7 @@ void encoderCb(std_msgs::Float32Ptr distance_traveled)
 {
   Strawberry::UpdateStrawberryPosition(visionStrawberry.getStrawberryArray(), distance_traveled->data);
   arr = visionStrawberry.getStrawberryArray();
-  ROS_WARN_STREAM("x = " << arr->at(0).physical_position.position.x << " y = " << arr->at(0).physical_position.position.y);
+  ROS_WARN_STREAM("x = " << arr->at(1).physical_position.position.x << " y = " << arr->at(1).physical_position.position.y);
 }
 void robotCb(std_msgs::BoolConstPtr done)
 {

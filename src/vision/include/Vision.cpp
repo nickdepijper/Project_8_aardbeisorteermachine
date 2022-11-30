@@ -1,7 +1,6 @@
 #pragma once
 #include "opencv2/opencv.hpp"
 #include "opencv2/features2d/features2d.hpp"
-#include "Eigen/Dense"
 #include "ros/ros.h"
 #include "include/Strawberry.cpp"
 #include <std_msgs/Int16MultiArray.h>
@@ -21,8 +20,8 @@ class Vision {
         Scalar red_min = {4, 0.5, 0.5};
         Scalar red_max = {39, 255, 255};
         const int x_crop_start = 250;
-        const int x_crop_end = 850;
-        const int y_crop_start = 290;
+        const int x_crop_end = 800;
+        const int y_crop_start = 350;
         const int y_crop_end = 1100;
         double angles[10];
         std::vector<Strawberry>* arr = new std::vector<Strawberry>(1);
@@ -116,6 +115,26 @@ class Vision {
             detector->detect(*binary_image, keypoints);
             return keypoints;
         }
+        static Strawberry CastStrawberryToWorld(Strawberry berry)
+        {
+            Strawberry output;
+            geometry_msgs::Pose frame_physical_center = geometry_msgs::Pose();
+            // double meter_per_pixel = 0.212 / double(1280);
+            double millimeter_per_pixel = 212 / double(1280);
+
+            geometry_msgs::Pose frame_center;
+            frame_center.position.x = double((1280) / 2.0);
+            frame_center.position.y = double((960) / 2.0);
+            geometry_msgs::Pose physical_distance;
+            physical_distance.position.x = (berry.physical_position.position.x - frame_center.position.x) * millimeter_per_pixel;
+            physical_distance.position.y = (berry.physical_position.position.y - frame_center.position.y) * millimeter_per_pixel;
+            output.physical_position.position.x = frame_physical_center.position.x; // + physical_distance.position.x;
+            output.physical_position.position.y = frame_physical_center.position.y; // + physical_distance.position.x;
+            output.physical_position.position.z = berry.physical_position.position.z;
+            output.physical_position.orientation.w = berry.physical_position.orientation.w;
+
+            return output;
+        }
         void DetectStrawberry(Mat input)
         {
             Strawberry detected = Strawberry();
@@ -179,12 +198,13 @@ class Vision {
                     strawberry.berry_center_pixel_pos = glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y);
                     strawberry.crown_center_pixel_pos = glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y);
                     strawberry.angle_to_belt_dir = angle;
-                    strawberry.distance_to_belt = (float)keypoints_berry.at(i).size / 0.46875;
-                    strawberry.distance_to_camera = 800 - ((float)keypoints_berry.at(i).size / 0.46875); // determin actual distance in mm
-                    strawberry.physical_position.position.x = strawberry.berry_center_pixel_pos.x / 0.46875;
-                    strawberry.physical_position.position.y = strawberry.berry_center_pixel_pos.y / 0.46875;
+                    strawberry.distance_to_belt = (float)keypoints_berry.at(i).size;
+                    strawberry.distance_to_camera = 800 - ((float)keypoints_berry.at(i).size * 212); // determin actual distance in mm
+                    strawberry.physical_position.position.x = strawberry.berry_center_pixel_pos.x;
+                    strawberry.physical_position.position.y = strawberry.berry_center_pixel_pos.y;
                     strawberry.physical_position.position.z = strawberry.distance_to_camera;
-                    strawberry.physical_position.orientation.z = strawberry.angle_to_belt_dir;                                   
+                    strawberry.physical_position.orientation.w = strawberry.angle_to_belt_dir;
+                    strawberry = CastStrawberryToWorld(strawberry);                                 
                                                               
                     for (int i = 0; i < arr->size(); i++)
                     {
