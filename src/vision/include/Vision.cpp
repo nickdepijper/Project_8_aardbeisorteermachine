@@ -24,7 +24,7 @@ class Vision {
         const int y_crop_start = 350;
         const int y_crop_end = 1100;
         double angles[10];
-        std::vector<Strawberry>* arr = new std::vector<Strawberry>(1);
+        std::vector<Strawberry>* arr = new std::vector<Strawberry>(0);
         std::vector<Strawberry>* path;
 
     public:
@@ -46,7 +46,7 @@ class Vision {
 
         std::vector<Strawberry>* getStrawberryArray()
         {
-            return arr;
+            return this->arr;
         }
 
         void set_blob_params(float minThreshold, float maxThreshold, 
@@ -128,8 +128,8 @@ class Vision {
             geometry_msgs::Pose physical_distance;
             physical_distance.position.x = (berry.physical_position.position.x - frame_center.position.x) * millimeter_per_pixel;
             physical_distance.position.y = (berry.physical_position.position.y - frame_center.position.y) * millimeter_per_pixel;
-            output.physical_position.position.x = frame_physical_center.position.x; // + physical_distance.position.x;
-            output.physical_position.position.y = frame_physical_center.position.y; // + physical_distance.position.x;
+            output.physical_position.position.x = frame_physical_center.position.x + physical_distance.position.x;
+            output.physical_position.position.y = frame_physical_center.position.y + physical_distance.position.x;
             output.physical_position.position.z = berry.physical_position.position.z;
             output.physical_position.orientation.w = berry.physical_position.orientation.w;
 
@@ -204,14 +204,34 @@ class Vision {
                     strawberry.physical_position.position.y = strawberry.berry_center_pixel_pos.y;
                     strawberry.physical_position.position.z = strawberry.distance_to_camera;
                     strawberry.physical_position.orientation.w = strawberry.angle_to_belt_dir;
-                    strawberry = CastStrawberryToWorld(strawberry);                                 
-                                                              
-                    for (int i = 0; i < arr->size(); i++)
+                    strawberry = CastStrawberryToWorld(strawberry);
+                    bool strawberry_present_in_vector = false;
+                    
+                    if (arr->size() == 0)
                     {
-                        if (strawberry.berry_center_pixel_pos.x > arr->at(i).berry_center_pixel_pos.x && strawberry.berry_center_pixel_pos.x < (arr->at(i).berry_center_pixel_pos.x + 10))
-                            if (strawberry.berry_center_pixel_pos.y > (arr->at(i).berry_center_pixel_pos.x - 5) && strawberry.berry_center_pixel_pos.y < (arr->at(i).berry_center_pixel_pos.y + 5))
-                                arr->push_back(strawberry);
+                        arr->push_back(strawberry);
                     }
+                    else
+                    {
+                        for (int i = 0; i < arr->size(); i++)
+                        {
+                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 10) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 10))
+                            {
+                                if (strawberry.physical_position.position.y > (arr->at(i).physical_position.position.y - 5) && strawberry.physical_position.position.y < (arr->at(i).physical_position.position.y + 5))
+                                {
+                                    strawberry_present_in_vector = true;
+                                }
+                            }
+                        }
+                        if (strawberry_present_in_vector == false)
+                        {
+                            arr->push_back(strawberry);
+                            strawberry_present_in_vector = false;
+                            ROS_WARN_STREAM("Vector size = " << arr->size());
+                            ROS_WARN_STREAM(strawberry.physical_position.position.x);
+                        }
+                    }
+ 
                 }
             }
             drawKeypoints(cropped_merge, keypoints_berry, cropped_merge, Scalar(0, 0, 255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS);

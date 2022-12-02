@@ -87,9 +87,13 @@ void CB_h(const std_msgs::Int16MultiArray::ConstPtr &hsv)
 }
 void encoderCb(std_msgs::Float32Ptr distance_traveled)
 {
-  Strawberry::UpdateStrawberryPosition(visionStrawberry.getStrawberryArray(), distance_traveled->data);
   arr = visionStrawberry.getStrawberryArray();
-  ROS_WARN_STREAM("x = " << arr->at(1).physical_position.position.x << " y = " << arr->at(1).physical_position.position.y);
+  if (arr->size() > 0)
+  {
+    Strawberry::UpdateStrawberryPosition(visionStrawberry.getStrawberryArray(), distance_traveled->data);
+    ROS_WARN_STREAM("x = " << arr->at(0).physical_position.position.x << " y = " << arr->at(0).physical_position.position.y);
+  }
+ 
 }
 void robotCb(std_msgs::BoolConstPtr done)
 {
