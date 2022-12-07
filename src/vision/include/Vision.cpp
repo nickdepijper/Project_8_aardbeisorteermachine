@@ -20,15 +20,14 @@ class Vision {
         Scalar red_min = {4, 0.5, 0.5};
         Scalar red_max = {39, 255, 255};
         const int x_crop_start = 250;
-        const int x_crop_end = 800;
-        const int y_crop_start = 350;
-        const int y_crop_end = 1100;
+        const int x_crop_end = 770;
+        const int y_crop_start = 250;
+        const int y_crop_end = 1150;
         double angles[10];
         std::vector<Strawberry>* arr = new std::vector<Strawberry>(0);
         std::vector<Strawberry>* path;
 
-    public:
-
+    public: 
         void hsv_configurator(std_msgs::Int16MultiArray hsv)
         {
             this->green_min[0] = hsv.data[0], hsv.data[1], hsv.data[2];
@@ -120,7 +119,7 @@ class Vision {
             Strawberry output;
             geometry_msgs::Pose frame_physical_center = geometry_msgs::Pose();
             // double meter_per_pixel = 0.212 / double(1280);
-            double millimeter_per_pixel = 212 / double(1280);
+            double millimeter_per_pixel = 660 / double(1280);
 
             geometry_msgs::Pose frame_center;
             frame_center.position.x = double((1280) / 2.0);
@@ -129,7 +128,7 @@ class Vision {
             physical_distance.position.x = (berry.physical_position.position.x - frame_center.position.x) * millimeter_per_pixel;
             physical_distance.position.y = (berry.physical_position.position.y - frame_center.position.y) * millimeter_per_pixel;
             output.physical_position.position.x = frame_physical_center.position.x + physical_distance.position.x;
-            output.physical_position.position.y = frame_physical_center.position.y + physical_distance.position.x;
+            output.physical_position.position.y = frame_physical_center.position.y + physical_distance.position.y;
             output.physical_position.position.z = berry.physical_position.position.z;
             output.physical_position.orientation.w = berry.physical_position.orientation.w;
 
@@ -207,6 +206,8 @@ class Vision {
                     strawberry = CastStrawberryToWorld(strawberry);
                     bool strawberry_present_in_vector = false;
                     
+
+                    
                     if (arr->size() == 0)
                     {
                         arr->push_back(strawberry);
@@ -215,22 +216,24 @@ class Vision {
                     {
                         for (int i = 0; i < arr->size(); i++)
                         {
-                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 10) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 10))
+                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 20) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 20))
                             {
                                 if (strawberry.physical_position.position.y > (arr->at(i).physical_position.position.y - 5) && strawberry.physical_position.position.y < (arr->at(i).physical_position.position.y + 5))
                                 {
                                     strawberry_present_in_vector = true;
+                                    //ROS_WARN_STREAM("berry already known");
                                 }
                             }
                         }
                         if (strawberry_present_in_vector == false)
                         {
                             arr->push_back(strawberry);
-                            strawberry_present_in_vector = false;
                             ROS_WARN_STREAM("Vector size = " << arr->size());
-                            ROS_WARN_STREAM(strawberry.physical_position.position.x);
+                            //ROS_WARN_STREAM(strawberry.physical_position.position.x);
                         }
                     }
+                    ROS_WARN_STREAM("Berry detection position" << strawberry.physical_position.position.x);
+                    ROS_WARN_STREAM("Berry vector position" << arr->at(0).physical_position.position.x);
  
                 }
             }

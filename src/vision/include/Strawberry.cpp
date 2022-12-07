@@ -62,11 +62,12 @@ struct Strawberry : public Object {
 	{
 		for (int i = 0; i<arr->size(); i++){
 			//depending on timestamp
-			arr->at(i).physical_position.position.x += distance_traveled; //test value
-			if (arr->at(i).reachable){
+			arr->at(i).physical_position.position.x += distance_traveled;
+			if (arr->at(i).reachable == false and arr->at(i).physical_position.position.x > 9999999999){
 				arr->at(i).reachable = true;
 			}
 		}
+		
 	}
 	//void CalcWidestPoints(cv::Mat& BinaryImage) {
 

@@ -32,7 +32,7 @@ bool test = true;
 double berry_min_radius = 100;
 double crown_min_radius = 2;
 std::vector<Strawberry> detected;
-std::vector<Strawberry> *arr;
+
 Scalar green_min_copy = {38, 30, 30}; // was 42
 Scalar green_max_copy = {58, 200, 150};
 Scalar red_min_copy = {4, 0.5, 0.5};
@@ -43,6 +43,7 @@ Vision visionStrawberry;
 cv_bridge::CvImagePtr cv_ptr;
 Mat hsv_image;
 Mat image_test;
+double testing = 0;
 
 void imageCb(const sensor_msgs::ImageConstPtr &msg)
 {
@@ -65,6 +66,8 @@ void imageCb(const sensor_msgs::ImageConstPtr &msg)
     visionStrawberry.hsv_configurator(hsv_values);
   }
   visionStrawberry.DetectStrawberry(hsv_image);
+  line(hsv_image, cv::Point(0, 960/2), cv::Point(1280, 960/2), cv::Scalar(0, 0, 255), 2);
+  line(hsv_image, cv::Point(1280/2, 0), cv::Point(1280/2,960), cv::Scalar(0, 0, 255), 2);
   cv::imshow("Original image", hsv_image);
   cv::waitKey(3);
 }
@@ -87,12 +90,14 @@ void CB_h(const std_msgs::Int16MultiArray::ConstPtr &hsv)
 }
 void encoderCb(std_msgs::Float32Ptr distance_traveled)
 {
-  arr = visionStrawberry.getStrawberryArray();
+  std::vector<Strawberry> *arr = visionStrawberry.getStrawberryArray();
   if (arr->size() > 0)
   {
-    Strawberry::UpdateStrawberryPosition(visionStrawberry.getStrawberryArray(), distance_traveled->data);
-    ROS_WARN_STREAM("x = " << arr->at(0).physical_position.position.x << " y = " << arr->at(0).physical_position.position.y);
+    Strawberry::UpdateStrawberryPosition(arr, (distance_traveled->data));// 1.05564);
+    //ROS_WARN_STREAM("x = " << arr->at(0).physical_position.position.x << " y = " << arr->at(0).physical_position.position.y);
   }
+  testing += (distance_traveled->data);// 1.094;
+  ROS_WARN_STREAM("sum = " << testing);
  
 }
 void robotCb(std_msgs::BoolConstPtr done)
@@ -111,7 +116,7 @@ int main(int argc, char **argv)
 
   ros::Publisher image_color = n.advertise<std_msgs::ColorRGBA>("image_color", 1000);
   ros::Subscriber h = n.subscribe("h", 1000, CB_h);
-  ros::Subscriber encoder = n.subscribe("encoder_value", 1000, encoderCb);
+  ros::Subscriber encoder = n.subscribe("encoder_value", 10000, encoderCb);
 
   while (ros::ok())
   {
