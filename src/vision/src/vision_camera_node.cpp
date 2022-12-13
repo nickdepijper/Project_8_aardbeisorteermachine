@@ -43,17 +43,19 @@ Vision visionStrawberry;
 cv_bridge::CvImagePtr cv_ptr;
 Mat hsv_image;
 Mat image_test;
-double testing = 0;
+float testing = 0;
+float difference = 0;
+float testering = 0;
 
 void imageCb(const sensor_msgs::ImageConstPtr &msg)
 {
 
   try
   {
-  cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8); //real testing
-  //image_test = imread("/home/nick/Downloads/Vision foto aardbeien_2.png", 1); // fake testing
+    cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8); //real testing
+    //image_test = imread("/home/nick/Downloads/Vision foto aardbeien_2.png", 1); // fake testing
   }
-   catch (cv_bridge::Exception &e)
+  catch (cv_bridge::Exception &e)
   {
     ROS_ERROR("cv_bridge exception: %s", e.what());
     return;
@@ -70,6 +72,10 @@ void imageCb(const sensor_msgs::ImageConstPtr &msg)
   line(hsv_image, cv::Point(1280/2, 0), cv::Point(1280/2,960), cv::Scalar(0, 0, 255), 2);
   cv::imshow("Original image", hsv_image);
   cv::waitKey(3);
+  if (visionStrawberry.getStrawberryArray()->size() >= 5)
+  {
+    ;
+  }
 }
 
 
@@ -91,14 +97,20 @@ void CB_h(const std_msgs::Int16MultiArray::ConstPtr &hsv)
 void encoderCb(std_msgs::Float32Ptr distance_traveled)
 {
   std::vector<Strawberry> *arr = visionStrawberry.getStrawberryArray();
+  difference = (distance_traveled->data - testing);
+  testing = (distance_traveled->data);
   if (arr->size() > 0)
   {
-    Strawberry::UpdateStrawberryPosition(arr, (distance_traveled->data));// 1.05564);
+    Strawberry::UpdateStrawberryPosition(arr, (difference));
     //ROS_WARN_STREAM("x = " << arr->at(0).physical_position.position.x << " y = " << arr->at(0).physical_position.position.y);
   }
-  testing += (distance_traveled->data);// 1.094;
-  ROS_WARN_STREAM("sum = " << testing);
- 
+  if (distance_traveled->data >= 2000.63)
+  {
+    testing = 0.0;
+  }
+  testering = distance_traveled->data;
+  //ROS_WARN_STREAM("delta = " << difference);
+  ROS_WARN_STREAM("sum = " << testering);
 }
 void robotCb(std_msgs::BoolConstPtr done)
 {
