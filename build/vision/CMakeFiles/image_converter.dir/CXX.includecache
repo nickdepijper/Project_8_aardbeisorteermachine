@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Simple_path_planner.cpp
+chrono
+-
+glm/glm.hpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/glm/glm.hpp
+include/Strawberry.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/include/Strawberry.cpp
+opencv2/opencv.hpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/opencv2/opencv.hpp
+ros/ros.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/ros/ros.h
+Util/path_planner_util.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/path_planner_util.cpp
+
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Strawberry.cpp
 include/Util/Object.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/include/Util/Object.h
@@ -24,6 +38,16 @@ sstream
 memory
 -
 
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/path_planner_util.cpp
+iostream
+-
+cmath
+-
+vector
+-
+geometry_msgs/Pose.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/geometry_msgs/Pose.h
+
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Vision.cpp
 opencv2/opencv.hpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/opencv2/opencv.hpp
@@ -36,7 +60,7 @@ include/Strawberry.cpp
 std_msgs/Int16MultiArray.h
 -
 
-/home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp
 ros/ros.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/ros/ros.h
 opencv2/opencv.hpp
@@ -67,6 +91,8 @@ include/Vision.cpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Vision.cpp
 geometry_msgs/Pose.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/geometry_msgs/Pose.h
+include/Simple_path_planner.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Simple_path_planner.cpp
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

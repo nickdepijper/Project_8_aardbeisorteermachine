@@ -182,32 +182,32 @@ image_converter/fast:
 	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/build
 .PHONY : image_converter/fast
 
-src/vision_camera_node.o: src/vision_camera_node.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : src/vision_camera_node.o
+.PHONY : src/main.o
 
 # target to build an object file
-src/vision_camera_node.cpp.o:
-	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o
-.PHONY : src/vision_camera_node.cpp.o
+src/main.cpp.o:
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-src/vision_camera_node.i: src/vision_camera_node.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : src/vision_camera_node.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-src/vision_camera_node.cpp.i:
-	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.i
-.PHONY : src/vision_camera_node.cpp.i
+src/main.cpp.i:
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-src/vision_camera_node.s: src/vision_camera_node.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : src/vision_camera_node.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-src/vision_camera_node.cpp.s:
-	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.s
-.PHONY : src/vision_camera_node.cpp.s
+src/main.cpp.s:
+	cd /home/nick/Project_8_aardbeisorteermachine/build && $(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -223,9 +223,9 @@ help:
 	@echo "... image_converter"
 	@echo "... rebuild_cache"
 	@echo "... install"
-	@echo "... src/vision_camera_node.o"
-	@echo "... src/vision_camera_node.i"
-	@echo "... src/vision_camera_node.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

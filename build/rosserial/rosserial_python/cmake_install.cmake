@@ -68,3 +68,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rosserial_python" TYPE PROGRAM FILES "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_python/catkin_generated/installspace/serial_backend.py")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rosserial_python" TYPE PROGRAM FILES "/home/nick/Project_8_aardbeisorteermachine/build/rosserial/rosserial_python/catkin_generated/installspace/serial_node2.py")
+endif()
+

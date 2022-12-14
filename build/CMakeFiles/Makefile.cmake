@@ -132,6 +132,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_python/nodes/message_info_service.py"
   "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_python/nodes/serial_backend.py"
   "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_python/nodes/serial_node.py"
+  "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_python/nodes/serial_node2.py"
   "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_python/package.xml"
   "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_python/setup.py"
   "/home/nick/Project_8_aardbeisorteermachine/src/rosserial/rosserial_server/CMakeLists.txt"

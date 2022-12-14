@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o"
+  "CMakeFiles/image_converter.dir/src/main.cpp.o"
   "/home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter.pdb"
   "/home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter"
 )

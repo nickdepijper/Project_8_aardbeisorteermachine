@@ -57,38 +57,38 @@ include vision/CMakeFiles/image_converter.dir/progress.make
 # Include the compile flags for this target's objects.
 include vision/CMakeFiles/image_converter.dir/flags.make
 
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: vision/CMakeFiles/image_converter.dir/flags.make
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o"
-	cd /home/nick/Project_8_aardbeisorteermachine/build/vision && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp
+vision/CMakeFiles/image_converter.dir/src/main.cpp.o: vision/CMakeFiles/image_converter.dir/flags.make
+vision/CMakeFiles/image_converter.dir/src/main.cpp.o: /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nick/Project_8_aardbeisorteermachine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object vision/CMakeFiles/image_converter.dir/src/main.cpp.o"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/vision && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/image_converter.dir/src/main.cpp.o -c /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp
 
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.i"
-	cd /home/nick/Project_8_aardbeisorteermachine/build/vision && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp > CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.i
+vision/CMakeFiles/image_converter.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/image_converter.dir/src/main.cpp.i"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/vision && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp > CMakeFiles/image_converter.dir/src/main.cpp.i
 
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.s"
-	cd /home/nick/Project_8_aardbeisorteermachine/build/vision && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp -o CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.s
+vision/CMakeFiles/image_converter.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/image_converter.dir/src/main.cpp.s"
+	cd /home/nick/Project_8_aardbeisorteermachine/build/vision && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp -o CMakeFiles/image_converter.dir/src/main.cpp.s
 
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.requires:
+vision/CMakeFiles/image_converter.dir/src/main.cpp.o.requires:
 
-.PHONY : vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.requires
+.PHONY : vision/CMakeFiles/image_converter.dir/src/main.cpp.o.requires
 
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.provides: vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.requires
-	$(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.provides.build
-.PHONY : vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.provides
+vision/CMakeFiles/image_converter.dir/src/main.cpp.o.provides: vision/CMakeFiles/image_converter.dir/src/main.cpp.o.requires
+	$(MAKE) -f vision/CMakeFiles/image_converter.dir/build.make vision/CMakeFiles/image_converter.dir/src/main.cpp.o.provides.build
+.PHONY : vision/CMakeFiles/image_converter.dir/src/main.cpp.o.provides
 
-vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.provides.build: vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o
+vision/CMakeFiles/image_converter.dir/src/main.cpp.o.provides.build: vision/CMakeFiles/image_converter.dir/src/main.cpp.o
 
 
 # Object files for target image_converter
 image_converter_OBJECTS = \
-"CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o"
+"CMakeFiles/image_converter.dir/src/main.cpp.o"
 
 # External object files for target image_converter
 image_converter_EXTERNAL_OBJECTS =
 
-/home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter: vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o
+/home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter: vision/CMakeFiles/image_converter.dir/src/main.cpp.o
 /home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter: vision/CMakeFiles/image_converter.dir/build.make
 /home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter: /opt/ros/melodic/lib/libcv_bridge.so
 /home/nick/Project_8_aardbeisorteermachine/devel/lib/vision/image_converter: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
@@ -172,7 +172,7 @@ vision/CMakeFiles/image_converter.dir/build: /home/nick/Project_8_aardbeisorteer
 
 .PHONY : vision/CMakeFiles/image_converter.dir/build
 
-vision/CMakeFiles/image_converter.dir/requires: vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o.requires
+vision/CMakeFiles/image_converter.dir/requires: vision/CMakeFiles/image_converter.dir/src/main.cpp.o.requires
 
 .PHONY : vision/CMakeFiles/image_converter.dir/requires
 

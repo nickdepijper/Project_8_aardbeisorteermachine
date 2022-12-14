@@ -63,10 +63,11 @@ struct Strawberry : public Object {
 		for (int i = 0; i<arr->size(); i++){
 			//depending on timestamp
 			arr->at(i).physical_position.position.x += distance_traveled;
-			if (arr->at(i).reachable == false and arr->at(i).physical_position.position.x > 9999999999){
+			if (arr->at(i).reachable == false and arr->at(i).physical_position.position.x > 400){
 				arr->at(i).reachable = true;
 			}
 			ROS_WARN_STREAM("Updated berry position for berry number " << i << "x = " << arr->at(i).physical_position.position.x << "y = "<< arr->at(i).physical_position.position.y);
+			ROS_WARN_STREAM("Berry reachability: " << arr->at(i).reachable);
 	
 		}
 		

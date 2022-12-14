@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/nick/Project_8_aardbeisorteermachine/src/vision/src/vision_camera_node.cpp" "/home/nick/Project_8_aardbeisorteermachine/build/vision/CMakeFiles/image_converter.dir/src/vision_camera_node.cpp.o"
+  "/home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp" "/home/nick/Project_8_aardbeisorteermachine/build/vision/CMakeFiles/image_converter.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
