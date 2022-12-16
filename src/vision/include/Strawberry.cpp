@@ -61,12 +61,13 @@ struct Strawberry : public Object {
 	static void UpdateStrawberryPosition(std::vector<Strawberry>* arr, float distance_traveled)
 	{
 		for (int i = 0; i<arr->size(); i++){
-			//depending on timestamp
 			arr->at(i).physical_position.position.x += distance_traveled;
-			if (arr->at(i).reachable == false and arr->at(i).physical_position.position.x > 400){
+			//ROS_WARN_STREAM("-------berry reachable: " << arr->at(i).reachable);
+			if (arr->at(i).reachable == false and arr->at(i).physical_position.position.x > 800){
 				arr->at(i).reachable = true;
+				
 			}
-			//ROS_WARN_STREAM("Updated berry position for berry number " << i << "x = " << arr->at(i).physical_position.position.x << "y = "<< arr->at(i).physical_position.position.y);
+			//ROS_WARN_STREAM("Updated berry position for berry number " << i << " x = " << arr->at(i).physical_position.position.x << " y = "<< arr->at(i).physical_position.position.y << " w = " << arr->at(i).physical_position.orientation.w);
 			//ROS_WARN_STREAM("Berry reachability: " << arr->at(i).reachable);
 	
 		}

@@ -178,7 +178,11 @@ class Vision {
                     line(cropped_merge, keypoints_berry.at(i).pt, keypoints_crown.at(i).pt, cv::Scalar(0, 0, 0), 2);
                     double crown_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y));
                     double belt_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_berry.at(i).pt.y));
-                    double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)); // for degrees * (180.0 / M_PI)
+                    double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)) * (180.0 / M_PI); // for degrees * (180.0 / M_PI)
+                    if (keypoints_crown.at(i).pt.y > keypoints_berry.at(i).pt.y){
+                        ROS_WARN_STREAM("negative berry number : " << i);
+                        angle = angle * -1;
+                    }
                     angles[i] = angle;
                     //ROS_WARN_STREAM(angles[0]);
                     // x and y crop offsets compensate for cropping and opencv coordinate switch (x,y) = (y,x)
@@ -216,9 +220,9 @@ class Vision {
                     {
                         for (int i = 0; i < arr->size(); i++)
                         {
-                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 20) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 20))
+                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 20) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 50))
                             {
-                                if (strawberry.physical_position.position.y > (arr->at(i).physical_position.position.y - 5) && strawberry.physical_position.position.y < (arr->at(i).physical_position.position.y + 5))
+                                if (strawberry.physical_position.position.y > (arr->at(i).physical_position.position.y - 15) && strawberry.physical_position.position.y < (arr->at(i).physical_position.position.y + 15))
                                 {
                                     strawberry_present_in_vector = true;
                                     //ROS_WARN_STREAM("berry already known");

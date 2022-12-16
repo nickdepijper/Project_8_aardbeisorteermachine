@@ -60,6 +60,10 @@ include/Strawberry.cpp
 std_msgs/Int16MultiArray.h
 -
 
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/coordinate_sys_calculation.cpp
+include/Strawberry.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/include/Strawberry.cpp
+
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp
 ros/ros.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/ros/ros.h
@@ -93,6 +97,8 @@ geometry_msgs/Pose.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/geometry_msgs/Pose.h
 include/Simple_path_planner.cpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Simple_path_planner.cpp
+include/coordinate_sys_calculation.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/coordinate_sys_calculation.cpp
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h
