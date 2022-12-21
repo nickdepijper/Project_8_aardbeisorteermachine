@@ -4,6 +4,8 @@
 #include "ros/ros.h"
 #include "include/Strawberry.cpp"
 #include <std_msgs/Int16MultiArray.h>
+#include "include/coordinate_sys_calculation.cpp"
+#include "geometry_msgs/Pose.h"
 
 
 using namespace cv;
@@ -26,6 +28,8 @@ class Vision {
         double angles[10];
         std::vector<Strawberry>* arr = new std::vector<Strawberry>(0);
         std::vector<Strawberry>* path;
+        Pose robot_to_camera_distance;
+        
 
     public: 
         void hsv_configurator(std_msgs::Int16MultiArray hsv)
@@ -136,6 +140,10 @@ class Vision {
         }
         void DetectStrawberry(Mat input)
         {
+            robot_to_camera_distance.position.x = 1160;
+            robot_to_camera_distance.position.y = 478;
+            robot_to_camera_distance.position.z = -95; //was 105
+            robot_to_camera_distance.orientation.w = (3.1415/2);
             Strawberry detected = Strawberry();
             Mat detected_strawberries = input;
 
@@ -178,7 +186,7 @@ class Vision {
                     line(cropped_merge, keypoints_berry.at(i).pt, keypoints_crown.at(i).pt, cv::Scalar(0, 0, 0), 2);
                     double crown_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y));
                     double belt_distance_to_center = glm::distance(glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y), glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_berry.at(i).pt.y));
-                    double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center)) * (180.0 / M_PI); // for degrees * (180.0 / M_PI)
+                    double angle = std::abs(std::acos(belt_distance_to_center / crown_distance_to_center));// * (180.0 / M_PI); // for degrees * (180.0 / M_PI)
                     if (keypoints_crown.at(i).pt.y > keypoints_berry.at(i).pt.y){
                         ROS_WARN_STREAM("negative berry number : " << i);
                         angle = angle * -1;
@@ -201,13 +209,15 @@ class Vision {
                     strawberry.berry_center_pixel_pos = glm::dvec2(keypoints_berry.at(i).pt.x, keypoints_berry.at(i).pt.y);
                     strawberry.crown_center_pixel_pos = glm::dvec2(keypoints_crown.at(i).pt.x, keypoints_crown.at(i).pt.y);
                     strawberry.angle_to_belt_dir = angle;
-                    strawberry.distance_to_belt = (float)keypoints_berry.at(i).size;
-                    strawberry.distance_to_camera = 800 - ((float)keypoints_berry.at(i).size * 212); // determin actual distance in mm
+                    strawberry.distance_to_belt = (float)keypoints_berry.at(i).size * ((float)660/(float)1280);
+                    ROS_WARN_STREAM("berry width = " << strawberry.distance_to_belt);
+                    strawberry.distance_to_camera = 800 - ((float)keypoints_berry.at(i).size * 212); // determine actual distance in mm
                     strawberry.physical_position.position.x = strawberry.berry_center_pixel_pos.x;
                     strawberry.physical_position.position.y = strawberry.berry_center_pixel_pos.y;
-                    strawberry.physical_position.position.z = strawberry.distance_to_camera;
+                    strawberry.physical_position.position.z = strawberry.distance_to_belt;
                     strawberry.physical_position.orientation.w = strawberry.angle_to_belt_dir;
                     strawberry = CastStrawberryToWorld(strawberry, x_crop_start, y_crop_start);
+                    strawberry = coordinate_sys_calculator::CastStrawberryToRobot(strawberry, robot_to_camera_distance);
                     bool strawberry_present_in_vector = false;
                     
 
@@ -220,7 +230,7 @@ class Vision {
                     {
                         for (int i = 0; i < arr->size(); i++)
                         {
-                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 20) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 50))
+                            if (strawberry.physical_position.position.x > (arr->at(i).physical_position.position.x - 50) && strawberry.physical_position.position.x < (arr->at(i).physical_position.position.x + 50))
                             {
                                 if (strawberry.physical_position.position.y > (arr->at(i).physical_position.position.y - 15) && strawberry.physical_position.position.y < (arr->at(i).physical_position.position.y + 15))
                                 {
