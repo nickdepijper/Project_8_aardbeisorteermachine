@@ -8,6 +8,7 @@ vision/CMakeFiles/image_converter.dir/src/main.cpp.o
  /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Util/path_planner_util.cpp
  /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Vision.cpp
  /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/coordinate_sys_calculation.cpp
+ /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/draft_pick_position.cpp
  /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp
  /opt/ros/melodic/include/cv_bridge/cv_bridge.h
  /opt/ros/melodic/include/geometry_msgs/Point.h

@@ -129,13 +129,16 @@ void imageCb(const sensor_msgs::ImageConstPtr &msg)
         ROS_WARN_STREAM("duration " << duration.count());
         if (duration.count() > 2000)
         {
+          for (int i = 0; i<strawberry_vector->size(); i++){
+            ROS_WARN_STREAM("+++Berry " << i << " in vector. X = " << strawberry_vector->at(i).physical_position.position.x);
+          }
           planned_path = path_planner.plan_path();
           processing_berry_order = true;
           for (int i = 0; i<planned_path.size(); i++){
-          ROS_WARN_STREAM("---Berry: " << i << " x = " << planned_path.at(i).physical_position.position.x);
-          ROS_WARN_STREAM("---Berry: " << i << " y = " << planned_path.at(i).physical_position.position.y);
-          ROS_WARN_STREAM("---Berry: " << i << " z = " << planned_path.at(i).physical_position.position.z);
-          ROS_WARN_STREAM("---Berry: " << i << " w = " << planned_path.at(i).physical_position.orientation.w);
+          ROS_WARN_STREAM("---Berry: " << i+1 << " x = " << planned_path.at(i).physical_position.position.x);
+          ROS_WARN_STREAM("---Berry: " << i+1 << " y = " << planned_path.at(i).physical_position.position.y);
+          ROS_WARN_STREAM("---Berry: " << i+1 << " z = " << planned_path.at(i).physical_position.position.z);
+          ROS_WARN_STREAM("---Berry: " << i+1 << " w = " << planned_path.at(i).physical_position.orientation.w);
           }
           // display function
           for (int i; i < planned_path.size(); i++)

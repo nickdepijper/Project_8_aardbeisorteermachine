@@ -21,10 +21,10 @@ public:
         }
         
         if (pos_vector.at(0).physical_position.position.x == last_pos_vector.at(0).physical_position.position.x and i ==0){
-            ROS_WARN_STREAM("New position vector is the same as old position vector, waiting for new position vector");
+            //ROS_WARN_STREAM("New position vector is the same as old position vector, waiting for new position vector");
         }
         else if(pos_vector.size() < 5){
-            ROS_WARN_STREAM("Position vector does not have 5 positions");
+            //ROS_WARN_STREAM("Position vector does not have 5 positions");
         }
         else {
             if(done){   

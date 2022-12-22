@@ -7,12 +7,20 @@
 #IncludeRegexTransform: 
 
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Simple_path_planner.cpp
+iostream
+-
+cmath
+-
+vector
+-
 chrono
 -
 glm/glm.hpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/glm/glm.hpp
-include/Strawberry.cpp
-/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/include/Strawberry.cpp
+Strawberry.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Strawberry.cpp
+geometry_msgs/Pose.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/geometry_msgs/Pose.h
 opencv2/opencv.hpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/opencv2/opencv.hpp
 ros/ros.h
@@ -68,6 +76,18 @@ geometry_msgs/Pose.h
 include/Strawberry.cpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/./include/include/Strawberry.cpp
 
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/draft_pick_position.cpp
+iostream
+-
+vector
+-
+ros/ros.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/ros/ros.h
+Strawberry.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/Strawberry.cpp
+geometry_msgs/Pose.h
+/home/nick/Project_8_aardbeisorteermachine/src/vision/./include/geometry_msgs/Pose.h
+
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/main.cpp
 ros/ros.h
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/ros/ros.h
@@ -103,6 +123,8 @@ include/Simple_path_planner.cpp
 /home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/Simple_path_planner.cpp
 iostream
 -
+include/draft_pick_position.cpp
+/home/nick/Project_8_aardbeisorteermachine/src/vision/src/include/draft_pick_position.cpp
 
 /opt/ros/melodic/include/cv_bridge/cv_bridge.h
 sensor_msgs/Image.h

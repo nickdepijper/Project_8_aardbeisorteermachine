@@ -26,9 +26,9 @@ class Path_planner{
     Path_planner(){
         
         //smallest_distance = 1000.0;
-        gripper_pose.position.x = 0.0;   
-        gripper_pose.position.y = 0.0; 
-        gripper_pose.position.z = 0.0; 
+        gripper_pose.position.x = 900.0;   
+        gripper_pose.position.y = 600.0; 
+        gripper_pose.position.z = 100.0; 
         gripper_pose.orientation.w = 0.0;
         gripper_pose.orientation.x = 0.0;
         gripper_pose.orientation.y = 0.0;
@@ -53,6 +53,9 @@ class Path_planner{
 
     // Function to be called by main program 
     vector<Strawberry> plan_path(){
+        for (int i = 0; i<detected_strawberries_list->size(); i++){
+            detected_strawberries_list->at(i).physical_position.position.x += 800;
+        }
         std::cout <<"amount of berries to pick: "<< detected_strawberries_list->size() << endl;
         Strawberrys_to_pick.clear();
         std::vector<bool> path_to_last_node;
@@ -67,8 +70,10 @@ class Path_planner{
             for (int j = 0; j < detected_strawberries_list->size(); j++){
                     berry_distances[i][j] = util.distance(detected_strawberries_list->at(i).physical_position, detected_strawberries_list->at(j).physical_position);
                     // std::cout << setprecision(3)<< "\t" << berry_distances[i][j];
+                    ROS_WARN_STREAM(setprecision(3)<< "\t" << berry_distances[i][j]);
             }
             // std::cout << endl;
+            ROS_WARN_STREAM(" ");
         }
 
         createTree(root);
@@ -81,6 +86,12 @@ class Path_planner{
         auto stop = chrono::high_resolution_clock::now();
         auto duration = chrono::duration_cast<std::chrono::microseconds>(stop - start);
         std::cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
+        for (int i = 0; i<detected_strawberries_list->size(); i++){
+            detected_strawberries_list->at(i).physical_position.position.x -= 800;
+        }
+        for (int i = 0; i<Strawberrys_to_pick.size(); i++){
+            Strawberrys_to_pick.at(i).physical_position.position.x -= 800;
+        }
         return Strawberrys_to_pick;
     }
 
@@ -193,9 +204,12 @@ class Path_planner{
         if (parent == nullptr){
             ROS_WARN_STREAM("returned");
             return;
-        } 
+        }
 
         // Search in array with distances for smallest and second smallest value
+        for (int i = 0; i<parent->berries_already_in_branch.size(); i++){
+            ROS_WARN_STREAM("Berries already in branch" << parent->berries_already_in_branch.at(i));
+        }
         shortest_path = search_for_shortest_path(parent->pose_in_org_vect, parent->berries_already_in_branch);
         second_shortest_path = search_for_second_shortest_path(parent->pose_in_org_vect,berry_distances[shortest_path][parent->pose_in_org_vect],parent->berries_already_in_branch);
 
