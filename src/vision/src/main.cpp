@@ -15,6 +15,7 @@
 #include "geometry_msgs/Pose.h"
 #include "include/Simple_path_planner.cpp"
 #include <iostream>
+#include "include/draft_pick_position.cpp"
 using namespace cv;
 
 static const std::string OPENCV_WINDOW = "Image window";
@@ -58,6 +59,7 @@ std_msgs::Bool conveyer_belt_active;
 std_msgs::Bool conveyer_belt_previous_state;
 Pose robot_to_camera_distance;
 std::chrono::_V2::high_resolution_clock::time_point start;
+Pose single_pick_pose;
 
 void init()
 {
@@ -205,6 +207,7 @@ int main(int argc, char **argv)
   ros::Subscriber encoder = n.subscribe("encoder_value", 1000, encoderCb);
   conveyer_belt_active.data = true;
   conveyer_belt_previous_state.data = false;
+  pickPosition pick_position;
   //ROS_WARN_STREAM("function began");
   ros::spinOnce();
   ros::Duration(5).sleep();
@@ -224,14 +227,14 @@ int main(int argc, char **argv)
     }
     if (processing_berry_order)
     {
-      // Functie Ilse: geo_pose = pick_position.get pose(planned_path, picked_berry)
+      single_pick_pose = pick_position.returnStrawberryFunc(planned_path, picked_berry);
       picked_berry = false;
-      // publish pose
+      robot_send.publish(single_pick_pose);
 
-      // if ( get_processing_ended())
-      // { 
-      //    processing_berry_order = false;   
-      // }
+      if (pick_position.get_processing_ended())
+      { 
+         processing_berry_order = false;   
+      }
     }
 
     ros::spinOnce();

@@ -3,6 +3,7 @@
 #include <vector>
 #include "ros/ros.h"
 #include "Strawberry.cpp"
+#include "geometry_msgs/Pose.h"
 
 class pickPosition
 {
@@ -13,7 +14,7 @@ private:
     int i = 0;
 public:
 
-    Strawberry returnStrawberryFunc(std::vector<Strawberry> pos_vector, bool done)
+    Pose returnStrawberryFunc(std::vector<Strawberry> pos_vector, bool done)
     {
         if (last_pos_vector.empty()){
             last_pos_vector.push_back(random_berry);
@@ -29,13 +30,13 @@ public:
             if(done){   
                 if(i < 4){
                     i++;
-                    return pos_vector.at(i-1);
+                    return pos_vector.at(i-1).physical_position;
                 }
                 else if(i == 4){
                     ROS_WARN_STREAM("Last position has been send");
                     last_berry_done = true;
                     i = 0;
-                    return pos_vector.at(4);
+                    return pos_vector.at(4).physical_position;
                 
                 }      
             } 
